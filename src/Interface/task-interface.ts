@@ -1,0 +1,5 @@
+
+interface Itask{
+    id: string;
+    
+}
