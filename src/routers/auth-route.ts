@@ -4,12 +4,13 @@ import express,{ Request,Response } from "express";
 import authValidationSchema from "../validators/auth-validation-schema";
 import { validator } from "../middleware/index.validator";
 
-
+const router = express.Router()
 const authService = container.resolve(AuthController)
-const Router = express.Router()
+
 const authRouter=()=>{
-    Router.post('/signup',validator(authValidationSchema.signupValidation),(req:Request,res:Response)=>{
-        authService.Register(req,res)});
+    router.post('/signup',validator(authValidationSchema.signupValidation),(req:Request,res:Response)=>{
+       authService.Register(req,res); });
+       return router;
 }
 
 export default authRouter;

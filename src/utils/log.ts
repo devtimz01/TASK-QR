@@ -21,7 +21,7 @@ const handleSuccess=(res:Response, message: string, data: {}, statusCode: number
     return res.status(statusCode).json({status:true,message,data:{...data}})
 }
 
-const handleError=(res:Response, message: string, statusCode: number)=>{
+const handleError=(res:Response, message: string, statusCode: number=400)=>{
       Logger.log({level:'error',message})
     return res.status(statusCode).json({status:false,message})
 }

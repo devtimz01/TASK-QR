@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import express from 'express'
+import { Request,Response, NextFunction} from 'express';
 import Dbinitialize from './database/init'
 import authRouter from './routers/auth-route'
 import utility from './utils/log'
@@ -8,6 +9,13 @@ const app= express()
 const port = 3000
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
+app.use((err:any, req:Request, res:Response, next:NextFunction)=>{
+    res.status(500).json({
+        status: false,
+        message: err.message
+    })
+});
+
 app.use('/api/auth', authRouter)
 
 const Server = async function(){

@@ -27,21 +27,21 @@ class AuthController{
                 isEmailVerified: params.isEmailVerified
             } as IuserCreationBody
             
-            let userExists= await this.authService.findUser({email:newUser.email,companyName:newUser.companyName,username:newUser.username})
+            let userExists= await this.authService.findUser({email:params.email,companyName:params.companyName,username:params.username})
             if(userExists){
-                return utility.handleError(res, 'server error, signup failed', ResponseCode.ALREADY_EXIST)
+                return utility.handleError(res, 'user already exists', ResponseCode.ALREADY_EXIST)
             }
             let user = await this.authService.createUser(newUser)
                 newUser.password='';
                 return utility.handleSuccess(res,'successfully created new user',{user},ResponseCode.SUCCESS)
         }
-        catch(err){
-            return res.status(500).send('server error, signup failed')
+        catch(error){
+            return utility.handleError(res,"server error",ResponseCode.SERVER_ERROR)
         }
     };
 
     async verifyUser(res:Response,req:Request){
-        
+
     }
 
     async signupWithGoogle(req:Request,res:Response){}
