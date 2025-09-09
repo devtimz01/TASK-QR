@@ -1,6 +1,5 @@
 import userModel from "../model/user-schema"
 import utility from "../utils/log"
-import Logger from "../utils/log"
 import Db from './index'
 
 const Dbinitialize=async()=>{
@@ -13,6 +12,6 @@ const Dbinitialize=async()=>{
     utility.Logger.error('Database modelsync authentication error')
    }
 }
-export default Dbinitialize();
+export default Dbinitialize;
 
 //optimize your queries by sharding, indexing ....

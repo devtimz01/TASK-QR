@@ -6,31 +6,33 @@ import authRouter from './routers/auth-route'
 import utility from './utils/log'
 
 const app= express()
-const port = 3000
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
-app.use((err:any, req:Request, res:Response, next:NextFunction)=>{
+
+app.use('/api/auth',authRouter)
+
+app.use((err:any, req:Request, res:Response, next: NextFunction)=>{
     res.status(500).json({
         status: false,
         message: err.message
     })
 });
 
-app.use('/api/auth', authRouter)
 
+const port = 4033;
 const Server = async function(){
-    //mount my Dbinitialize
-    await Dbinitialize
     try{
+        await Dbinitialize();
         app.listen(port,()=>{
-        console.log('server running at port 3000')
+        console.log('SERVER RUNNING AT PORT 4033')
         utility.Logger.info('server running successfully')
   })
     }
-    catch(err){
-        console.log('server not running',err)
+    catch(error){
+        console.log('server not running',error)
         utility.Logger.error('server not running')
-        process.exit(1)
     }
 }
 Server();
+
+

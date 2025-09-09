@@ -10,7 +10,8 @@ const Logger = createLogger({
         new transports.File({
             filename: './logs/info.logs',
             level: 'info'
-        })
+        }),
+        new transports.Console()
     ],
     format: format.combine(format.timestamp({format: 'YYYY-DD-MM, HH:mm:ss'}), format.printf((info)=>
             `${info.timestamp} ${info.level}:${info.message}`))

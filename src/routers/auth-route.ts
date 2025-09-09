@@ -7,10 +7,7 @@ import { validator } from "../middleware/index.validator";
 const router = express.Router()
 const authService = container.resolve(AuthController)
 
-const authRouter=()=>{
-    router.post('/signup',validator(authValidationSchema.signupValidation),(req:Request,res:Response)=>{
-       authService.Register(req,res); });
-       return router;
-}
+router.post('/signup',validator(authValidationSchema.signupValidation),async(req:Request,res:Response)=>{
+      return authService.Register(req,res);});
 
-export default authRouter;
+export default router;

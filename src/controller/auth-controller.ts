@@ -32,19 +32,18 @@ class AuthController{
                 return utility.handleError(res, 'user already exists', ResponseCode.ALREADY_EXIST)
             }
             let user = await this.authService.createUser(newUser)
-                newUser.password='';
                 return utility.handleSuccess(res,'successfully created new user',{user},ResponseCode.SUCCESS)
         }
         catch(error){
-            return utility.handleError(res,"server error",ResponseCode.SERVER_ERROR)
+            return utility.handleError(res,(error as TypeError).message,ResponseCode.SERVER_ERROR)
         }
     };
-
-    async verifyUser(res:Response,req:Request){
+    async verifyUser(req:Request,res:Response){
 
     }
+    async signupWithGoogle(req:Request,res:Response){
 
-    async signupWithGoogle(req:Request,res:Response){}
-}
+    }
+};
 
 export default AuthController;
