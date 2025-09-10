@@ -1,8 +1,8 @@
 import { Iauth, IuserCreationBody, IuserQuery } from "../Interface/auth-interface";
 import AuthDataSource from "../datasource/auth-datasource";
-import {autoInjectable} from 'tsyringe'
+import {autoInjectable, injectable} from 'tsyringe'
 
-@autoInjectable()
+@injectable()
 class AuthService{
     private authDataSource: AuthDataSource
     constructor(_authData: AuthDataSource){

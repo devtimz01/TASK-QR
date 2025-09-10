@@ -11,3 +11,7 @@ export const userRoles={
     ADMIN:'ADMIN',
     USER:'USER'
 }
+export const emailStatus={
+  NOT_VERIFIED: false,
+  VERIFIED:true
+}

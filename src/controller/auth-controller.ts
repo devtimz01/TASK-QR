@@ -3,7 +3,7 @@ import { autoInjectable } from "tsyringe";
 import AuthService from "../services/auth-service";
 import { IuserCreationBody } from "../Interface/auth-interface";
 import bcrypt from  'bcryptjs'
-import { ResponseCode, userRoles } from "../enums/status-code";
+import { emailStatus, ResponseCode, userRoles } from "../enums/status-code";
 import utility from "../utils/log";
 
 @autoInjectable()
@@ -24,10 +24,11 @@ class AuthController{
                 email:params.email,
                 password: hashedPassword,
                 role: userRoles.USER,
-                isEmailVerified: params.isEmailVerified
+               isEmailVerified: emailStatus.NOT_VERIFIED
             } as IuserCreationBody
-            
-            let userExists= await this.authService.findUser({email:params.email,companyName:params.companyName,username:params.username})
+
+            let userCredentials=  {email:params.email,companyName:params.companyName,username:params.username} 
+            let userExists= await this.authService.findUser(userCredentials);
             if(userExists){
                 return utility.handleError(res, 'user already exists', ResponseCode.ALREADY_EXIST)
             }
@@ -39,7 +40,7 @@ class AuthController{
         }
     };
     async verifyUser(req:Request,res:Response){
-
+        
     }
     async signupWithGoogle(req:Request,res:Response){
 
