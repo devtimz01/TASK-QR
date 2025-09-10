@@ -32,7 +32,7 @@ class AuthController{
 
             let userExists= await this.authService.findUser({email:params.email});
             if(userExists){
-                return utility.handleError(res, 'user already exists', ResponseCode.ALREADY_EXIST)
+                return utility.handleError(res, 'user already exists', ResponseCode.CONFLICT)
             }
             //verify user
             let user = await this.authService.createUser(newUser)
@@ -58,12 +58,30 @@ class AuthController{
                         email: user.email,
                         companyName:user.companyName
                       }, process.env.JWT_SECRET as string,{expiresIn:'30d'})
+                      //verifyUser()
                        return utility.handleSuccess(res,"login successful",{user,token},ResponseCode.OK)
         }catch(error){
             return utility.handleError(res, (error as TypeError).message,ResponseCode.SERVER_ERROR)
         }
     }
+    async sendVerificationLink(req:Request,res:Response){
+       try{const params={...req.body}
+             
+    
+    } 
+       catch(err){
 
+       }
+    }
+
+    async verifyUser(req:Request,res:Response){
+       try{const params={...req.body}
+             //if token status active update isEmailVerified
+    } 
+       catch(err){
+
+       }
+    }
 };
 
 export default AuthController;

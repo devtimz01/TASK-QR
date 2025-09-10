@@ -1,3 +1,4 @@
+import tokenModel from "../model/token-schema"
 import userModel from "../model/user-schema"
 import utility from "../utils/log"
 import Db from './index'
@@ -5,6 +6,7 @@ import Db from './index'
 const Dbinitialize=async()=>{
    try{
      userModel.sync({alter:false})
+     tokenModel.sync({alter:false})
      await Db.authenticate()
    }
    catch(err){
