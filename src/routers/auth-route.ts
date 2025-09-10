@@ -10,4 +10,7 @@ const authService = container.resolve(AuthController)
 router.post('/signup',validator(authValidationSchema.signupValidation),(req:Request,res:Response)=>{
       return authService.Register(req,res);});
 
+router.post('/login',(req,res)=>{
+      return authService.login(req,res)
+})
 export default router;
