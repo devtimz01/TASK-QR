@@ -13,3 +13,5 @@ class TokenDataSource implements ItokenDataSource{
               await tokenModel.update(data, filter)
     }
 }
+
+export default TokenDataSource;
