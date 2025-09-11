@@ -8,6 +8,9 @@ class AuthDataSource implements IuserDataSource{
     async find(filter: IuserQuery): Promise<Iauth| null>{
        return await userModel.findOne(filter)
     }
+    async update(data: Partial<IuserCreationBody>,sortBy: IuserQuery): Promise<void> {
+        await userModel.update(data,sortBy)
+    }
 }
 
 export default AuthDataSource;

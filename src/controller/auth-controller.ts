@@ -4,9 +4,11 @@ import AuthService from "../services/auth-service";
 import { IuserCreationBody } from "../Interface/auth-interface";
 import bcrypt from  'bcryptjs'
 import { emailStatus, ResponseCode, userRoles } from "../enums/status-code";
+
 import utility from "../utils/log";
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
+import moment from 'moment'
 dotenv.config()
 
 @autoInjectable()
@@ -65,23 +67,49 @@ class AuthController{
         }
     }
     async sendVerificationLink(req:Request,res:Response){
-       try{const params={...req.body}
-             
-    
+       try{
+        const params={...req.body}
+        const createTokenRecord = await this.authService.createTokenRecord(params.email)
+        if(!createTokenRecord){
+            return utility.handleError(res,"user could not create token record",ResponseCode.SERVER_ERROR)
+        }
+        const sendVerificationMail = AuthService.sendMail(params.email,{code:createTokenRecord.code})
+        if(!sendVerificationMail){
+            return utility.handleError(res,"Error, verification email not sent",ResponseCode.SERVER_ERROR)
+        }
+        return utility.handleSuccess(res,'verification mail sent successfully',{},ResponseCode.OK)
     } 
-       catch(err){
-
+       catch(error){
+            return utility.handleError(res,(error as TypeError).message,ResponseCode.SERVER_ERROR)
        }
-    }
+    };
 
     async verifyUser(req:Request,res:Response){
        try{const params={...req.body}
-             //if token status active update isEmailVerified
-    } 
-       catch(err){
+          const isValidtoken = await this.authService.findTokenRecord({code: params.code})
+          if(!isValidtoken){
+            return utility.handleError(res, "token not found", ResponseCode.NOT_FOUND)
+          }
+             if(isValidtoken && moment(isValidtoken.expire).diff(moment(),'minute')>=0){
+               return utility.handleError(res,"verification token expired", ResponseCode.UNAUTHORIZED_ACCESS)}
+               const user = await this.authService.findUser(params.email) 
+               if(!user){
+               return utility.handleError(res,"user does not exist",ResponseCode.NOT_FOUND)
+          }
 
+            const updateEmailVerification = await this.authService.updateEmailVerificationRecord({id:user.id},{isEmailVerified:true})
+            const updateTokenStatus =await this.authService.updateTokenRecord({id:isValidtoken.id},{status: this.authService.tokenStatus.EXPIRED}) 
+          
+          return utility.handleSuccess(res,'user Verified successfylly',{},ResponseCode.OK)
+    } 
+       catch(error){
+            return utility.handleError(res,(error as TypeError).message,ResponseCode.SERVER_ERROR)
        }
-    }
+    };
+//scale emailing robustly with queues (Bull)
+    async signupWithGoogle(req:Request,res:Response){
+        
+    };
 };
 
 export default AuthController;

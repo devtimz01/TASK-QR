@@ -24,4 +24,5 @@ export interface Imodel extends Model<Iauth,IuserCreationBody>,Iauth{}
 export interface IuserDataSource{
     create(record:IuserCreationBody):Promise<Iauth>
     find(filter:IuserQuery):Promise<Iauth|null>
+    update(data: Partial<Iauth>,sortBy:IuserQuery): Promise<void>
 }

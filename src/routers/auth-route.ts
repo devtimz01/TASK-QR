@@ -13,4 +13,10 @@ router.post('/signup',validator(authValidationSchema.signupValidation),(req:Requ
 router.post('/login',(req,res)=>{
       return authService.login(req,res)
 })
+router.post('/sendVerificationMail', (req,res)=>{
+      return authService.sendVerificationLink(req,res)
+})
+router.get('/verify',(req,res)=>{
+      return authService.verifyUser(req,res)
+})
 export default router;

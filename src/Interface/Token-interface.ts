@@ -23,5 +23,5 @@ export interface Itokenmodel extends Model<Itoken,ItokenCreationBody>,Itoken{}
 export interface ItokenDataSource{
     create(record:ItokenCreationBody):Promise<Itoken>
     find(filter:ItokenQuery):Promise<Itoken|null>
-    update(filter:ItokenQuery, data: Partial<Itoken>):Promise<void>
+    update(data: Partial<Itoken>,filter:ItokenQuery):Promise<void>
 }

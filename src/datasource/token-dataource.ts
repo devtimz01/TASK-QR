@@ -9,7 +9,7 @@ class TokenDataSource implements ItokenDataSource{
         return await tokenModel.findOne(filter)
     }
 
-    async update(filter: ItokenQuery, data: Partial<Itoken>): Promise<void> {
+    async update(data: Partial<Itoken>,filter: ItokenQuery): Promise<void> {
               await tokenModel.update(data, filter)
     }
 }

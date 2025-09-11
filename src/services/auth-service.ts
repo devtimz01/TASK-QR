@@ -7,6 +7,8 @@ import { Itoken, ItokenCreationBody, ItokenQuery } from "../Interface/Token-inte
 import crypto from 'crypto'
 import TokenDataSource from "../datasource/token-dataource";
 import moment from "moment";
+import dotenv from 'dotenv'
+dotenv.config();
 
 @injectable()
 class AuthService{
@@ -27,15 +29,23 @@ class AuthService{
     return await this.authDataSource.find(query)
    }
 
-   public static async sendMail(userEmail: string){
+   async updateEmailVerificationRecord(record: Partial<Iauth>, data:Partial<Iauth>){
+       const sortBy ={
+        where:{...record},
+        raw:true
+       } as IuserQuery
+       await this.authDataSource.update(data,sortBy)
+   };
+
+   public static async sendMail(userEmail: string,token: Partial<Itoken>){
       const Transporter = nodemailer.createTransport({
         service:'gmail',
         auth:{
-            user:process.env.ADMIN as string,
-            pass: process.env.PASS as string
+            user:process.env.ADMIN_MAIL as string,
+            pass: process.env.ADMIN_PASS as string
         }
       });
-      Transporter.verify((error,success)=>{
+      Transporter.verify((error)=>{
         if(error){
              utility.Logger.error('Tranporter error')
              throw new Error('Transporter error')
@@ -45,11 +55,11 @@ class AuthService{
         }
       });
      const info = Transporter.sendMail({
-        from: process.env.ADMIN,
+        from: process.env.ADMIN_MAIL,
         to:userEmail,
         subject:'verification email',
-        html:"<p>confirm this email is yours click here, `` <p/>"
-     })
+        html:`confirm this email is yours <a href="http://localhost:4033/api/auth/verify?token=${token}">CLICK HERE<a/>`
+     });
       return info;
    };
 
@@ -106,6 +116,13 @@ class AuthService{
         utility.Logger.error("failed to generate token record")
         throw new Error('failed to generate token')
       }
+   }
+   
+   async updateTokenRecord(sortBy:Partial<Itoken>,data:Partial<Itoken>):Promise<void>{
+      const query ={
+        where:{...sortBy}, raw:true
+      } as ItokenQuery
+      await this.tokenDataSource.update(data, query)
    }
 };
 

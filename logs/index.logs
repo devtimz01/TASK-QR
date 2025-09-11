@@ -9,3 +9,6 @@
 2025-10-09, 03:30:35 error:Cannot read properties of undefined (reading 'findUser')
 2025-10-09, 03:33:09 error:Cannot read properties of undefined (reading 'findUser')
 2025-10-09, 03:45:35 error:Cannot read properties of undefined (reading 'findUser')
+2025-11-09, 19:55:10 error:failed to generate verification token code
+2025-11-09, 19:55:10 error:failed to generate token record
+2025-11-09, 19:55:10 error:failed to generate token
