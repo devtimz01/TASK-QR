@@ -4,12 +4,30 @@ import { Request,Response, NextFunction} from 'express';
 import Dbinitialize from './database/init'
 import authRouter from './routers/auth-route'
 import utility from './utils/log'
+import session from 'express-session'
+import passport from 'passport';
 
 const app= express()
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
 
+app.use(session({
+    secret:'secret',
+    resave:false,
+    saveUninitialized:true
+}))
+app.use(passport.initialize())
+app.use(passport.session())
+
 app.use('/api/auth',authRouter)
+app.get('/',(req,res)=>{
+    utility.Logger.info('oauth signup successful')
+    res.send('welcome to task-Qr')
+})
+app.get('/oauthfailed',(req,res)=>{
+    utility.Logger.error('oauth signup failed')
+    res.send('signup failed, try again')
+})
 
 app.use((err:any, req:Request, res:Response, next: NextFunction)=>{
     res.status(500).json({

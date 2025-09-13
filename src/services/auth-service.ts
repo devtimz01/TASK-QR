@@ -37,6 +37,22 @@ class AuthService{
        await this.authDataSource.update(data,sortBy)
    };
 
+    public readonly completeVerification={
+      PENDING: 'PENDING'
+   }
+   public readonly password={
+    NULL:'NULL'
+   }
+   async signUpwithGoogle(record: Partial<IuserCreationBody>):Promise<Iauth>{
+    const data={
+      ...record,
+      password: this.password.NULL,
+      companyName:this.completeVerification.PENDING,
+      fullName: this.completeVerification.PENDING
+    } as IuserCreationBody
+    return await this.authDataSource.create(data)
+   };
+   
    public static async sendMail(userEmail: string,token: Partial<Itoken>){
       const Transporter = nodemailer.createTransport({
         service:'gmail',
@@ -71,7 +87,7 @@ class AuthService{
      return await this.tokenDataSource.find(query)
    }
 
-   async generateToken(record: ItokenCreationBody){
+   async generateToken(record: ItokenCreationBody):Promise<Itoken>{
     try{
         const tokenData={...record}
         let isValidToken = false
@@ -86,7 +102,7 @@ class AuthService{
                 isValidToken= true
                 break;
             }
-         }
+         };
         return await this.tokenDataSource.create(tokenData)
     }
     catch(err){

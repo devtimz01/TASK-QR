@@ -4,7 +4,6 @@ import AuthService from "../services/auth-service";
 import { IuserCreationBody } from "../Interface/auth-interface";
 import bcrypt from  'bcryptjs'
 import { emailStatus, ResponseCode, userRoles } from "../enums/status-code";
-
 import utility from "../utils/log";
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
@@ -108,7 +107,13 @@ class AuthController{
     };
 //scale emailing robustly with queues (Bull)
     async signupWithGoogle(req:Request,res:Response){
-        
+        try{
+            //passport , users secret, credentials needed....
+                
+        }
+        catch(error){
+            return utility.handleError(res,(error as TypeError).message,ResponseCode.SERVER_ERROR)
+        }
     };
 };
 

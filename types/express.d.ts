@@ -1,6 +1,6 @@
 import {Iauth} from '../src/Interface/auth-interface'
 
-declare global{
+/*declare global{
     namespace Express{
         interface Request{
             user: Iauth
@@ -8,4 +8,4 @@ declare global{
     }
 }
 
-export {}
+export {}*/

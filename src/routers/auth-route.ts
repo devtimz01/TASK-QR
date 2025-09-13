@@ -3,6 +3,7 @@ import AuthController from "../controller/auth-controller";
 import express,{ Request,Response } from "express";
 import authValidationSchema from "../validators/auth-validation-schema";
 import { validator } from "../middleware/index.validator";
+import passport from '../services/passport'
 
 const router = express.Router()
 const authService = container.resolve(AuthController)
@@ -18,5 +19,10 @@ router.post('/sendVerificationMail', (req,res)=>{
 })
 router.get('/verify',(req,res)=>{
       return authService.verifyUser(req,res)
+})
+router.get('/google',passport.authenticate('google',{scope:['profile','email']}))
+
+router.get('/googlesignup',passport.authenticate('google',{failureRedirect:'/oauthfailed'}),(req,res)=>{
+      return res.redirect('/')
 })
 export default router;
