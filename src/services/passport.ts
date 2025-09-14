@@ -29,4 +29,4 @@ passport.deserializeUser(async(id :string,done)=>{
     done(null,user)
 })
 
-export default passport
+export default passport;

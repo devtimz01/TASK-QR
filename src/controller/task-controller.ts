@@ -13,7 +13,7 @@ class TaskController{
         return utility.handleError(res,(error as TypeError).message,ResponseCode.SERVER_ERROR)
        }
     };
-
+    
 };
 
 export default TaskController;
