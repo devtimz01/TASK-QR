@@ -12,7 +12,9 @@ class Name{
         set<int>getNumbers = hashset<int>()
         for i: getNumbers{
             //transversing through a collection
-
         }
+    };
+    void string getPhrase(){
+        list<string> array= arraylist<>()
     };
 };
