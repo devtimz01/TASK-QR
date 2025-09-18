@@ -2,7 +2,7 @@ import { DataTypes, UUID, UUIDV4 } from 'sequelize'
 import Db from '../database/index'
 import { IsubtaskModel, ItaskFolderModel,ItaskModel } from '../Interface/task-interface'
 
-const TaskModel = Db.define<ItaskModel>('TaskModel',{
+export const TaskModel = Db.define<ItaskModel>('TaskModel',{
      id: {
         allowNull: false,
         primaryKey:true,
@@ -68,7 +68,7 @@ const TaskModel = Db.define<ItaskModel>('TaskModel',{
     tableName:'Task'
 });
 
-const subTaskModel = Db.define<IsubtaskModel>('subTaskModel',{
+export const subTaskModel = Db.define<IsubtaskModel>('subTaskModel',{
      id: {
         allowNull: false,
         primaryKey:true,
@@ -175,6 +175,6 @@ const TaskFolderModel = Db.define<ItaskFolderModel>('TaskFolderModel',{
 });
 
 TaskFolderModel.hasMany(TaskModel,{foreignKey: 'folderId',as:'tasks'})
-TaskFolderModel.belongsTo(TaskFolderModel,{foreignKey:'folderId',as:'folder'})
+TaskModel.belongsTo(TaskFolderModel,{foreignKey:'folderId',as:'folder'})
 
 export default TaskFolderModel;

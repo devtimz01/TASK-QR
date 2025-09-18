@@ -49,5 +49,7 @@ export interface ItaskFolderModel extends Model <ITaskFolder,ItaskFolderCreation
 export interface ItaskModel extends Model <ITask,ItaskCreationBody>,ITask{}
 export interface IsubtaskModel extends Model <IsubTask,IsubtaskCreationBody>,IsubTask{}
 export interface ItaskDataSoruce{
+    createTaskFolder(record: ItaskFolderCreationBody):Promise<ITaskFolder>
     createTask(record: ItaskCreationBody):Promise<ITask>
+    createSubTask(record: IsubtaskCreationBody):Promise<IsubTask>
 }
