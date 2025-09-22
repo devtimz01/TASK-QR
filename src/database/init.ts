@@ -1,4 +1,4 @@
-import TaskFolderModel from "../model/task-model"
+import TaskFolderModel, { collaboratorsModel, subTaskModel, TaskModel } from "../model/task-model"
 import tokenModel from "../model/token-schema"
 import userModel from "../model/user-schema"
 import utility from "../utils/log"
@@ -8,7 +8,10 @@ const Dbinitialize=async()=>{
    try{
      userModel.sync({alter:false})
      tokenModel.sync({alter:false})
-     TaskFolderModel.sync({alter:true})
+     TaskFolderModel.sync({alter:false})
+     TaskModel.sync({alter:false})
+     subTaskModel.sync({alter:false})
+     //collaboratorsModel.sync({alter:true})
      await Db.authenticate()
    }
    catch(err){

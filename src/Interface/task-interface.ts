@@ -8,7 +8,6 @@ export interface ITask{
     description:string;
     subTask?:ITask[];
     folderId: string;
-    collaborators:string;
     dueDate: Date;
     markAsComplete: boolean;
     notifications: string;
@@ -22,7 +21,6 @@ export interface IsubTask{
     dependencies: string
     files: string;
     description:string;
-    collaborators:string;
     dueDate: Date;
     TaskId: string;
     markAsComplete: boolean;
@@ -41,6 +39,20 @@ export interface ITaskFolder{
     createdAt: string;
     updatedAt:string
 };
+export interface Icollaborators{
+    id: string;
+    fullName:string;
+    username: string;
+    email: string;
+    taskId:string;
+    subtaskId: string;
+    companyName: string;
+    password: string;
+    role: string;
+    isEmailVerified: boolean;
+    createdAt: string;
+    updatedAt:string;
+}
 
 export interface ItaskCreationBody extends Optional<ITask, 'id'|'createdAt'|'updatedAt'>{}
 export interface IsubtaskCreationBody extends Optional<IsubTask, 'id'|'createdAt'|'updatedAt'>{}
@@ -53,3 +65,5 @@ export interface ItaskDataSoruce{
     createTask(record: ItaskCreationBody):Promise<ITask>
     createSubTask(record: IsubtaskCreationBody):Promise<IsubTask>
 }
+export interface IcollaboratorsCreationBody extends Optional<Icollaborators,"id"|"createdAt"|"updatedAt">{}
+export interface IcollaboratorsModel extends Model<Icollaborators,IcollaboratorsCreationBody>,Icollaborators{}

@@ -21,7 +21,7 @@ class AuthService{
    async createUser(record: IuserCreationBody): Promise<Iauth>{
      return await this.authDataSource.create(record)
 }
-   async findUser(record:Partial<IuserCreationBody>): Promise<Iauth | null>{
+   async findUser(record:Partial<Iauth>): Promise<Iauth | null>{
     const query={
         where:{...record},
         raw:true

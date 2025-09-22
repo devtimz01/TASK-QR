@@ -25,10 +25,6 @@ public static async assignTaskByGeolocation(){
 
 };
 
-public static async UploadImage(){
-    //req.file.buffer = result
-    //res = result.secure_url  //createReadStream().pipe(stream) multer.({multer.memorystorage})
-}
 
 };
 

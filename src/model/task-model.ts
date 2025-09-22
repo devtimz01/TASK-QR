@@ -1,17 +1,18 @@
-import { DataTypes, UUID, UUIDV4 } from 'sequelize'
+import { DataTypes } from 'sequelize'
 import Db from '../database/index'
-import { IsubtaskModel, ItaskFolderModel,ItaskModel } from '../Interface/task-interface'
+import { IcollaboratorsModel, IsubtaskModel, ItaskFolderModel,ItaskModel } from '../Interface/task-interface'
 
 export const TaskModel = Db.define<ItaskModel>('TaskModel',{
      id: {
         allowNull: false,
         primaryKey:true,
-        type: UUID,
-        defaultValue: UUIDV4
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4
     },
     taskName: {
         type:DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     files: {
         type:DataTypes.STRING,
@@ -27,12 +28,7 @@ export const TaskModel = Db.define<ItaskModel>('TaskModel',{
     },
     folderId:{
         allowNull:false,
-        defaultValue: DataTypes.UUIDV4,
         type: DataTypes.UUID
-    },
-    collaborators: {
-        type:DataTypes.STRING,
-        allowNull: true
     },
     markAsComplete: {
         type:DataTypes.BOOLEAN,
@@ -72,12 +68,13 @@ export const subTaskModel = Db.define<IsubtaskModel>('subTaskModel',{
      id: {
         allowNull: false,
         primaryKey:true,
-        type: UUID,
-        defaultValue: UUIDV4
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4
     },
     taskName: {
         type:DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     files: {
         type:DataTypes.STRING,
@@ -90,10 +87,6 @@ export const subTaskModel = Db.define<IsubtaskModel>('subTaskModel',{
     description:{
         type: DataTypes.STRING,
         
-    },
-    collaborators: {
-        type:DataTypes.STRING,
-        allowNull: true
     },
     markAsComplete: {
         type:DataTypes.BOOLEAN,
@@ -113,7 +106,6 @@ export const subTaskModel = Db.define<IsubtaskModel>('subTaskModel',{
     },
     TaskId:{
         allowNull:false,
-        defaultValue: DataTypes.UUIDV4,
         type: DataTypes.UUID
     },
     createdAt:{
@@ -133,16 +125,84 @@ export const subTaskModel = Db.define<IsubtaskModel>('subTaskModel',{
     updatedAt:'updatedAt',
     tableName:'subtask'
 });
-
 TaskModel.hasMany(subTaskModel,{foreignKey:'TaskId', as:'subTasks'})
 subTaskModel.belongsTo(TaskModel,{foreignKey:'TaskId', as:'Tasks'})
+
+export const collaboratorsModel = Db.define<IcollaboratorsModel>('collaboratorsModel',{
+    id: {
+            defaultValue: DataTypes.UUIDV4,
+            allowNull:false,
+            type:DataTypes.UUID,
+            primaryKey: true
+        },
+    taskId:{
+        allowNull:false,
+        type:DataTypes.UUID,
+    },
+    subtaskId:{
+        allowNull:false,
+        type:DataTypes.UUID,
+    },
+        username:{
+            allowNull: false,
+            unique:true,
+            type: DataTypes.STRING
+        },
+        email:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        companyName:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        isEmailVerified:{
+            type: DataTypes.BOOLEAN,
+            defaultValue:false
+        },
+        fullName:{
+            allowNull:false,
+            unique:false,
+            type: DataTypes.STRING
+        },
+        password:{
+            allowNull:false,
+            unique:false,
+            type:DataTypes.STRING
+        },
+        role:{
+            type: DataTypes.STRING,
+            allowNull:false,
+            defaultValue:"user"
+        },
+        createdAt:{
+            type: DataTypes.DATE,
+            allowNull:false,
+            defaultValue:DataTypes.NOW
+        },
+        updatedAt:{
+            type:DataTypes.DATE,
+            allowNull:false,
+            defaultValue:DataTypes.NOW
+        }
+}, {
+        timestamps: true,
+        tableName: 'collaborators',
+        createdAt: 'createdAt',
+        updatedAt: 'updatedAt'
+});
+TaskModel.hasMany(collaboratorsModel,{foreignKey:'taskId', as:'collaborator'})
+collaboratorsModel.belongsTo(TaskModel,{foreignKey:'taskId',as :'Tasks'})
+
+subTaskModel.hasMany(collaboratorsModel,{foreignKey:'subtaskId', as:'collaborator'})
+collaboratorsModel.belongsTo(subTaskModel,{foreignKey:'subtaskId',as :'subtasks'})
 
 const TaskFolderModel = Db.define<ItaskFolderModel>('TaskFolderModel',{
     id: {
         allowNull: false,
         primaryKey:true,
-        type: UUID,
-        defaultValue: UUIDV4
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4
     },
     status:{
         type: DataTypes.ENUM('PENDING','IN_PROGRESS','OVERDUE','COMPLETED'),
@@ -155,7 +215,8 @@ const TaskFolderModel = Db.define<ItaskFolderModel>('TaskFolderModel',{
     },
     taskFolderName:{
         allowNull: false,
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique:true
     },
     createdAt:{
         type: DataTypes.DATE,

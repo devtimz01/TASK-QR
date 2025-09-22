@@ -1,11 +1,12 @@
 import {Iauth} from '../src/Interface/auth-interface'
 
-/*declare global{
+declare global{
     namespace Express{
         interface Request{
-            user: Iauth
+          user: Iauth,
+          file:Express.Multer.File
         }
     }
 }
 
-export {}*/
+export {};

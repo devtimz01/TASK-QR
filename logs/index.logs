@@ -15,3 +15,99 @@
 2025-11-09, 19:58:58 error:failed to generate verification token code
 2025-11-09, 19:58:58 error:failed to generate token record
 2025-11-09, 19:58:58 error:failed to generate token
+2025-19-09, 07:46:09 error:token not found
+2025-19-09, 07:46:15 error:invalid token
+2025-19-09, 07:49:14 error:invalid token
+2025-19-09, 07:49:56 error:invalid token
+2025-19-09, 07:50:11 error:token not found
+2025-19-09, 07:50:54 error:invalid token
+2025-19-09, 07:51:38 error:invalid token
+2025-19-09, 08:16:09 error:Cannot read properties of undefined (reading 'buffer')
+2025-19-09, 08:17:18 error:Cannot read properties of undefined (reading 'buffer')
+2025-19-09, 08:21:12 error:Cannot read properties of undefined (reading 'buffer')
+2025-19-09, 08:23:47 error:Cannot read properties of undefined (reading 'buffer')
+2025-19-09, 08:27:39 error:WHERE parameter "id" has invalid "undefined" value
+2025-19-09, 08:31:33 error:WHERE parameter "id" has invalid "undefined" value
+2025-19-09, 08:33:04 error:WHERE parameter "id" has invalid "undefined" value
+2025-19-09, 08:41:37 error:WHERE parameter "id" has invalid "undefined" value
+2025-19-09, 08:48:17 error:WHERE parameter "id" has invalid "undefined" value
+2025-19-09, 08:53:52 error:WHERE parameter "id" has invalid "undefined" value
+2025-19-09, 09:13:29 error:WHERE parameter "id" has invalid "undefined" value
+2025-19-09, 09:14:53 error:Cannot read properties of undefined (reading 'buffer')
+2025-19-09, 09:17:20 error:Cannot read properties of undefined (reading 'Buffer')
+2025-19-09, 09:20:12 error:Cannot read properties of undefined (reading 'buffer')
+2025-19-09, 09:21:51 error:Cannot read properties of undefined (reading 'buffer')
+2025-19-09, 09:30:22 error:Cannot read properties of undefined (reading 'buffer')
+2025-19-09, 09:45:19 error:undefined buffer
+2025-19-09, 09:52:29 error:undefined buffer
+2025-19-09, 10:06:27 error:undefined buffer
+2025-19-09, 10:08:07 error:undefined buffer
+2025-19-09, 10:09:50 error:undefined buffer
+2025-19-09, 10:11:06 error:undefined buffer
+2025-19-09, 10:12:03 error:undefined
+2025-19-09, 10:13:40 error:undefined
+2025-19-09, 10:16:38 error:undefined
+2025-19-09, 10:20:11 error:undefined
+2025-19-09, 17:34:29 error:undefined
+2025-19-09, 17:34:42 error:taskFolderName is a required field
+2025-19-09, 17:34:49 error:undefined buffer
+2025-19-09, 17:37:18 error:undefined
+2025-19-09, 17:37:58 error:undefined
+2025-19-09, 17:41:45 error:Unknown server error
+2025-19-09, 17:45:21 error:Unknown server error
+2025-20-09, 07:28:32 error:Unknown server error
+2025-20-09, 07:28:41 error:Unknown server error
+2025-20-09, 07:28:46 error:Unknown server error
+2025-20-09, 07:41:09 error:Unknown server error
+2025-20-09, 07:42:18 error:Unknown server error
+2025-20-09, 08:46:46 error:file not found
+2025-20-09, 09:39:11 error:dueDate must be a `date` type, but the final value was: `Invalid Date` (cast from the value `""2025-09-23T15:30:00Z"`).
+2025-20-09, 09:39:31 error:dueDate must be a `date` type, but the final value was: `Invalid Date` (cast from the value `""2025-09-23T15:30:00Z""`).
+2025-20-09, 09:53:08 error:date type invalid
+2025-20-09, 09:54:05 error:Error: [object Object]
+2025-20-09, 09:55:21 error:dataType invalid
+2025-20-09, 09:57:52 error:dataType invalid
+2025-20-09, 09:59:59 error:datatype invalid
+2025-20-09, 10:04:29 error:failed creating task
+2025-20-09, 10:12:32 error:failed creating task
+2025-20-09, 10:18:23 error:failed creating task
+2025-20-09, 10:21:32 error:failed creating task
+2025-20-09, 10:26:39 error:failed creating task
+2025-20-09, 10:27:27 error:failed creating task
+2025-20-09, 10:35:14 error:failed creating task
+2025-20-09, 16:45:18 error:failed creating task
+2025-20-09, 16:47:20 error:Table 'taskqr.task' doesn't exist
+2025-20-09, 16:53:03 error:Data too long for column 'folderId' at row 1
+2025-21-09, 08:34:52 error:Database modelsync authentication error
+2025-21-09, 08:37:36 error:Database modelsync authentication error
+2025-21-09, 08:38:00 error:Database modelsync authentication error
+2025-21-09, 08:38:31 error:Database modelsync authentication error
+2025-21-09, 08:53:43 error:Data too long for column 'folderId' at row 1
+2025-21-09, 09:48:01 error:Data too long for column 'folderId' at row 1
+2025-21-09, 09:54:06 error:Incorrect datetime value: 'Invalid date' for column 'dueDate' at row 1
+2025-21-09, 10:08:48 error:file not found
+2025-21-09, 10:10:24 error:file not found
+2025-21-09, 10:11:00 error:file not found
+2025-21-09, 10:11:48 error:file not found
+2025-21-09, 10:16:30 error:file not found
+2025-21-09, 10:18:09 error:file not found
+2025-21-09, 10:19:02 error:file not found
+2025-21-09, 10:24:01 error:file not found
+2025-21-09, 10:26:41 error:file not found
+2025-21-09, 10:28:06 error:file not found
+2025-21-09, 10:28:15 error:file not found
+2025-21-09, 10:28:32 error:file not found
+2025-21-09, 10:29:47 error:file not found
+2025-21-09, 10:31:22 error:file not found
+2025-21-09, 10:31:47 error:file not found
+2025-21-09, 10:32:05 error:token not found
+2025-21-09, 10:32:34 error:file not found
+2025-21-09, 10:33:16 error:file not found
+2025-21-09, 10:37:36 error:file not found
+2025-21-09, 10:39:02 error:file not found
+2025-21-09, 10:43:21 error:file not found
+2025-21-09, 10:44:17 error:file not found
+2025-21-09, 10:48:09 error:file not found
+2025-21-09, 10:49:07 error:file not found
+2025-21-09, 10:57:37 error:file not found
+2025-22-09, 09:30:49 error:notNull Violation: TaskModel.taskName cannot be null

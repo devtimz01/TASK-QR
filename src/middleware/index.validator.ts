@@ -6,7 +6,7 @@ import { ResponseCode } from "../enums/status-code";
 
 export const validator=(schema:Schema<any>)=>{
     return async (req:Request,res:Response, next:NextFunction)=>{
-       try{ schema.validate(req.body,{abortEarly:true})
+       try{ await schema.validate(req.body,{abortEarly:true})
         next();}
         catch(error:any){
             return utility.handleError(res,error.errors[0],ResponseCode.BAD_REQUEST)

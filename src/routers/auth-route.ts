@@ -4,8 +4,10 @@ import express,{ Request,Response } from "express";
 import authValidationSchema from "../validators/auth-validation-schema";
 import { validator } from "../middleware/index.validator";
 import passport from '../services/passport'
+import AuthService from "../services/auth-service";
 
 const router = express.Router()
+export const xservice = container.resolve(AuthService)
 const authService = container.resolve(AuthController)
 
 router.post('/signup',validator(authValidationSchema.signupValidation),(req:Request,res:Response)=>{

@@ -674,3 +674,379 @@
 2025-16-09, 17:31:26 info:server running successfully
 2025-16-09, 17:32:05 info:server running successfully
 2025-16-09, 17:32:26 info:server running successfully
+2025-19-09, 07:23:00 info:server running successfully
+2025-19-09, 07:30:12 info:server running successfully
+2025-19-09, 07:35:48 info:login successful
+2025-19-09, 07:42:00 info:server running successfully
+2025-19-09, 07:42:55 info:server running successfully
+2025-19-09, 07:43:44 info:server running successfully
+2025-19-09, 07:46:00 info:server running successfully
+2025-19-09, 07:46:09 error:token not found
+2025-19-09, 07:46:15 error:invalid token
+2025-19-09, 07:49:14 error:invalid token
+2025-19-09, 07:49:56 error:invalid token
+2025-19-09, 07:50:11 error:token not found
+2025-19-09, 07:50:54 error:invalid token
+2025-19-09, 07:51:09 info:login successful
+2025-19-09, 07:51:38 error:invalid token
+2025-19-09, 08:02:11 info:server running successfully
+2025-19-09, 08:05:36 info:server running successfully
+2025-19-09, 08:06:11 info:server running successfully
+2025-19-09, 08:06:55 info:server running successfully
+2025-19-09, 08:11:22 info:server running successfully
+2025-19-09, 08:14:08 info:server running successfully
+2025-19-09, 08:16:09 error:Cannot read properties of undefined (reading 'buffer')
+2025-19-09, 08:17:10 info:server running successfully
+2025-19-09, 08:17:18 error:Cannot read properties of undefined (reading 'buffer')
+2025-19-09, 08:21:09 info:server running successfully
+2025-19-09, 08:21:12 error:Cannot read properties of undefined (reading 'buffer')
+2025-19-09, 08:22:20 info:server running successfully
+2025-19-09, 08:22:49 info:server running successfully
+2025-19-09, 08:23:47 error:Cannot read properties of undefined (reading 'buffer')
+2025-19-09, 08:25:47 info:server running successfully
+2025-19-09, 08:27:36 info:server running successfully
+2025-19-09, 08:27:39 error:WHERE parameter "id" has invalid "undefined" value
+2025-19-09, 08:31:22 info:server running successfully
+2025-19-09, 08:31:33 error:WHERE parameter "id" has invalid "undefined" value
+2025-19-09, 08:31:49 info:server running successfully
+2025-19-09, 08:33:00 info:server running successfully
+2025-19-09, 08:33:04 error:WHERE parameter "id" has invalid "undefined" value
+2025-19-09, 08:36:09 info:server running successfully
+2025-19-09, 08:37:23 info:server running successfully
+2025-19-09, 08:38:35 info:server running successfully
+2025-19-09, 08:39:06 info:server running successfully
+2025-19-09, 08:40:28 info:server running successfully
+2025-19-09, 08:41:29 info:server running successfully
+2025-19-09, 08:41:37 error:WHERE parameter "id" has invalid "undefined" value
+2025-19-09, 08:47:52 info:server running successfully
+2025-19-09, 08:48:17 error:WHERE parameter "id" has invalid "undefined" value
+2025-19-09, 08:52:40 info:server running successfully
+2025-19-09, 08:53:06 info:server running successfully
+2025-19-09, 08:53:38 info:server running successfully
+2025-19-09, 08:53:52 error:WHERE parameter "id" has invalid "undefined" value
+2025-19-09, 08:55:57 info:server running successfully
+2025-19-09, 08:56:56 info:server running successfully
+2025-19-09, 09:12:55 info:server running successfully
+2025-19-09, 09:13:29 error:WHERE parameter "id" has invalid "undefined" value
+2025-19-09, 09:13:54 info:login successful
+2025-19-09, 09:14:53 error:Cannot read properties of undefined (reading 'buffer')
+2025-19-09, 09:15:31 info:server running successfully
+2025-19-09, 09:16:28 info:server running successfully
+2025-19-09, 09:17:20 error:Cannot read properties of undefined (reading 'Buffer')
+2025-19-09, 09:19:33 info:server running successfully
+2025-19-09, 09:20:12 error:Cannot read properties of undefined (reading 'buffer')
+2025-19-09, 09:21:44 info:server running successfully
+2025-19-09, 09:21:51 error:Cannot read properties of undefined (reading 'buffer')
+2025-19-09, 09:22:30 info:server running successfully
+2025-19-09, 09:24:28 info:server running successfully
+2025-19-09, 09:25:12 info:server running successfully
+2025-19-09, 09:25:36 info:server running successfully
+2025-19-09, 09:28:16 info:server running successfully
+2025-19-09, 09:29:22 info:server running successfully
+2025-19-09, 09:29:32 info:server running successfully
+2025-19-09, 09:30:00 info:server running successfully
+2025-19-09, 09:30:22 error:Cannot read properties of undefined (reading 'buffer')
+2025-19-09, 09:44:41 info:server running successfully
+2025-19-09, 09:45:19 error:undefined buffer
+2025-19-09, 09:52:23 info:server running successfully
+2025-19-09, 09:52:29 error:undefined buffer
+2025-19-09, 10:06:18 info:server running successfully
+2025-19-09, 10:06:27 error:undefined buffer
+2025-19-09, 10:07:44 info:server running successfully
+2025-19-09, 10:08:03 info:server running successfully
+2025-19-09, 10:08:07 error:undefined buffer
+2025-19-09, 10:09:35 info:server running successfully
+2025-19-09, 10:09:50 error:undefined buffer
+2025-19-09, 10:10:47 info:server running successfully
+2025-19-09, 10:11:06 error:undefined buffer
+2025-19-09, 10:11:52 info:server running successfully
+2025-19-09, 10:12:03 error:undefined
+2025-19-09, 10:13:16 info:server running successfully
+2025-19-09, 10:13:29 info:server running successfully
+2025-19-09, 10:13:40 error:undefined
+2025-19-09, 10:15:46 info:server running successfully
+2025-19-09, 10:16:29 info:server running successfully
+2025-19-09, 10:16:38 error:undefined
+2025-19-09, 10:17:15 info:server running successfully
+2025-19-09, 10:19:56 info:server running successfully
+2025-19-09, 10:20:11 error:undefined
+2025-19-09, 10:21:26 info:server running successfully
+2025-19-09, 10:22:02 info:server running successfully
+2025-19-09, 10:24:04 info:server running successfully
+2025-19-09, 17:34:11 info:server running successfully
+2025-19-09, 17:34:29 error:undefined
+2025-19-09, 17:34:42 error:taskFolderName is a required field
+2025-19-09, 17:34:49 error:undefined buffer
+2025-19-09, 17:37:18 error:undefined
+2025-19-09, 17:37:40 info:server running successfully
+2025-19-09, 17:37:58 error:undefined
+2025-19-09, 17:40:28 info:server running successfully
+2025-19-09, 17:41:38 info:server running successfully
+2025-19-09, 17:41:45 error:Unknown server error
+2025-19-09, 17:45:12 info:server running successfully
+2025-19-09, 17:45:21 error:Unknown server error
+2025-20-09, 06:57:59 info:server running successfully
+2025-20-09, 06:59:23 info:server running successfully
+2025-20-09, 07:01:48 info:server running successfully
+2025-20-09, 07:09:55 info:server running successfully
+2025-20-09, 07:17:54 info:server running successfully
+2025-20-09, 07:28:32 error:Unknown server error
+2025-20-09, 07:28:41 error:Unknown server error
+2025-20-09, 07:28:46 error:Unknown server error
+2025-20-09, 07:36:43 info:server running successfully
+2025-20-09, 07:37:00 info:server running successfully
+2025-20-09, 07:37:31 info:server running successfully
+2025-20-09, 07:37:45 info:server running successfully
+2025-20-09, 07:38:05 info:server running successfully
+2025-20-09, 07:40:55 info:server running successfully
+2025-20-09, 07:41:09 error:Unknown server error
+2025-20-09, 07:42:13 info:server running successfully
+2025-20-09, 07:42:18 error:Unknown server error
+2025-20-09, 07:45:19 info:server running successfully
+2025-20-09, 07:48:24 info:server running successfully
+2025-20-09, 07:48:30 info:TaskFolder created successfully
+2025-20-09, 07:49:09 info:server running successfully
+2025-20-09, 07:49:41 info:server running successfully
+2025-20-09, 07:58:16 info:server running successfully
+2025-20-09, 08:08:02 info:server running successfully
+2025-20-09, 08:08:20 info:server running successfully
+2025-20-09, 08:08:30 info:server running successfully
+2025-20-09, 08:09:19 info:server running successfully
+2025-20-09, 08:09:53 info:server running successfully
+2025-20-09, 08:10:56 info:server running successfully
+2025-20-09, 08:14:43 info:server running successfully
+2025-20-09, 08:15:50 info:server running successfully
+2025-20-09, 08:16:56 info:server running successfully
+2025-20-09, 08:17:04 info:server running successfully
+2025-20-09, 08:21:38 info:server running successfully
+2025-20-09, 08:22:08 info:server running successfully
+2025-20-09, 08:22:39 info:server running successfully
+2025-20-09, 08:24:18 info:server running successfully
+2025-20-09, 08:26:52 info:server running successfully
+2025-20-09, 08:28:44 info:server running successfully
+2025-20-09, 08:29:00 info:server running successfully
+2025-20-09, 08:30:45 info:server running successfully
+2025-20-09, 08:31:35 info:server running successfully
+2025-20-09, 08:31:47 info:server running successfully
+2025-20-09, 08:38:33 info:server running successfully
+2025-20-09, 08:38:50 info:server running successfully
+2025-20-09, 08:42:23 info:server running successfully
+2025-20-09, 08:46:46 error:file not found
+2025-20-09, 08:47:45 info:server running successfully
+2025-20-09, 08:49:53 info:server running successfully
+2025-20-09, 08:55:54 info:server running successfully
+2025-20-09, 08:56:12 info:server running successfully
+2025-20-09, 08:57:04 info:server running successfully
+2025-20-09, 08:57:26 info:server running successfully
+2025-20-09, 09:02:19 info:server running successfully
+2025-20-09, 09:03:30 info:server running successfully
+2025-20-09, 09:29:12 info:server running successfully
+2025-20-09, 09:29:53 info:server running successfully
+2025-20-09, 09:34:25 info:server running successfully
+2025-20-09, 09:35:37 info:server running successfully
+2025-20-09, 09:39:07 info:server running successfully
+2025-20-09, 09:39:11 error:dueDate must be a `date` type, but the final value was: `Invalid Date` (cast from the value `""2025-09-23T15:30:00Z"`).
+2025-20-09, 09:39:31 error:dueDate must be a `date` type, but the final value was: `Invalid Date` (cast from the value `""2025-09-23T15:30:00Z""`).
+2025-20-09, 09:52:59 info:server running successfully
+2025-20-09, 09:53:08 error:date type invalid
+2025-20-09, 09:54:01 info:server running successfully
+2025-20-09, 09:54:05 error:Error: [object Object]
+2025-20-09, 09:54:30 info:server running successfully
+2025-20-09, 09:55:18 info:server running successfully
+2025-20-09, 09:55:21 error:dataType invalid
+2025-20-09, 09:57:48 info:server running successfully
+2025-20-09, 09:57:52 error:dataType invalid
+2025-20-09, 09:58:38 info:server running successfully
+2025-20-09, 09:59:59 error:datatype invalid
+2025-20-09, 10:04:12 info:server running successfully
+2025-20-09, 10:04:23 info:server running successfully
+2025-20-09, 10:04:29 error:failed creating task
+2025-20-09, 10:07:45 info:server running successfully
+2025-20-09, 10:09:24 info:server running successfully
+2025-20-09, 10:09:37 info:server running successfully
+2025-20-09, 10:09:47 info:server running successfully
+2025-20-09, 10:09:59 info:server running successfully
+2025-20-09, 10:12:25 info:server running successfully
+2025-20-09, 10:12:32 error:failed creating task
+2025-20-09, 10:14:47 info:server running successfully
+2025-20-09, 10:18:18 info:server running successfully
+2025-20-09, 10:18:23 error:failed creating task
+2025-20-09, 10:21:32 error:failed creating task
+2025-20-09, 10:26:39 error:failed creating task
+2025-20-09, 10:27:27 error:failed creating task
+2025-20-09, 10:34:51 info:server running successfully
+2025-20-09, 10:35:14 error:failed creating task
+2025-20-09, 16:43:24 info:server running successfully
+2025-20-09, 16:45:18 error:failed creating task
+2025-20-09, 16:47:09 info:server running successfully
+2025-20-09, 16:47:20 error:Table 'taskqr.task' doesn't exist
+2025-20-09, 16:52:50 info:server running successfully
+2025-20-09, 16:53:03 error:Data too long for column 'folderId' at row 1
+2025-20-09, 16:57:51 info:server running successfully
+2025-20-09, 16:58:18 info:server running successfully
+2025-20-09, 17:01:50 info:server running successfully
+2025-20-09, 17:04:09 info:server running successfully
+2025-20-09, 17:04:34 info:server running successfully
+2025-20-09, 17:05:23 info:server running successfully
+2025-20-09, 17:18:10 info:server running successfully
+2025-20-09, 17:18:32 info:server running successfully
+2025-20-09, 17:20:40 info:server running successfully
+2025-21-09, 07:34:05 info:server running successfully
+2025-21-09, 08:05:52 info:server running successfully
+2025-21-09, 08:22:32 info:server running successfully
+2025-21-09, 08:32:33 info:server running successfully
+2025-21-09, 08:34:52 error:Database modelsync authentication error
+2025-21-09, 08:34:52 info:server running successfully
+2025-21-09, 08:37:36 error:Database modelsync authentication error
+2025-21-09, 08:37:36 info:server running successfully
+2025-21-09, 08:38:00 error:Database modelsync authentication error
+2025-21-09, 08:38:00 info:server running successfully
+2025-21-09, 08:38:31 error:Database modelsync authentication error
+2025-21-09, 08:38:31 info:server running successfully
+2025-21-09, 08:38:55 info:server running successfully
+2025-21-09, 08:39:11 info:server running successfully
+2025-21-09, 08:39:33 info:server running successfully
+2025-21-09, 08:39:52 info:server running successfully
+2025-21-09, 08:41:34 info:server running successfully
+2025-21-09, 08:42:29 info:server running successfully
+2025-21-09, 08:47:18 info:server running successfully
+2025-21-09, 08:47:33 info:server running successfully
+2025-21-09, 08:47:48 info:server running successfully
+2025-21-09, 08:48:24 info:server running successfully
+2025-21-09, 08:49:22 info:server running successfully
+2025-21-09, 08:49:46 info:server running successfully
+2025-21-09, 08:53:43 error:Data too long for column 'folderId' at row 1
+2025-21-09, 09:45:50 info:server running successfully
+2025-21-09, 09:46:30 info:server running successfully
+2025-21-09, 09:46:43 info:server running successfully
+2025-21-09, 09:47:03 info:server running successfully
+2025-21-09, 09:47:15 info:server running successfully
+2025-21-09, 09:47:43 info:server running successfully
+2025-21-09, 09:48:01 error:Data too long for column 'folderId' at row 1
+2025-21-09, 09:50:54 info:server running successfully
+2025-21-09, 09:54:06 error:Incorrect datetime value: 'Invalid date' for column 'dueDate' at row 1
+2025-21-09, 09:56:10 info:Task created successfully
+2025-21-09, 10:00:33 info:server running successfully
+2025-21-09, 10:03:32 info:server running successfully
+2025-21-09, 10:04:18 info:server running successfully
+2025-21-09, 10:06:54 info:server running successfully
+2025-21-09, 10:07:08 info:server running successfully
+2025-21-09, 10:07:52 info:server running successfully
+2025-21-09, 10:08:18 info:server running successfully
+2025-21-09, 10:08:28 info:server running successfully
+2025-21-09, 10:08:48 error:file not found
+2025-21-09, 10:10:24 error:file not found
+2025-21-09, 10:11:00 error:file not found
+2025-21-09, 10:11:48 error:file not found
+2025-21-09, 10:14:09 info:server running successfully
+2025-21-09, 10:15:47 info:server running successfully
+2025-21-09, 10:16:30 error:file not found
+2025-21-09, 10:17:52 info:server running successfully
+2025-21-09, 10:18:09 error:file not found
+2025-21-09, 10:19:02 error:file not found
+2025-21-09, 10:21:54 info:server running successfully
+2025-21-09, 10:24:01 error:file not found
+2025-21-09, 10:24:37 info:server running successfully
+2025-21-09, 10:26:41 error:file not found
+2025-21-09, 10:28:06 error:file not found
+2025-21-09, 10:28:15 error:file not found
+2025-21-09, 10:28:32 error:file not found
+2025-21-09, 10:29:43 info:server running successfully
+2025-21-09, 10:29:47 error:file not found
+2025-21-09, 10:31:01 info:server running successfully
+2025-21-09, 10:31:22 error:file not found
+2025-21-09, 10:31:47 error:file not found
+2025-21-09, 10:32:05 error:token not found
+2025-21-09, 10:32:34 error:file not found
+2025-21-09, 10:33:13 info:server running successfully
+2025-21-09, 10:33:16 error:file not found
+2025-21-09, 10:36:39 info:Task created successfully
+2025-21-09, 10:37:36 error:file not found
+2025-21-09, 10:38:23 info:server running successfully
+2025-21-09, 10:38:55 info:server running successfully
+2025-21-09, 10:39:02 error:file not found
+2025-21-09, 10:43:13 info:server running successfully
+2025-21-09, 10:43:21 error:file not found
+2025-21-09, 10:44:12 info:server running successfully
+2025-21-09, 10:44:17 error:file not found
+2025-21-09, 10:47:44 info:server running successfully
+2025-21-09, 10:48:02 info:server running successfully
+2025-21-09, 10:48:09 error:file not found
+2025-21-09, 10:49:06 info:server running successfully
+2025-21-09, 10:49:07 error:file not found
+2025-21-09, 10:53:42 info:server running successfully
+2025-21-09, 10:53:50 info:Task created successfully
+2025-21-09, 10:54:20 info:server running successfully
+2025-21-09, 10:57:37 error:file not found
+2025-21-09, 10:58:26 info:server running successfully
+2025-21-09, 11:17:59 info:server running successfully
+2025-21-09, 11:18:14 info:server running successfully
+2025-21-09, 11:18:28 info:server running successfully
+2025-21-09, 11:19:09 info:server running successfully
+2025-21-09, 11:19:29 info:server running successfully
+2025-21-09, 11:19:40 info:server running successfully
+2025-21-09, 11:20:03 info:server running successfully
+2025-21-09, 11:20:47 info:server running successfully
+2025-21-09, 11:21:16 info:server running successfully
+2025-21-09, 11:21:25 info:server running successfully
+2025-21-09, 11:21:44 info:server running successfully
+2025-21-09, 11:21:58 info:server running successfully
+2025-21-09, 11:22:38 info:server running successfully
+2025-21-09, 17:40:22 info:server running successfully
+2025-21-09, 17:40:57 info:server running successfully
+2025-21-09, 17:45:43 info:server running successfully
+2025-21-09, 17:52:40 info:server running successfully
+2025-22-09, 09:01:20 info:server running successfully
+2025-22-09, 09:02:56 info:server running successfully
+2025-22-09, 09:05:57 info:TaskFolder created successfully
+2025-22-09, 09:06:48 info:TaskFolder created successfully
+2025-22-09, 09:07:56 info:server running successfully
+2025-22-09, 09:09:13 info:server running successfully
+2025-22-09, 09:09:23 info:server running successfully
+2025-22-09, 09:10:05 info:Task created successfully
+2025-22-09, 09:10:27 info:Task created successfully
+2025-22-09, 09:10:44 info:Task created successfully
+2025-22-09, 09:13:16 info:Task created successfully
+2025-22-09, 09:17:07 info:server running successfully
+2025-22-09, 09:17:20 info:server running successfully
+2025-22-09, 09:17:35 info:Task created successfully
+2025-22-09, 09:20:00 info:server running successfully
+2025-22-09, 09:20:56 info:server running successfully
+2025-22-09, 09:21:09 info:server running successfully
+2025-22-09, 09:21:25 info:Task created successfully
+2025-22-09, 09:22:06 info:server running successfully
+2025-22-09, 09:24:58 info:server running successfully
+2025-22-09, 09:27:10 info:server running successfully
+2025-22-09, 09:28:33 info:server running successfully
+2025-22-09, 09:28:51 info:server running successfully
+2025-22-09, 09:29:37 info:server running successfully
+2025-22-09, 09:29:55 info:server running successfully
+2025-22-09, 09:30:25 info:server running successfully
+2025-22-09, 09:30:36 info:Task created successfully
+2025-22-09, 09:30:49 error:notNull Violation: TaskModel.taskName cannot be null
+2025-22-09, 09:31:24 info:Task created successfully
+2025-22-09, 09:33:29 info:server running successfully
+2025-22-09, 09:36:38 info:server running successfully
+2025-22-09, 09:36:43 info:Task created successfully
+2025-22-09, 09:37:56 info:Task created successfully
+2025-22-09, 09:38:53 info:server running successfully
+2025-22-09, 09:39:21 info:server running successfully
+2025-22-09, 09:39:24 info:Task created successfully
+2025-22-09, 09:41:10 info:server running successfully
+2025-22-09, 09:42:26 info:server running successfully
+2025-22-09, 09:42:42 info:Task created successfully
+2025-22-09, 09:43:59 info:server running successfully
+2025-22-09, 09:45:29 info:server running successfully
+2025-22-09, 09:46:32 info:server running successfully
+2025-22-09, 09:48:37 info:server running successfully
+2025-22-09, 09:49:27 info:server running successfully
+2025-22-09, 09:49:50 info:server running successfully
+2025-22-09, 09:53:14 info:server running successfully
+2025-22-09, 09:54:05 info:server running successfully
+2025-22-09, 09:54:28 info:server running successfully
+2025-22-09, 09:56:03 info:server running successfully
+2025-22-09, 10:01:34 info:server running successfully
+2025-22-09, 10:01:48 info:server running successfully
+2025-22-09, 16:33:54 info:server running successfully
+2025-22-09, 16:35:16 info:server running successfully
+2025-22-09, 16:45:43 info:server running successfully

@@ -54,7 +54,7 @@ class AuthController{
                 if(!isPasswordMatch){
                    return utility.handleError(res,"invalid password match",ResponseCode.UNAUTHORIZED_ACCESS)}
                       let token = jwt.sign({
-                        userId: user.id,
+                        id: user.id,
                         username: user.username,
                         email: user.email,
                         companyName:user.companyName
