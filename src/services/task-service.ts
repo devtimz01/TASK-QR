@@ -20,8 +20,6 @@ async createSubTask(record: IsubtaskCreationBody):Promise<IsubTask>{
     };
 
 public static async assignTaskByGeolocation(){
-    //geocode each users lat and longitude (optional googleMap Api)
-    //integrate cron to re-run service.
 
 };
 
