@@ -7,11 +7,11 @@ import Db from './index'
 const Dbinitialize=async()=>{
    try{
      userModel.sync({alter:false})
-     tokenModel.sync({alter:false})
-     TaskFolderModel.sync({alter:false})
-     TaskModel.sync({alter:false})
-     subTaskModel.sync({alter:false})
-     //collaboratorsModel.sync({alter:true})
+    // tokenModel.sync({alter:false})
+     //TaskFolderModel.sync({alter:false})
+    // TaskModel.sync({alter:false})
+    // subTaskModel.sync({alter:false})
+    // collaboratorsModel.sync({alter:false})
      await Db.authenticate()
    }
    catch(err){

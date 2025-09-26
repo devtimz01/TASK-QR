@@ -29,14 +29,20 @@ class AuthService{
     return await this.authDataSource.find(query)
    }
 
-   async updateEmailVerificationRecord(record: Partial<Iauth>, data:Partial<Iauth>){
+   async updateUserRecord(record: Partial<Iauth>, data:Partial<Iauth>){
        const sortBy ={
         where:{...record},
         raw:true
        } as IuserQuery
        await this.authDataSource.update(data,sortBy)
    };
-
+   async updateRecord(record:Partial<Iauth>, data: Partial<Iauth>){
+       const sortBy ={
+        where:{...record},
+        raw:true
+       } as IuserQuery
+      return await this.authDataSource.updateRecord(data,sortBy)
+   }
     public readonly completeVerification={
       PENDING: 'PENDING'
    }

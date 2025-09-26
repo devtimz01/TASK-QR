@@ -9,6 +9,19 @@ const userModel = Db.define<Imodel>('userModel',{
         type:DataTypes.UUID,
         primaryKey: true
     },
+    ipAddress:{
+        allowNull: true,
+        defaultValue: 'NULL',
+        type: DataTypes.STRING
+    },
+    latitude:{
+        allowNull:true,
+        type: DataTypes.FLOAT
+    },
+     longitude:{
+        allowNull:true,
+        type: DataTypes.FLOAT
+    },
     username:{
         allowNull: false,
         unique:true,

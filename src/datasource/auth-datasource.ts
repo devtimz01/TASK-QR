@@ -11,6 +11,20 @@ class AuthDataSource implements IuserDataSource{
     async update(data: Partial<IuserCreationBody>,sortBy: IuserQuery): Promise<void> {
         await userModel.update(data,sortBy)
     }
-}
+   async updateRecord(data: Partial<IuserCreationBody>, sortBy: IuserQuery):Promise<Iauth>{
+       const [affectedCount] = await userModel.update(data, sortBy);
+  if (affectedCount === 0) {
+    throw new Error("No records were updated");
+  }
+  return data as Iauth;
+   }
+   async updateMany(data: Partial<IuserCreationBody>, sortBy: IuserQuery):Promise<Iauth>{
+       const [affectedCount] = await userModel.update(data, sortBy);
+  if (affectedCount === 0) {
+    throw new Error("No records were updated");
+  }
+  return data as Iauth;
+   }
+};
 
 export default AuthDataSource;

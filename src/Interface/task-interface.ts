@@ -43,6 +43,8 @@ export interface Icollaborators{
     id: string;
     fullName:string;
     username: string;
+    ipAddress: string;
+    longLat:number;
     email: string;
     taskId:string;
     subtaskId: string;
@@ -53,6 +55,9 @@ export interface Icollaborators{
     createdAt: string;
     updatedAt:string;
 }
+ export interface Imap{
+    latlong: string
+ }
 
 export interface ItaskCreationBody extends Optional<ITask, 'id'|'createdAt'|'updatedAt'>{}
 export interface IsubtaskCreationBody extends Optional<IsubTask, 'id'|'createdAt'|'updatedAt'>{}

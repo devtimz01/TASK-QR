@@ -135,6 +135,14 @@ export const collaboratorsModel = Db.define<IcollaboratorsModel>('collaboratorsM
             type:DataTypes.UUID,
             primaryKey: true
         },
+        ipAddress:{
+            allowNull:true,
+            type: DataTypes.STRING
+        },
+        longLat:{
+            allowNull:true,
+            type:DataTypes.NUMBER
+        },
     taskId:{
         allowNull:false,
         type:DataTypes.UUID,

@@ -96,7 +96,7 @@ class AuthController{
                return utility.handleError(res,"user does not exist",ResponseCode.NOT_FOUND)
           }
 
-            const updateEmailVerification = await this.authService.updateEmailVerificationRecord({id:user.id},{isEmailVerified:true})
+            const updateEmailVerification = await this.authService.updateUserRecord({id:user.id},{isEmailVerified:true})
             const updateTokenStatus =await this.authService.updateTokenRecord({id:isValidtoken.id},{status: this.authService.tokenStatus.EXPIRED}) 
           
           return utility.handleSuccess(res,'user Verified successfylly',{},ResponseCode.OK)
