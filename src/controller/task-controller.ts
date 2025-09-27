@@ -107,8 +107,8 @@ class TaskController{
 
     async assignCollaborators(req:Request,res:Response){
        //find the nearest collaborator to you, invite collaborators , RBAC , cron. low-level-design
-       try{
-         const params ={...req.body}
+    try{
+      const params ={...req.body}
          //update users address and store it..id: req.user.id, adddress: params.address, long lat
          //req.socket.remoteadress req.headers.['x-forwarded-for']
          //ask users permission for gpsAccess from FE
@@ -126,9 +126,11 @@ class TaskController{
             throw new Error(' server error, cannot get users latLong')
           }
           //calculate proximity accurate coordinates with latlong float not more than specified distance
-          let findNearestCollaborator;
-          
-          return utility.handleSuccess(res,'TaskFolder created successfully',{getLongLat}, ResponseCode.OK)
+          let findNearestCollaborator = await this.mapservice.findNearestCoordinates({latitude: getLongLat.lat, longitude: getLongLat.long})
+          if(!findNearestCollaborator){
+            return utility.handleError(res, 'nearest search error', ResponseCode.NOT_FOUND)
+          }   
+          return utility.handleSuccess(res,'TaskFolder created successfully',{findNearestCollaborator}, ResponseCode.OK)
        }
       catch (error) {
           return utility.handleError(res, (error as TypeError).message, ResponseCode.SERVER_ERROR);}

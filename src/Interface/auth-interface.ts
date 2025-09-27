@@ -1,4 +1,5 @@
 import {Model, Optional} from 'sequelize'
+import { FindOptions } from 'sequelize';
 export interface Iauth{
     id: string;
     fullName:string;
@@ -30,7 +31,7 @@ export interface Imodel extends Model<Iauth,IuserCreationBody>,Iauth{}
 export interface IuserDataSource{
     create(record:IuserCreationBody):Promise<Iauth>
     find(filter:IuserQuery):Promise<Iauth|null>
+    findAll(filter:FindOptions<IuserQuery>):Promise<Iauth[]>
     update(data: Partial<Iauth>,sortBy:IuserQuery): Promise<void>
     updateRecord(data: Partial<Iauth>,sortBy:IuserQuery): Promise<Iauth>
-    updateMany(data: Partial<Iauth>,sortBy:IuserQuery): Promise<Iauth>
 }

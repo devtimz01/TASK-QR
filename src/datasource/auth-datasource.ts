@@ -1,6 +1,6 @@
 import { Iauth, IuserCreationBody, IuserDataSource, IuserQuery } from "../Interface/auth-interface";
 import userModel from "../model/user-schema";
-
+import { FindOptions } from "sequelize";
 class AuthDataSource implements IuserDataSource{
    async create(record: IuserCreationBody): Promise<Iauth> {
       return await userModel.create(record)    
@@ -18,13 +18,9 @@ class AuthDataSource implements IuserDataSource{
   }
   return data as Iauth;
    }
-   async updateMany(data: Partial<IuserCreationBody>, sortBy: IuserQuery):Promise<Iauth>{
-       const [affectedCount] = await userModel.update(data, sortBy);
-  if (affectedCount === 0) {
-    throw new Error("No records were updated");
+  async findAll(filter:FindOptions<IuserQuery>): Promise<Iauth[]> {
+     return await userModel.findAll(filter)
   }
-  return data as Iauth;
-   }
 };
 
 export default AuthDataSource;
