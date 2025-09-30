@@ -4,6 +4,7 @@ import { Request,Response, NextFunction} from 'express';
 import Dbinitialize from './database/init'
 import authRouter from './routers/auth-route'
 import Taskrouter from './routers/task-route';
+import maprouter from './routers/map-route';
 import utility from './utils/log'
 import session from 'express-session'
 import passport from 'passport';
@@ -23,6 +24,7 @@ app.use(passport.session())
 //routes
 app.use('/api/auth',authRouter)
 app.use('/api/task',Taskrouter)
+app.use(maprouter)
 
 app.get('/',(req,res)=>{
     utility.Logger.info('oauth signup successful')

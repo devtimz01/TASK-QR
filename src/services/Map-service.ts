@@ -50,7 +50,6 @@ public authDatasource :AuthDataSource
     const R = 6371
     return R*a
   }
-
   async findAllusersLatlong(): Promise<Iauth[]>{
     let latitude; let longitude; let id;
     const query ={
@@ -82,5 +81,8 @@ public authDatasource :AuthDataSource
     }
    return nearestDistance.id
   };
+  async producer(){
+    
+  }
 };
 export default MapService;
