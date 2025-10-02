@@ -108,7 +108,6 @@ class TaskController{
     async assignCollaborators(req:Request,res:Response){
        //find the nearest collaborator to you, invite collaborators , RBAC , cron. low-level-design
     try{
-      const params ={...req.body}
          //update users address and store it..id: req.user.id, adddress: params.address, long lat
          //req.socket.remoteadress req.headers.['x-forwarded-for']
          //ask users permission for gpsAccess from FE
@@ -118,9 +117,9 @@ class TaskController{
          const findUserIp = await this.authservice.findUser({id:req.user.id})
          let currentIp= await this.authservice.findUser({id:req.user.id,ipAddress:req.headers['x-forwarded-for'] as any});
          if(findUserIp?.ipAddress=='NULL' || findUserIp!= currentIp){
-             await this.authservice.updateRecord({id:params.req.user.id},{ipAddress:req.headers['x-forwarded-for']} as any);
+             await this.authservice.updateRecord({id:req.user.id},{ipAddress:req.headers['x-forwarded-for']} as any);
          }
-         if(!findUserIp){
+         if(!findUserIp?.ipAddress ||!currentIp){
             throw new Error('500, cannot get users Ip')
          }
           const getLongLat = await MapService.getGpsLongLat(findUserIp.ipAddress as string) 
@@ -140,26 +139,27 @@ class TaskController{
      async getUsersLongLat(req:Request,res:Response){
        //find the nearest collaborator to you, invite collaborators , RBAC , cron. low-level-design
        try{
-         const params ={...req.body}
          if(!req.user){
             throw new Error('403')
          }
          const findUserIp = await this.authservice.findUser({id:req.user.id})
-         let currentIp= await this.authservice.findUser({id:params.req.user.id,ipAddress:req.headers['x-forwarded-for'] as any});
-         if(findUserIp?.ipAddress=='NULL' || findUserIp!= currentIp){
-             await this.authservice.updateRecord({id:params.req.user.id},{ipAddress:req.headers['x-forwarded-for']} as any);
+         let currentIp= await this.authservice.findUser({id:req.user.id,ipAddress:(req.headers['x-forwarded-for'] as string)?.split(",")[0] ||req.socket.remoteAddress as string});
+         if(findUserIp?.ipAddress=='NULL' || findUserIp?.ipAddress!==currentIp?.ipAddress){
+             await this.authservice.updateRecord({id:req.user.id},{ipAddress:(req.headers['x-forwarded-for'] as string)?.split(",")[0] ||req.socket.remoteAddress as string});
          }
-         if(!findUserIp){
+         if(!findUserIp?.ipAddress && !currentIp?.ipAddress){
             throw new Error('500, cannot get users ip')
          }
-          const getLongLat = await MapService.getGpsLongLat(findUserIp.ipAddress as string)
+          const getLongLat = await MapService.getGpsLongLat(findUserIp?.ipAddress as string)
           if(!getLongLat){
             throw new Error('404, cannot get users longat')
           }
-          const usersLongLat = await this.authservice.updateRecord({id: params.req.user},{latitude: getLongLat.lat, longitude: getLongLat.long})
-          return utility.handleSuccess(res,'TaskFolder created successfully',{usersLongLat}, ResponseCode.OK)
+          const usersLongLat = await this.authservice.updateRecord({id: req.user.id},{latitude: getLongLat.lat, longitude: getLongLat.long})
+          console.log(usersLongLat)
+          return utility.handleSuccess(res,'users latlong created successfully',{usersLongLat}, ResponseCode.OK)
        } 
       catch (error) {
+         console.log(error)
           return utility.handleError(res, (error as TypeError).message, ResponseCode.SERVER_ERROR);}
     }
 };

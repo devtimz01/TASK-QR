@@ -27,10 +27,38 @@ const handleError=(res:Response, message: string, statusCode: number=400)=>{
     return res.status(statusCode).json({status:false,message})
 }
 
+function getPublicIp(ip?: string | null): string | null {
+  if (!ip) return null;
+
+  // Normalize IPv6 localhost
+  if (ip === "::1") return null;
+
+  // Remove IPv6 prefix "::ffff:"
+  if (ip.startsWith("::ffff:")) {
+    ip = ip.replace("::ffff:", "");
+  }
+
+  // Exclude private ranges
+  const privatePatterns = [
+    /^10\./,
+    /^127\./,
+    /^192\.168\./,
+    /^172\.(1[6-9]|2\d|3[0-1])\./
+  ];
+
+  if (privatePatterns.some((pat) => pat.test(ip))) {
+    return null;
+  }
+
+  return ip;
+}
+
+
 const utility={
     handleError,
     handleSuccess,
-    Logger
+    Logger,
+    getPublicIp
 };
 
 export default utility;

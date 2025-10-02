@@ -1198,3 +1198,105 @@
 2025-26-09, 18:36:50 info:server running successfully
 2025-26-09, 18:37:15 info:server running successfully
 2025-26-09, 18:38:55 info:server running successfully
+2025-30-09, 09:16:41 info:server running successfully
+2025-30-09, 09:18:15 info:server running successfully
+2025-30-09, 09:18:30 info:server running successfully
+2025-30-09, 09:19:11 info:server running successfully
+2025-30-09, 09:19:35 info:server running successfully
+2025-30-09, 09:20:36 info:server running successfully
+2025-30-09, 09:24:22 info:server running successfully
+2025-30-09, 09:55:52 info:server running successfully
+2025-30-09, 10:06:09 info:server running successfully
+2025-30-09, 10:07:56 info:server running successfully
+2025-30-09, 10:09:04 info:server running successfully
+2025-30-09, 10:09:11 error:WHERE parameter "ipAddress" has invalid "undefined" value
+2025-30-09, 10:10:36 info:server running successfully
+2025-30-09, 10:11:23 info:server running successfully
+2025-30-09, 10:11:48 info:server running successfully
+2025-30-09, 10:12:22 info:server running successfully
+2025-30-09, 10:12:39 info:server running successfully
+2025-30-09, 10:15:54 info:server running successfully
+2025-30-09, 10:16:22 info:server running successfully
+2025-30-09, 10:18:51 info:server running successfully
+2025-30-09, 10:34:13 info:server running successfully
+2025-30-09, 17:28:10 info:server running successfully
+2025-30-09, 18:19:30 info:server running successfully
+2025-30-09, 18:21:58 info:server running successfully
+2025-30-09, 18:22:29 error:WHERE parameter "ipAddress" has invalid "undefined" value
+2025-30-09, 18:27:29 info:server running successfully
+2025-30-09, 18:27:35 error:No records were updated
+2025-30-09, 18:29:22 info:server running successfully
+2025-30-09, 18:30:09 error:500, cannot get users ip
+2025-30-09, 18:31:03 info:server running successfully
+2025-30-09, 18:31:13 info:server running successfully
+2025-30-09, 18:34:31 info:server running successfully
+2025-30-09, 18:35:59 info:server running successfully
+2025-30-09, 18:40:27 info:server running successfully
+2025-30-09, 18:40:34 info:server running successfully
+2025-30-09, 18:42:11 info:server running successfully
+2025-30-09, 18:42:39 info:server running successfully
+2025-30-09, 18:43:59 info:server running successfully
+2025-30-09, 18:45:50 info:server running successfully
+2025-30-09, 18:46:20 error:Data truncated for column 'latitude' at row 1
+2025-30-09, 18:47:50 info:server running successfully
+2025-30-09, 18:48:01 error:Data truncated for column 'latitude' at row 1
+2025-30-09, 18:58:22 info:server running successfully
+2025-30-09, 19:00:33 info:server running successfully
+2025-30-09, 19:00:58 info:server running successfully
+2025-30-09, 19:01:57 info:server running successfully
+2025-30-09, 19:02:04 error:failed, Gps long?Lat? error
+2025-30-09, 19:02:55 info:server running successfully
+2025-30-09, 19:03:00 error:failed, Gps long?Lat? error
+2025-30-09, 19:06:12 info:server running successfully
+2025-30-09, 19:06:57 info:server running successfully
+2025-30-09, 19:07:03 error:failed, Gps long?Lat? error
+2025-30-09, 19:08:29 info:server running successfully
+2025-30-09, 19:09:10 error:failed, Gps long?Lat? error
+2025-30-09, 19:10:47 info:server running successfully
+2025-30-09, 19:10:53 error:failed, Gps long?Lat? error
+2025-30-09, 19:12:03 info:server running successfully
+2025-30-09, 19:12:08 error:failed, Gps long?Lat? error
+2025-30-09, 19:12:35 info:server running successfully
+2025-30-09, 19:20:20 info:server running successfully
+2025-30-09, 19:20:48 info:server running successfully
+2025-30-09, 19:20:54 error:failed, Gps long?Lat? error
+2025-30-09, 19:21:47 info:server running successfully
+2025-01-10, 13:56:39 info:server running successfully
+2025-01-10, 14:01:37 error:failed, Gps long?Lat? error
+2025-01-10, 14:16:09 info:server running successfully
+2025-01-10, 14:16:54 info:server running successfully
+2025-01-10, 14:17:06 error:failed, Gps long?Lat? error
+2025-01-10, 14:17:07 error:failed, Gps long?Lat? error
+2025-01-10, 14:28:22 info:server running successfully
+2025-01-10, 14:36:30 info:server running successfully
+2025-01-10, 14:36:45 error:failed, Gps long?Lat? error
+2025-01-10, 14:37:28 info:server running successfully
+2025-01-10, 14:37:37 error:failed, Gps long?Lat? error
+2025-01-10, 14:38:01 info:server running successfully
+2025-01-10, 14:42:32 info:server running successfully
+2025-01-10, 14:42:46 info:server running successfully
+2025-01-10, 14:42:54 error:failed, Gps long?Lat? error
+2025-01-10, 14:43:44 info:server running successfully
+2025-02-10, 08:49:29 info:server running successfully
+2025-02-10, 08:50:06 error:WHERE parameter "ipAddress" has invalid "undefined" value
+2025-02-10, 08:51:41 info:server running successfully
+2025-02-10, 08:52:24 info:server running successfully
+2025-02-10, 08:55:26 info:server running successfully
+2025-02-10, 08:56:06 error:failed, Gps long?Lat? error
+2025-02-10, 08:57:25 info:server running successfully
+2025-02-10, 08:58:02 info:server running successfully
+2025-02-10, 08:58:09 error:failed, Gps long?Lat? error
+2025-02-10, 09:09:11 info:server running successfully
+2025-02-10, 09:09:44 info:server running successfully
+2025-02-10, 09:12:37 info:server running successfully
+2025-02-10, 09:13:07 info:server running successfully
+2025-02-10, 09:13:35 info:server running successfully
+2025-02-10, 09:14:34 info:server running successfully
+2025-02-10, 09:15:27 info:server running successfully
+2025-02-10, 09:16:35 info:server running successfully
+2025-02-10, 09:17:28 info:server running successfully
+2025-02-10, 09:17:56 info:server running successfully
+2025-02-10, 09:18:27 error:failed, Gps long?Lat? error
+2025-02-10, 09:24:33 info:server running successfully
+2025-02-10, 09:24:55 info:server running successfully
+2025-02-10, 09:35:38 info:users latlong created successfully

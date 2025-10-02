@@ -24,7 +24,7 @@ app.use(passport.session())
 //routes
 app.use('/api/auth',authRouter)
 app.use('/api/task',Taskrouter)
-app.use(maprouter)
+app.use('/api',maprouter)
 
 app.get('/',(req,res)=>{
     utility.Logger.info('oauth signup successful')

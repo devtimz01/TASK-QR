@@ -2,16 +2,19 @@
 import axios from 'axios'
 import { Iauth } from '../Interface/auth-interface';
 import AuthDataSource from '../datasource/auth-datasource';
+import { injectable } from 'tsyringe';
+import utility from '../utils/log';
+@injectable()
 class MapService{
 public authDatasource :AuthDataSource
    constructor(_authData: AuthDataSource){
            this.authDatasource = _authData
        }
    public static async getGpsLongLat(address: string){
-        //neomatim geolocationApi
         try{
+            const ipAddress = utility.getPublicIp(address)|| "8.8.8.8"
             const params ={
-                ip: address,
+                ip:ipAddress
             }
             const config={
                 headers:{
@@ -20,18 +23,26 @@ public authDatasource :AuthDataSource
                     'user-agent': process.env.USER_AGENT
                 }
             }
-             const latitude = await axios.get<string>(`https://ipapi.co/${params.ip}/latitude/`)
-             if(!latitude){
+             console.log(params.ip)
+             const latitude = await axios.get(`https://ipapi.co/${params.ip}/latitude/`)
+             console.log(latitude.data)
+             if(!latitude.data){
                 throw new Error('third party latitude search error')
              }
-             const lat= parseFloat(latitude.data)
-             const longitude =await axios.get<string>(`https://ipapi.co/${params.ip}/longitude/`)
-             if(!longitude){
+             const lat= parseFloat(latitude.data.toString().trim())
+             const longitude =await axios.get(`https://ipapi.co/${params.ip}/longitude/`)
+             console.log(longitude.data)
+             if(!longitude.data){
                 throw new Error('third party longitude search error')
              }
-             const long= parseFloat(longitude.data)
+             const long= parseFloat(longitude.data.toString().trim())
+             if(isNaN(long)|| isNaN(lat)){
+                console.error(lat,long)
+                throw new Error('latitude and long is Nan, invalid out')
+             }
              return {lat,long}
         }catch(error){
+            console.log(error)
             throw new Error('failed, Gps long?Lat? error')
         }
     }
@@ -82,7 +93,7 @@ public authDatasource :AuthDataSource
    return nearestDistance.id
   };
   async producer(){
-    
+    //producer.add(job,{cron: })
   }
 };
 export default MapService;

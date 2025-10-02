@@ -17,8 +17,8 @@ passport.use(new googleStrategy({
     id: profile.id ,
     username: profile.displayName,
     email:profile.emails?.[0]?.value,
-}) as IuserCreationBody
-    return done(null,user)
+}) 
+    return done(null,user )
 }));
 
 passport.serializeUser((user:Partial<IuserCreationBody>,done)=>{
