@@ -8,8 +8,8 @@ const controller = container.resolve(TaskController)
 maprouter.patch('/createuserslatlong',authUser(),(req:Request, res: Response)=>{
     return controller.getUsersLongLat(req,res)
 })
-maprouter.get('/assignCollaborators', (req:Request, res: Response)=>{
-    return controller.getUsersLongLat(req,res)
+maprouter.get('/assigncollaborators',authUser() ,(req:Request, res: Response)=>{
+    return controller.assignCollaborators(req,res)
 })
 
 export default maprouter;

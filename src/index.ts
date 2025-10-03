@@ -43,12 +43,12 @@ app.use((err:any, req:Request, res:Response, next: NextFunction)=>{
 });
 
 
-const port = 4033;
+const port = 4035;
 const Server = async function(){
     try{
         await Dbinitialize();
         app.listen(port,()=>{
-        console.log('SERVER RUNNING AT PORT 4033')
+        console.log('SERVER RUNNING AT PORT 4035')
         utility.Logger.info('server running successfully')
   })
     }

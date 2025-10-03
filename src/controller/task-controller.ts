@@ -108,18 +108,16 @@ class TaskController{
     async assignCollaborators(req:Request,res:Response){
        //find the nearest collaborator to you, invite collaborators , RBAC , cron. low-level-design
     try{
-         //update users address and store it..id: req.user.id, adddress: params.address, long lat
-         //req.socket.remoteadress req.headers.['x-forwarded-for']
-         //ask users permission for gpsAccess from FE
+         //ask users permission for gpsAccess from FE so i test with re.headers["x-forwarded-for"]for proxy req with my server side
          if(!req.user){
             throw new Error('403, error')
          }
          const findUserIp = await this.authservice.findUser({id:req.user.id})
-         let currentIp= await this.authservice.findUser({id:req.user.id,ipAddress:req.headers['x-forwarded-for'] as any});
-         if(findUserIp?.ipAddress=='NULL' || findUserIp!= currentIp){
-             await this.authservice.updateRecord({id:req.user.id},{ipAddress:req.headers['x-forwarded-for']} as any);
+         let currentIp= await this.authservice.findUser({id:req.user.id,ipAddress:(req.headers['x-forwarded-for'] as string)?.split(",")[0] ||req.socket.remoteAddress as string});
+         if(findUserIp?.ipAddress=='NULL' || findUserIp?.ipAddress!== currentIp?.ipAddress){
+             await this.authservice.updateRecord({id:req.user.id},{ipAddress:(req.headers['x-forwarded-for'] as string)?.split(",")[0] ||req.socket.remoteAddress as string});
          }
-         if(!findUserIp?.ipAddress ||!currentIp){
+         if(!findUserIp?.ipAddress ||!currentIp?.ipAddress){
             throw new Error('500, cannot get users Ip')
          }
           const getLongLat = await MapService.getGpsLongLat(findUserIp.ipAddress as string) 
@@ -127,11 +125,12 @@ class TaskController{
             throw new Error(' server error, cannot get users latLong')
           }
           //calculate proximity accurate coordinates with latlong float not more than specified distance
-          let findNearestCollaborator = await this.mapservice.findNearestCoordinates({latitude: getLongLat.lat, longitude: getLongLat.long})
-          if(!findNearestCollaborator){
+          let nearestCollaborator = await this.mapservice.findNearestCoordinates({latitude: getLongLat.lat as number, longitude: getLongLat.long as number})
+          if(!nearestCollaborator){
             return utility.handleError(res, 'nearest search error', ResponseCode.NOT_FOUND)
-          }   
-          return utility.handleSuccess(res,'TaskFolder created successfully',{findNearestCollaborator}, ResponseCode.OK)
+          }
+          
+          //return utility.handleSuccess(res,'proximity search successfull',{nearestCollaborator}, ResponseCode.OK)
        }
       catch (error) {
           return utility.handleError(res, (error as TypeError).message, ResponseCode.SERVER_ERROR);}

@@ -1300,3 +1300,132 @@
 2025-02-10, 09:24:33 info:server running successfully
 2025-02-10, 09:24:55 info:server running successfully
 2025-02-10, 09:35:38 info:users latlong created successfully
+2025-02-10, 09:46:24 info:server running successfully
+2025-02-10, 09:48:34 info:successfully created new user
+2025-02-10, 09:48:54 info:login successful
+2025-02-10, 09:50:43 info:server running successfully
+2025-02-10, 09:51:16 info:server running successfully
+2025-02-10, 09:52:37 error:failed, Gps long?Lat? error
+2025-02-10, 09:57:38 info:server running successfully
+2025-02-10, 10:01:53 info:users latlong created successfully
+2025-02-10, 10:03:24 info:server running successfully
+2025-02-10, 10:03:27 info:server running successfully
+2025-02-10, 10:03:45 info:server running successfully
+2025-02-10, 10:03:52 error:Cannot read properties of undefined (reading 'includes')
+2025-02-10, 10:04:53 info:server running successfully
+2025-02-10, 10:06:16 info:server running successfully
+2025-02-10, 10:09:38 info:server running successfully
+2025-02-10, 10:09:42 error:Cannot read properties of undefined (reading 'includes')
+2025-02-10, 10:13:37 info:server running successfully
+2025-02-10, 10:13:39 error:Cannot read properties of undefined (reading 'includes')
+2025-02-10, 10:13:54 info:server running successfully
+2025-02-10, 17:19:09 info:server running successfully
+2025-02-10, 17:24:35 info:server running successfully
+2025-02-10, 17:34:18 info:server running successfully
+2025-02-10, 17:35:23 info:server running successfully
+2025-02-10, 17:55:47 info:server running successfully
+2025-02-10, 17:56:16 info:server running successfully
+2025-02-10, 17:56:33 info:server running successfully
+2025-02-10, 17:57:21 info:server running successfully
+2025-02-10, 18:06:07 info:server running successfully
+2025-02-10, 18:07:06 info:server running successfully
+2025-02-10, 18:07:17 info:server running successfully
+2025-02-10, 18:08:08 info:server running successfully
+2025-02-10, 18:08:21 info:server running successfully
+2025-02-10, 18:10:29 info:server running successfully
+2025-02-10, 18:11:18 info:server running successfully
+2025-02-10, 18:12:02 info:server running successfully
+2025-02-10, 18:13:49 info:server running successfully
+2025-02-10, 18:15:02 info:server running successfully
+2025-02-10, 18:15:24 info:server running successfully
+2025-02-10, 18:15:45 info:server running successfully
+2025-02-10, 18:16:10 info:server running successfully
+2025-02-10, 18:17:13 info:server running successfully
+2025-02-10, 18:35:19 info:server running successfully
+2025-02-10, 18:36:37 info:server running successfully
+2025-02-10, 18:37:39 info:server running successfully
+2025-02-10, 18:38:10 info:server running successfully
+2025-02-10, 18:38:52 info:server running successfully
+2025-02-10, 18:39:18 info:server running successfully
+2025-03-10, 07:55:27 error:Cannot read properties of undefined (reading 'includes')
+2025-03-10, 07:59:46 info:server running successfully
+2025-03-10, 08:01:52 info:server running successfully
+2025-03-10, 08:02:16 error:Cannot read properties of undefined (reading 'includes')
+2025-03-10, 08:05:03 info:server running successfully
+2025-03-10, 08:05:36 error:failed, Gps long?Lat? error
+2025-03-10, 08:06:47 error:Cannot read properties of undefined (reading 'includes')
+2025-03-10, 08:07:16 info:server running successfully
+2025-03-10, 08:07:25 error:Cannot read properties of undefined (reading 'includes')
+2025-03-10, 08:08:20 info:server running successfully
+2025-03-10, 08:08:34 error:Cannot read properties of undefined (reading 'includes')
+2025-03-10, 08:08:57 info:server running successfully
+2025-03-10, 08:10:49 info:server running successfully
+2025-03-10, 08:11:01 error:Cannot read properties of undefined (reading 'includes')
+2025-03-10, 08:11:27 info:server running successfully
+2025-03-10, 08:15:59 info:server running successfully
+2025-03-10, 08:17:04 info:server running successfully
+2025-03-10, 08:18:04 error:failed, Gps long?Lat? error
+2025-03-10, 08:20:01 info:server running successfully
+2025-03-10, 08:20:35 info:server running successfully
+2025-03-10, 08:20:56 info:server running successfully
+2025-03-10, 08:21:47 info:server running successfully
+2025-03-10, 08:22:25 error:failed, Gps long?Lat? error
+2025-03-10, 08:23:27 info:server running successfully
+2025-03-10, 08:23:44 error:cannit get nearest Coordinates
+2025-03-10, 08:24:31 info:server running successfully
+2025-03-10, 08:27:29 info:server running successfully
+2025-03-10, 08:27:35 error:cannot get nearest Coordinates
+2025-03-10, 08:27:58 info:server running successfully
+2025-03-10, 08:29:57 info:server running successfully
+2025-03-10, 08:31:46 info:server running successfully
+2025-03-10, 08:31:58 info:server running successfully
+2025-03-10, 08:32:10 error:failed, Gps long?Lat? error
+2025-03-10, 09:00:38 info:server running successfully
+2025-03-10, 09:00:46 error:cannot get nearest Coordinates
+2025-03-10, 09:07:26 info:server running successfully
+2025-03-10, 09:07:41 info:server running successfully
+2025-03-10, 09:07:59 error:cannot get nearest Coordinates
+2025-03-10, 09:15:16 info:server running successfully
+2025-03-10, 09:16:17 info:server running successfully
+2025-03-10, 09:16:28 error:cannot get nearest Coordinates
+2025-03-10, 09:17:03 info:server running successfully
+2025-03-10, 09:17:09 error:cannot get nearest Coordinates
+2025-03-10, 13:45:43 error:cannot get nearest Coordinates
+2025-03-10, 13:52:00 info:server running successfully
+2025-03-10, 13:52:07 info:proximity search successfull
+2025-03-10, 13:53:45 info:server running successfully
+2025-03-10, 13:54:42 info:server running successfully
+2025-03-10, 13:55:24 error:failed, Gps long?Lat? error
+2025-03-10, 13:56:12 info:server running successfully
+2025-03-10, 13:57:07 error:nearest search error
+2025-03-10, 13:57:53 info:server running successfully
+2025-03-10, 13:58:15 error:Cannot read properties of undefined (reading 'includes')
+2025-03-10, 13:59:12 info:server running successfully
+2025-03-10, 13:59:30 info:server running successfully
+2025-03-10, 13:59:39 error:Cannot read properties of undefined (reading 'includes')
+2025-03-10, 14:00:13 info:server running successfully
+2025-03-10, 14:00:23 error:Cannot read properties of undefined (reading 'includes')
+2025-03-10, 14:00:56 info:server running successfully
+2025-03-10, 14:01:28 info:server running successfully
+2025-03-10, 14:02:02 error:Cannot read properties of undefined (reading 'includes')
+2025-03-10, 14:03:39 info:server running successfully
+2025-03-10, 14:04:36 info:proximity search successfull
+2025-03-10, 14:05:04 info:server running successfully
+2025-03-10, 14:05:26 error:nearest search error
+2025-03-10, 14:06:25 info:server running successfully
+2025-03-10, 14:06:30 info:proximity search successfull
+2025-03-10, 14:07:22 info:server running successfully
+2025-03-10, 14:08:59 info:server running successfully
+2025-03-10, 14:09:06 info:proximity search successfull
+2025-03-10, 14:09:38 info:server running successfully
+2025-03-10, 14:09:50 info:server running successfully
+2025-03-10, 14:10:00 info:proximity search successfull
+2025-03-10, 14:12:11 info:server running successfully
+2025-03-10, 14:13:35 info:server running successfully
+2025-03-10, 14:14:39 info:server running successfully
+2025-03-10, 14:15:21 info:server running successfully
+2025-03-10, 14:15:51 info:server running successfully
+2025-03-10, 14:18:10 info:server running successfully
+2025-03-10, 14:18:43 info:server running successfully
+2025-03-10, 14:21:38 info:server running successfully
+2025-03-10, 14:25:19 info:server running successfully

@@ -42,7 +42,6 @@ public authDatasource :AuthDataSource
              }
              return {lat,long}
         }catch(error){
-            console.log(error)
             throw new Error('failed, Gps long?Lat? error')
         }
     }
@@ -54,33 +53,37 @@ public authDatasource :AuthDataSource
         }
     }
   async getDistanceinKM(selfLat: number, selfLong:number, usersLat: number, usersLong: number){
-    const dlat=( selfLat-usersLat)*Math.PI/180
+    try{const dlat=( selfLat-usersLat)*Math.PI/180
     const dlong=( selfLong-usersLong)*Math.PI/180
     const c=Math.sin(dlat/2)*Math.sin(dlat/2)+Math.cos(selfLat*Math.PI/180)*Math.cos(usersLat*Math.PI/180)*Math.sin(dlong/2)*Math.sin(dlong/2)
     const a = 2*Math.atan2(Math.sqrt(c),Math.sqrt(1-c))
     const R = 6371
-    return R*a
+    return R*a}
+    catch(error){
+        console.log(error)
+        throw new Error('cannot get distanceinKm')
+    }
   }
   async findAllusersLatlong(): Promise<Iauth[]>{
     let latitude; let longitude; let id;
     const query ={
-        attributes:[id,latitude,longitude],
+        attributes:["id","latitude","longitude","username"],
         raw: true,
     }
      return await this.authDatasource.findAll(query as any)
   }
-  async findNearestCoordinates(latlong: Partial<Iauth>):Promise<Iauth| string | null>{
-    const query={
-        where:{...latlong}
-    };
+  async findNearestCoordinates(latlong: Partial<Iauth>):Promise<Iauth|{} | null>{
+    try{
     let users = await this.findAllusersLatlong()
     let nearestDistance: Iauth | null= null;
     let minDistance = Infinity
-    const selfLatitude= query.where.latitude as number
-    const selfLongitude=query.where.longitude as number
+    if(!latlong.latitude|| !latlong.longitude){
+        console.error(latlong.latitude, latlong.longitude)
+        throw new Error('cannot get latlong.lat or latlong.long')
+    }
     for (let i =0; i<users.length; i++){
         const user = users[i]
-        let proximity = await this.getDistanceinKM(selfLatitude,selfLongitude,user.latitude, user.longitude)
+        let proximity = await this.getDistanceinKM(latlong.latitude as number ,latlong.longitude as number,user.latitude, user.longitude)
         let maxProximity =10
         if(proximity < maxProximity && proximity< minDistance){
             minDistance = proximity
@@ -90,10 +93,14 @@ public authDatasource :AuthDataSource
     if(!nearestDistance){
         throw new Error('no nearby collaborators available for search')
     }
-   return nearestDistance.id
+   const result= {collaboratorId:nearestDistance.id, username:nearestDistance.username}
+   return result;
+}
+   catch(error){
+    console.error(error)
+    throw new Error('cannot get nearest Coordinates')
+   }
   };
-  async producer(){
-    //producer.add(job,{cron: })
-  }
 };
+
 export default MapService;
