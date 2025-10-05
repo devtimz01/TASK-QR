@@ -8,6 +8,8 @@ import maprouter from './routers/map-route';
 import utility from './utils/log'
 import session from 'express-session'
 import passport from 'passport';
+import { Server } from 'socket.io';
+import { createServer } from 'http';
 
 const app= express()
 app.use(express.urlencoded({extended:true}))
@@ -42,12 +44,14 @@ app.use((err:any, req:Request, res:Response, next: NextFunction)=>{
     })
 });
 
+ const httpServer = createServer(app)
+export const io = new Server(httpServer,{})
 
 const port = 4035;
-const Server = async function(){
+const server = async function(){
     try{
         await Dbinitialize();
-        app.listen(port,()=>{
+        httpServer.listen(port,()=>{
         console.log('SERVER RUNNING AT PORT 4035')
         utility.Logger.info('server running successfully')
   })
@@ -57,6 +61,6 @@ const Server = async function(){
         utility.Logger.error('server not running')
     }
 }
-Server();
+server();
 
 

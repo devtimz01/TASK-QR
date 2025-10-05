@@ -59,6 +59,24 @@ export interface Icollaborators{
     latlong: string
  }
 
+ export interface InviteMessage{
+    id: string;
+    message: string;
+    status: string;
+    receiverId: string;
+    senderId: string;
+    createdAt: string;
+    updatedAt: string
+
+ };
+ export interface InviteQuery{
+    where:{
+        [key: string]: string
+    },
+    raw: true,
+    returning?: true
+ }
+
 export interface ItaskCreationBody extends Optional<ITask, 'id'|'createdAt'|'updatedAt'>{}
 export interface IsubtaskCreationBody extends Optional<IsubTask, 'id'|'createdAt'|'updatedAt'>{}
 export interface ItaskFolderCreationBody extends Optional<ITaskFolder, 'id'|'createdAt'|'updatedAt'>{}
@@ -69,6 +87,12 @@ export interface ItaskDataSoruce{
     createTaskFolder(record: ItaskFolderCreationBody):Promise<ITaskFolder>
     createTask(record: ItaskCreationBody):Promise<ITask>
     createSubTask(record: IsubtaskCreationBody):Promise<IsubTask>
+}
+export interface InviteMessageBody extends Optional<InviteMessage,"id"|"createdAt"|"updatedAt"|"receiverId"|"senderId">{}
+export interface InviteMessageModel extends Model<InviteMessage,InviteMessageBody>,InviteMessage{}
+export interface InviteDatasourceMethod{
+    createInvite(record: InviteMessageBody): Promise<InviteMessage>
+    updateInviteMessage(data: Partial<InviteMessageBody>, record:InviteQuery): Promise<void>
 }
 export interface IcollaboratorsCreationBody extends Optional<Icollaborators,"id"|"createdAt"|"updatedAt">{}
 export interface IcollaboratorsModel extends Model<Icollaborators,IcollaboratorsCreationBody>,Icollaborators{}

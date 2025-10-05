@@ -2,21 +2,25 @@ import { Request, Response } from "express";
 import utility from "../utils/log";
 import { ResponseCode } from "../enums/status-code";
 import { autoInjectable } from "tsyringe";
-import TasKSerivce from "../services/task-service";
-import { IsubtaskCreationBody, ItaskCreationBody, ItaskFolderCreationBody } from "../Interface/task-interface";
+import TasKService from "../services/task-service";
+import { InviteMessageBody, IsubtaskCreationBody, ItaskCreationBody, ItaskFolderCreationBody } from "../Interface/task-interface";
 import uploadStream from "../services/cloudinary";
 import AuthService from "../services/auth-service";
 import MapService from "../services/Map-service";
+import InviteService from "../services/invite-service";
+import { io } from "..";
 
 @autoInjectable()
 class TaskController{
-   public taskService: TasKSerivce
+   public taskService: TasKService
    public authservice: AuthService
    public mapservice: MapService
-   constructor(_taskService: TasKSerivce, _authservice:AuthService, _mapService: MapService){
+   public inviteservice: InviteService
+   constructor(_taskService: TasKService, _authservice:AuthService, _mapService: MapService, _inviteservice: InviteService){
       this.taskService= _taskService
       this.authservice =_authservice
       this.mapservice =_mapService
+      this.inviteservice = _inviteservice
    }
     async createTaskFolder(req:Request,res:Response){
        try{
@@ -129,13 +133,58 @@ class TaskController{
           if(!nearestCollaborator){
             return utility.handleError(res, 'nearest search error', ResponseCode.NOT_FOUND)
           }
-          
-          //return utility.handleSuccess(res,'proximity search successfull',{nearestCollaborator}, ResponseCode.OK)
+           let inviteMessage = await this.inviteservice.createInvite({
+            message:" this user `${req.user.username}` sent an invite to collaborate on a task",
+            status:'PENDING'
+          })  as InviteMessageBody
+          if(!inviteMessage){
+            throw new Error("inviteMessage, 404")
+          }
+           io.on("connection",(socket)=>{
+              socket.on("disconnect", (error)=>{
+              console.log("user `${socket.id}` disconnected", error)})
+              socket.on("sendNotification",(nearestCollaborator: string, inviteMessage:InviteMessageBody)=>{
+                 io.to(nearestCollaborator).emit("notification",{
+                  message: inviteMessage,
+                  from: inviteMessage.senderId
+                 })
+              })
+          });
+           console.log('SOCKET.IO SERVER IS ACTIVE')
+          //if(inviteMessage.status.moment.add()==='PENDING'){}
+          //get inviteMessage, ACcept or decline update, permission to update or create once.
+          //send Update req.
+          //cron for request pending over an hour
+          //return utility.handleSuccess(res,'proximity search successful',{result}, ResponseCode.OK)
        }
       catch (error) {
           return utility.handleError(res, (error as TypeError).message, ResponseCode.SERVER_ERROR);}
     }
-     async getUsersLongLat(req:Request,res:Response){
+    async getInviteRequest(req:Request,res:Response){
+       //find the nearest collaborator to you, invite collaborators , RBAC , cron. low-level-design
+       try{
+         if(!req.user){
+            throw new Error('403')
+         }
+        
+         // return utility.handleSuccess(res,'users latlong created successfully',{usersLongLat}, ResponseCode.OK)
+       } 
+      catch (error) {
+         // return utility.handleError(res, (error as TypeError).message, ResponseCode.SERVER_ERROR);}
+      }}
+    async updateInviteRequest(req:Request,res:Response){
+       //find the nearest collaborator to you, invite collaborators , RBAC , cron. low-level-design
+       try{
+         if(!req.user){
+            throw new Error('403')
+         }
+        
+         // return utility.handleSuccess(res,'users latlong created successfully',{usersLongLat}, ResponseCode.OK)
+       } 
+      catch (error) {
+         // return utility.handleError(res, (error as TypeError).message, ResponseCode.SERVER_ERROR);}
+    }}
+    async getUsersLongLat(req:Request,res:Response){
        //find the nearest collaborator to you, invite collaborators , RBAC , cron. low-level-design
        try{
          if(!req.user){
