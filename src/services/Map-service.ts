@@ -68,11 +68,10 @@ public authDatasource :AuthDataSource
     let latitude; let longitude; let id;
     const query ={
         attributes:["id","latitude","longitude","username"],
-        raw: true,
     }
      return await this.authDatasource.findAll(query as any)
   }
-  async findNearestCoordinates(latlong: Partial<Iauth>):Promise<Iauth|{} | null>{
+  async findNearestCoordinates(latlong: Partial<Iauth>):Promise<Iauth | null>{
     try{
     let users = await this.findAllusersLatlong()
     let nearestDistance: Iauth | null= null;
@@ -92,9 +91,8 @@ public authDatasource :AuthDataSource
     }
     if(!nearestDistance){
         throw new Error('no nearby collaborators available for search')
-    }
-   const result= {collaboratorId:nearestDistance.id, username:nearestDistance.username}
-   return result;
+    } 
+  return nearestDistance;
 }
    catch(error){
     console.error(error)
@@ -102,5 +100,6 @@ public authDatasource :AuthDataSource
    }
   };
 };
+
 
 export default MapService;

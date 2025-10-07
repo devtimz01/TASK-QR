@@ -44,8 +44,17 @@ app.use((err:any, req:Request, res:Response, next: NextFunction)=>{
     })
 });
 
+
  const httpServer = createServer(app)
-export const io = new Server(httpServer,{})
+ export const io = new Server(httpServer,{
+ })
+  try{ io.on("connection",(socket)=>{
+               socket.on("disconnect", (error)=>{
+               console.log("user `${socket.id}` disconnected", error)})
+           });}
+           catch(error){
+             utility.Logger.error((error as TypeError).message)
+           };
 
 const port = 4035;
 const server = async function(){

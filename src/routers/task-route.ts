@@ -20,5 +20,7 @@ Taskrouter.post('/task',authUser(),Mutter.single("file"),validator(taskTemplate)
 Taskrouter.post('/subtask',authUser(),Mutter.single("files"), validator(subTaskTemplate), (req:Request,res:Response)=>{
     return taskController.createSubTask(req,res)
 });
+Taskrouter.post('/invitenearestcollaborator', authUser(),(req:Request,res:Response)=>{
+    return taskController.assignCollaborators(req,res)})
 
 export default Taskrouter;

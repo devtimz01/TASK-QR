@@ -135,14 +135,6 @@ export const collaboratorsModel = Db.define<IcollaboratorsModel>('collaboratorsM
             type:DataTypes.UUID,
             primaryKey: true
         },
-        ipAddress:{
-            allowNull:true,
-            type: DataTypes.STRING
-        },
-        longLat:{
-            allowNull:true,
-            type:DataTypes.NUMBER
-        },
     taskId:{
         allowNull:false,
         type:DataTypes.UUID,
@@ -164,24 +156,15 @@ export const collaboratorsModel = Db.define<IcollaboratorsModel>('collaboratorsM
             type: DataTypes.STRING,
             allowNull: true
         },
-        isEmailVerified:{
-            type: DataTypes.BOOLEAN,
-            defaultValue:false
-        },
         fullName:{
             allowNull:false,
             unique:false,
             type: DataTypes.STRING
         },
-        password:{
-            allowNull:false,
-            unique:false,
-            type:DataTypes.STRING
-        },
         role:{
             type: DataTypes.STRING,
             allowNull:false,
-            defaultValue:"user"
+            defaultValue:"ASSIGNEE"
         },
         createdAt:{
             type: DataTypes.DATE,

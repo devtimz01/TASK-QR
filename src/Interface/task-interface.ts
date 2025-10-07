@@ -1,4 +1,5 @@
 import { Model, Optional } from "sequelize";
+import { Iauth } from "./auth-interface";
 
 export interface ITask{
     id:string;
@@ -43,15 +44,11 @@ export interface Icollaborators{
     id: string;
     fullName:string;
     username: string;
-    ipAddress: string;
-    longLat:number;
     email: string;
-    taskId:string;
-    subtaskId: string;
+    taskId?:string;
+    subtaskId?: string;
     companyName: string;
-    password: string;
     role: string;
-    isEmailVerified: boolean;
     createdAt: string;
     updatedAt:string;
 }
@@ -93,6 +90,10 @@ export interface InviteMessageModel extends Model<InviteMessage,InviteMessageBod
 export interface InviteDatasourceMethod{
     createInvite(record: InviteMessageBody): Promise<InviteMessage>
     updateInviteMessage(data: Partial<InviteMessageBody>, record:InviteQuery): Promise<void>
+    getInviteMessage(id:InviteQuery):Promise<InviteMessage | null>
 }
 export interface IcollaboratorsCreationBody extends Optional<Icollaborators,"id"|"createdAt"|"updatedAt">{}
 export interface IcollaboratorsModel extends Model<Icollaborators,IcollaboratorsCreationBody>,Icollaborators{}
+export interface IcollabDataSourceMethod{
+    createCollaborator(record: IcollaboratorsCreationBody): Promise<Icollaborators>
+}

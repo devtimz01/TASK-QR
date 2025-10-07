@@ -1,12 +1,15 @@
 import { injectable } from "tsyringe";
-import { IsubTask,ITask,ITaskFolder, IsubtaskCreationBody, ItaskFolderCreationBody, ItaskCreationBody } from "../Interface/task-interface";
+import { IsubTask,ITask,ITaskFolder, IsubtaskCreationBody, ItaskFolderCreationBody, ItaskCreationBody, IcollaboratorsCreationBody, Icollaborators } from "../Interface/task-interface";
 import TaskDataSource from "../datasource/task-datasource";
+import CollabDataSource from "../datasource/collab-ds";
 
 @injectable()
 class TasKSerivce{
     public taskDataSource: TaskDataSource
-    constructor(_taskDataSource: TaskDataSource){
+    public collabDataSource: CollabDataSource
+    constructor(_taskDataSource: TaskDataSource,_collabDataSource: CollabDataSource){
         this.taskDataSource= _taskDataSource
+        this.collabDataSource = _collabDataSource
     }
     
 async createTaskFolder(record: ItaskFolderCreationBody):Promise<ITaskFolder>{
@@ -18,11 +21,9 @@ async createTask(record: ItaskCreationBody):Promise<ITask>{
 async createSubTask(record: IsubtaskCreationBody):Promise<IsubTask>{
          return await this.taskDataSource.createSubTask(record)
     };
-
-public static async assignTaskByGeolocation(){
-
-};
-
+async createCollaborators(record: IcollaboratorsCreationBody): Promise<Icollaborators>{
+    return await this.collabDataSource.createCollaborator(record)
+}
 
 };
 

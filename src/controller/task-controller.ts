@@ -3,12 +3,13 @@ import utility from "../utils/log";
 import { ResponseCode } from "../enums/status-code";
 import { autoInjectable } from "tsyringe";
 import TasKService from "../services/task-service";
-import { InviteMessageBody, IsubtaskCreationBody, ItaskCreationBody, ItaskFolderCreationBody } from "../Interface/task-interface";
+import { IcollaboratorsCreationBody, InviteMessageBody, IsubtaskCreationBody, ItaskCreationBody, ItaskFolderCreationBody } from "../Interface/task-interface";
 import uploadStream from "../services/cloudinary";
 import AuthService from "../services/auth-service";
 import MapService from "../services/Map-service";
 import InviteService from "../services/invite-service";
 import { io } from "..";
+import { Iauth } from "../Interface/auth-interface";
 
 @autoInjectable()
 class TaskController{
@@ -113,6 +114,7 @@ class TaskController{
        //find the nearest collaborator to you, invite collaborators , RBAC , cron. low-level-design
     try{
          //ask users permission for gpsAccess from FE so i test with re.headers["x-forwarded-for"]for proxy req with my server side
+         const params= {...req.body}
          if(!req.user){
             throw new Error('403, error')
          }
@@ -134,52 +136,66 @@ class TaskController{
             return utility.handleError(res, 'nearest search error', ResponseCode.NOT_FOUND)
           }
            let inviteMessage = await this.inviteservice.createInvite({
-            message:" this user `${req.user.username}` sent an invite to collaborate on a task",
-            status:'PENDING'
+            message:`this user ${req.user.username} sent an invite to collaborate on a task`,
+            status:'PENDING',
+            senderId: req.user.id as string,
+            receiverId: nearestCollaborator.id as string
           })  as InviteMessageBody
           if(!inviteMessage){
             throw new Error("inviteMessage, 404")
           }
-           io.on("connection",(socket)=>{
-              socket.on("disconnect", (error)=>{
-              console.log("user `${socket.id}` disconnected", error)})
-              socket.on("sendNotification",(nearestCollaborator: string, inviteMessage:InviteMessageBody)=>{
-                 io.to(nearestCollaborator).emit("notification",{
+         io.to(nearestCollaborator.id).emit("notification",{
                   message: inviteMessage,
                   from: inviteMessage.senderId
                  })
-              })
-          });
-           console.log('SOCKET.IO SERVER IS ACTIVE')
-          //if(inviteMessage.status.moment.add()==='PENDING'){}
-          //get inviteMessage, ACcept or decline update, permission to update or create once.
-          //send Update req.
-          //cron for request pending over an hour
-          //return utility.handleSuccess(res,'proximity search successful',{result}, ResponseCode.OK)
+         const inviteResponse = await this.inviteservice.getMessage(params.MessageId)
+         //getUserResponse for cron or create
+         let assignCollaborators;
+         if(inviteResponse?.status==='ACCEPT'){
+            assignCollaborators = await this.taskService.createCollaborators({
+            taskId:params.taskid,
+            fullName: nearestCollaborator.fullName,
+            companyName: nearestCollaborator.companyName,
+            email: nearestCollaborator.email,
+            username: nearestCollaborator.username,
+            role :"ASSIGNEE",
+          }) as IcollaboratorsCreationBody}
+         return utility.handleSuccess(res,'proximity search successful',{assignCollaborators}, ResponseCode.OK)
        }
       catch (error) {
           return utility.handleError(res, (error as TypeError).message, ResponseCode.SERVER_ERROR);}
     }
-    async getInviteRequest(req:Request,res:Response){
-       //find the nearest collaborator to you, invite collaborators , RBAC , cron. low-level-design
-       try{
-         if(!req.user){
-            throw new Error('403')
-         }
-        
-         // return utility.handleSuccess(res,'users latlong created successfully',{usersLongLat}, ResponseCode.OK)
-       } 
-      catch (error) {
-         // return utility.handleError(res, (error as TypeError).message, ResponseCode.SERVER_ERROR);}
-      }}
     async updateInviteRequest(req:Request,res:Response){
        //find the nearest collaborator to you, invite collaborators , RBAC , cron. low-level-design
        try{
+         const params={...req.body}
          if(!req.user){
             throw new Error('403')
          }
-        
-         // return utility.handleSuccess(res,'users latlong created successfully',{usersLongLat}, ResponseCode.OK)
+         const getInviteMessage = await this.inviteservice.getMessage(params.messageId)
+         const updateInviteReq= await this.inviteservice.updateInviteStatus({id: params.messageId}, {status: params.response})
+         io.to('').emit('response',{
+            message: updateInviteReq,
+            from: ''
+         })
+         return utility.handleSuccess(res,'users latlong created successfully',{updateInviteReq}, ResponseCode.OK)
+       } 
+      catch (error) {
+          return utility.handleError(res, (error as TypeError).message, ResponseCode.SERVER_ERROR);
+      }
+   }
+    async getInviteRequest(req:Request,res:Response){
+       //find the nearest collaborator to you, invite collaborators , RBAC , cron. low-level-design
+       try{
+         const params = {...req.body}
+         if(!req.user){
+            throw new Error('403')
+         }
+         const getInviteMessage = await this.inviteservice.getMessage(params.messageId)
+         if(!getInviteMessage){
+            throw new Error(' cannot get inviteMessage')
+         }
+         return utility.handleSuccess(res,'users latlong created successfully',{getInviteMessage}, ResponseCode.OK)
        } 
       catch (error) {
          // return utility.handleError(res, (error as TypeError).message, ResponseCode.SERVER_ERROR);}

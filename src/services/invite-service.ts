@@ -20,5 +20,14 @@ class InviteService{
         } as InviteQuery
        await this.inviteDatasource.updateInviteMessage(status, data)
     }
+    async getMessage(id: Partial<InviteMessageBody>): Promise<InviteMessage |null>{
+        const data= {
+            where:{
+                ...id
+            }, raw: true, returning: true
+        } as InviteQuery
+        return await this.inviteDatasource.getInviteMessage(data)
+    }
+
 };
 export default InviteService;

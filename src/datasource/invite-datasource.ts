@@ -8,6 +8,9 @@ class InviteDatasource implements InviteDatasourceMethod{
    async updateInviteMessage(data: Partial<InviteMessageBody>, record: InviteQuery): Promise<void> {
        await inviteModel.update(data, record)
    }
+  async getInviteMessage(id: InviteQuery): Promise<InviteMessage | null> {
+      return inviteModel.findOne(id)
+  }
 };
 
 export default InviteDatasource;
