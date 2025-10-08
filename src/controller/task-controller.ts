@@ -132,7 +132,8 @@ class TaskController{
             throw new Error(' server error, cannot get users latLong')
           }
           //calculate proximity accurate coordinates with latlong float not more than specified distance
-          const processInviteJobFromSearch=async()=> {}
+         // const processInviteJobFromSearch=async()=> {}
+            if(!req.user){throw new Error('403 error,')}
           let nearestCollaborator = await this.mapservice.findNearestCoordinates({latitude: getLongLat.lat as number, longitude: getLongLat.long as number})
           if(!nearestCollaborator){
             return utility.handleError(res, 'nearest search error', ResponseCode.NOT_FOUND)
@@ -153,14 +154,39 @@ class TaskController{
           io.to(socketId).emit("notification",{
                   message: inviteMessage,
                   from: inviteMessage.senderId
-                 })
+                 });
          if(!inviteMessage.id){throw new Error('cannot get invite message response')}
          const inviteResponse = await this.inviteservice.getMessage(inviteMessage.id) 
          if(!inviteResponse){throw new Error("invite Response 404")} 
+
+         const processInviteJobFromSearch=async()=> {
          if(moment(inviteResponse?.expire).diff(moment(),'minute')>=0 && inviteResponse.status ==='PENDING'){
             await this.inviteservice.updateInviteStatus({id:params.MessageId},{status: 'EXPIRED'});
+            if(!req.user){throw new Error('403 error,')}
+          let nearestCollaborator = await this.mapservice.findNearestCoordinates({latitude: getLongLat.lat as number, longitude: getLongLat.long as number})
+          if(!nearestCollaborator){
+            return utility.handleError(res, 'nearest search error', ResponseCode.NOT_FOUND)
+          }
+           let inviteMessage = await this.inviteservice.createInvite({
+            message:`this user ${req.user.username} sent an invite to collaborate on a task`,
+            status:'PENDING',
+            senderId: req.user.id as string,
+            receiverId: nearestCollaborator.id as string,
+            setTime: params.setTime as number,
+            expire: moment().add(params.setTime?params.setTime:this.defaultTime).toDate() 
+          }) as InviteMessageBody
+          if(!inviteMessage){
+            throw new Error("inviteMessage, 404")
+          }
+          const socketId = onlineUsers.get(nearestCollaborator.id)  as string
+          if(!socketId){throw new Error('socketId not found')}
+          io.to(socketId).emit("notification",{
+                  message: inviteMessage,
+                  from: inviteMessage.senderId
+                 });}
             processInviteJobFromSearch()
-         }
+         };
+         
          let assignCollaborators;
          if(inviteResponse?.status==='ACCEPT'){
             assignCollaborators = await this.taskService.createCollaborators({
