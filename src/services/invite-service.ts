@@ -1,6 +1,7 @@
 import { injectable } from "tsyringe";
 import { InviteMessage, InviteMessageBody, InviteQuery } from "../Interface/task-interface";
 import InviteDatasource from "../datasource/invite-datasource";
+import moment from "moment";
 
 @injectable()
 class InviteService{
@@ -9,7 +10,10 @@ class InviteService{
         this.inviteDatasource= _invite
     }
     async createInvite(record: InviteMessageBody): Promise<InviteMessage>{
-        return await this.inviteDatasource.createInvite(record)
+        const data= {
+            ...record 
+        } as InviteMessageBody
+        return await this.inviteDatasource.createInvite(data)
     }
     async updateInviteStatus(record: Partial<InviteMessage>,status: Partial<InviteMessageBody>){
         const data={
@@ -20,10 +24,10 @@ class InviteService{
         } as InviteQuery
        await this.inviteDatasource.updateInviteMessage(status, data)
     }
-    async getMessage(id: Partial<InviteMessageBody>): Promise<InviteMessage |null>{
+    async getMessage(id:string): Promise<InviteMessage |null>{
         const data= {
             where:{
-                ...id
+                id
             }, raw: true, returning: true
         } as InviteQuery
         return await this.inviteDatasource.getInviteMessage(data)

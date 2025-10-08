@@ -8,11 +8,12 @@ import uploadStream from "../services/cloudinary";
 import AuthService from "../services/auth-service";
 import MapService from "../services/Map-service";
 import InviteService from "../services/invite-service";
-import { io } from "..";
-import { Iauth } from "../Interface/auth-interface";
+import { io, onlineUsers } from "..";
+import moment from "moment";
 
 @autoInjectable()
 class TaskController{
+   public readonly defaultTime =1
    public taskService: TasKService
    public authservice: AuthService
    public mapservice: MapService
@@ -131,6 +132,7 @@ class TaskController{
             throw new Error(' server error, cannot get users latLong')
           }
           //calculate proximity accurate coordinates with latlong float not more than specified distance
+          const processInviteJobFromSearch=async()=> {}
           let nearestCollaborator = await this.mapservice.findNearestCoordinates({latitude: getLongLat.lat as number, longitude: getLongLat.long as number})
           if(!nearestCollaborator){
             return utility.handleError(res, 'nearest search error', ResponseCode.NOT_FOUND)
@@ -139,17 +141,26 @@ class TaskController{
             message:`this user ${req.user.username} sent an invite to collaborate on a task`,
             status:'PENDING',
             senderId: req.user.id as string,
-            receiverId: nearestCollaborator.id as string
-          })  as InviteMessageBody
+            receiverId: nearestCollaborator.id as string,
+            setTime: params.setTime as number,
+            expire: moment().add(params.setTime?params.setTime:this.defaultTime).toDate() 
+          }) as InviteMessageBody
           if(!inviteMessage){
             throw new Error("inviteMessage, 404")
           }
-         io.to(nearestCollaborator.id).emit("notification",{
+          const socketId = onlineUsers.get(nearestCollaborator.id)  as string
+          if(!socketId){throw new Error('socketId not found')}
+          io.to(socketId).emit("notification",{
                   message: inviteMessage,
                   from: inviteMessage.senderId
                  })
-         const inviteResponse = await this.inviteservice.getMessage(params.MessageId)
-         //getUserResponse for cron or create
+         if(!inviteMessage.id){throw new Error('cannot get invite message response')}
+         const inviteResponse = await this.inviteservice.getMessage(inviteMessage.id) 
+         if(!inviteResponse){throw new Error("invite Response 404")} 
+         if(moment(inviteResponse?.expire).diff(moment(),'minute')>=0 && inviteResponse.status ==='PENDING'){
+            await this.inviteservice.updateInviteStatus({id:params.MessageId},{status: 'EXPIRED'});
+            processInviteJobFromSearch()
+         }
          let assignCollaborators;
          if(inviteResponse?.status==='ACCEPT'){
             assignCollaborators = await this.taskService.createCollaborators({
@@ -173,6 +184,7 @@ class TaskController{
             throw new Error('403')
          }
          const getInviteMessage = await this.inviteservice.getMessage(params.messageId)
+         //RBAC-getInviteMessage?.receiverId
          const updateInviteReq= await this.inviteservice.updateInviteStatus({id: params.messageId}, {status: params.response})
          io.to('').emit('response',{
             message: updateInviteReq,
@@ -184,6 +196,39 @@ class TaskController{
           return utility.handleError(res, (error as TypeError).message, ResponseCode.SERVER_ERROR);
       }
    }
+    async postComment(req:Request,res:Response){
+       //find the nearest collaborator to you, invite collaborators , RBAC , cron. low-level-design
+       try{
+         const params = {...req.body}
+         if(!req.user){
+            throw new Error('403')
+         }
+         //const postComment = await this.inviteservice.getMessage({})
+         //RBAC-get
+         /*if(!postComment){
+            throw new Error(' cannot post comment')
+         }*/
+        // return utility.handleSuccess(res,'users latlong created successfully',{postComment}, ResponseCode.OK)
+       } 
+      catch (error) {
+         // return utility.handleError(res, (error as TypeError).message, ResponseCode.SERVER_ERROR);}
+    }}
+    async getComments(req:Request,res:Response){
+       //find the nearest collaborator to you, invite collaborators , RBAC , cron. low-level-design
+       try{
+         const params = {...req.body}
+         if(!req.user){
+            throw new Error('403')
+         }
+         //const getComments = await this.inviteservice.getMessage(params.messageId)
+         /*if(!getComments){
+            throw new Error(' cannot get comments')
+         }*/
+        // return utility.handleSuccess(res,'users latlong created successfully',{getComments}, ResponseCode.OK)
+       } 
+      catch (error) {
+         // return utility.handleError(res, (error as TypeError).message, ResponseCode.SERVER_ERROR);}
+    }}
     async getInviteRequest(req:Request,res:Response){
        //find the nearest collaborator to you, invite collaborators , RBAC , cron. low-level-design
        try{

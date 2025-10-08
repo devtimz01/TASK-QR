@@ -48,8 +48,12 @@ app.use((err:any, req:Request, res:Response, next: NextFunction)=>{
  const httpServer = createServer(app)
  export const io = new Server(httpServer,{
  })
+export  let onlineUsers= new Map<string,string>()
   try{ io.on("connection",(socket)=>{
+         const userId = socket.handshake.query.userId as string
+         onlineUsers.set(userId,socket.id )
                socket.on("disconnect", (error)=>{
+                onlineUsers.delete(userId)
                console.log("user `${socket.id}` disconnected", error)})
            });}
            catch(error){

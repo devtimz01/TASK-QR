@@ -62,6 +62,8 @@ export interface Icollaborators{
     status: string;
     receiverId: string;
     senderId: string;
+    expire: Date;
+    setTime ?: number;
     createdAt: string;
     updatedAt: string
 
