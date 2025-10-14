@@ -10,6 +10,7 @@ import MapService from "../services/Map-service";
 import InviteService from "../services/invite-service";
 import { Io, onlineUsers } from "..";
 import moment from "moment";
+import { Worker,Queue,} from "bullmq";
 
 @autoInjectable()
 class TaskController{
@@ -186,9 +187,27 @@ class TaskController{
          const inviteResponse = await this.inviteservice.getMessage(inviteMessage.id) 
          if(!inviteResponse){throw new Error("invite Response 404")} 
 
-         if(moment().diff(moment(inviteResponse.expire),'minute')>=0 && inviteResponse.status ==='PENDING'){
+         let collaboratorRecord;
+         console.log(nearestCollaborator)
+
+         const queue= new Queue('inviteJob',{connection:{
+             host:'127.0.0.1' as string,
+             port: 6379 as number
+         }})
+
+         async function producer(){ 
+             const delay = moment(inviteMessage.expire).diff(moment(),'milliseconds')
+             await queue.add('checkInvite',{payload:inviteMessage.id},{delay})};
+
+         const process = new Worker('inviteJob', async(job)=>{
+            const {inviteId} = job.data
+            const invite = await this.inviteservice.getMessage(inviteId)
+            if(!invite)return;
+            //check expiry
+            if(moment().diff(moment(inviteResponse.expire),'minute')>=0 && inviteResponse.status ==='PENDING')
             await this.inviteservice.updateInviteStatus({id:inviteMessage.id},{status: 'EXPIRED'});
-           /* const processInviteJobFromSearch=async()=> {
+             //urrhm, make this func a repeatable job processInviteJobFromSearch(); 
+             const processInviteJobFromSearch=async()=> {
             if(!req.user){throw new Error('403 error,')}
           let nearestCollaborator = await this.mapservice.findNearestCoordinates({latitude: getLongLat.lat as number, longitude: getLongLat.long as number}, req.user.id)
           if(!nearestCollaborator){
@@ -210,15 +229,33 @@ class TaskController{
                   message: inviteMessage,
                   from: inviteMessage.senderId
                  });}
-            processInviteJobFromSearch()*/
-         };
-
-         if(inviteResponse.status==='DELETE'){
+            //check validity
+         if(moment(inviteResponse.expire).diff(moment(),'minute')>=0)
+             if(inviteResponse.status==='DELETE'){
              await this.inviteservice.deleteMessage({id: inviteResponse.id})
-             return utility.handleError(res,"user rejected collaboration request", ResponseCode.UNPROCESSABLE_ENTITY) 
-         };
-         let collaboratorRecord;
-         console.log(nearestCollaborator)
+             res.send('user declined invite')
+             return;
+         }
+            try{if(inviteResponse?.status==='ACCEPT'){
+            collaboratorRecord = await this.taskService.createCollaborators({
+            taskId:params.taskId,
+            fullName: nearestCollaborator.fullName,
+            companyName: nearestCollaborator.companyName,
+            email: nearestCollaborator.email,
+            username: nearestCollaborator.username,
+            role :"ASSIGNEE",
+          }) as IcollaboratorsCreationBody}
+           await this.inviteservice.deleteMessage({id: inviteResponse.id})
+           return;}
+          catch(error){
+            console.log(error)
+            return utility.handleError(res,"status ACCEPT, failed to create record", ResponseCode.BAD_REQUEST)}
+          },{connection:{
+             host:'127.0.0.1' as string,
+             port: 6379 as number
+         }});
+      
+         //create pending record - update invite from queue response (invite message- ACCEPT OR DELETE)
          try{if(inviteResponse?.status==='PENDING'){
             collaboratorRecord = await this.taskService.createCollaborators({
             taskId:params.taskId,
@@ -231,19 +268,6 @@ class TaskController{
           catch(error){
             console.log(error)
             return utility.handleError(res,"status pending, failed to create record", ResponseCode.BAD_REQUEST)
-          }
-          try{if(inviteResponse?.status==='ACCEPT'){
-            collaboratorRecord = await this.taskService.createCollaborators({
-            taskId:params.taskId,
-            fullName: nearestCollaborator.fullName,
-            companyName: nearestCollaborator.companyName,
-            email: nearestCollaborator.email,
-            username: nearestCollaborator.username,
-            role :"ASSIGNEE",
-          }) as IcollaboratorsCreationBody}}
-          catch(error){
-            console.log(error)
-            return utility.handleError(res,"status ACCEPT, failed to create record", ResponseCode.BAD_REQUEST)
           }
           //RBAC permit if collab status is ACCEPT...read, create a contribution, delete
          return utility.handleSuccess(res,'collaborators record created',{collaboratorRecord}, ResponseCode.OK)
