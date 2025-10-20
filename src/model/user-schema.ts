@@ -11,7 +11,7 @@ const userModel = Db.define<Imodel>('userModel',{
     },
     ipAddress:{
         allowNull: true,
-        defaultValue: 'NULL',
+        defaultValue: null,
         type: DataTypes.STRING
     },
     latitude:{

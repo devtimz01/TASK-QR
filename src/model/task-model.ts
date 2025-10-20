@@ -138,14 +138,11 @@ export const collaboratorsModel = Db.define<IcollaboratorsModel>('collaboratorsM
     taskId:{
         allowNull:false,
         type:DataTypes.UUID,
-    },
-    subtaskId:{
-        allowNull:false,
-        type:DataTypes.UUID,
+        unique: 'key_constraint'
     },
         username:{
             allowNull: false,
-            unique:true,
+            unique:'key_constraint',
             type: DataTypes.STRING
         },
         email:{
@@ -162,9 +159,9 @@ export const collaboratorsModel = Db.define<IcollaboratorsModel>('collaboratorsM
             type: DataTypes.STRING
         },
         role:{
-            type: DataTypes.STRING,
+            type: DataTypes.ENUM("ASSIGNEE","PENDING"),
             allowNull:false,
-            defaultValue:"ASSIGNEE"
+            defaultValue:"PENDING"
         },
         createdAt:{
             type: DataTypes.DATE,
@@ -182,11 +179,11 @@ export const collaboratorsModel = Db.define<IcollaboratorsModel>('collaboratorsM
         createdAt: 'createdAt',
         updatedAt: 'updatedAt'
 });
-TaskModel.hasMany(collaboratorsModel,{foreignKey:'taskId', as:'collaborator'})
-collaboratorsModel.belongsTo(TaskModel,{foreignKey:'taskId',as :'Tasks'})
+TaskModel.hasMany(collaboratorsModel,{foreignKey:'taskId'})
+collaboratorsModel.belongsTo(TaskModel,{foreignKey:'taskId',constraints: false})
 
-subTaskModel.hasMany(collaboratorsModel,{foreignKey:'subtaskId', as:'collaborator'})
-collaboratorsModel.belongsTo(subTaskModel,{foreignKey:'subtaskId',as :'subtasks'})
+subTaskModel.hasMany(collaboratorsModel,{foreignKey:'taskId'})
+collaboratorsModel.belongsTo(subTaskModel,{foreignKey:'taskId', constraints: false})
 
 const TaskFolderModel = Db.define<ItaskFolderModel>('TaskFolderModel',{
     id: {

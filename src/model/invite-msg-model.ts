@@ -17,10 +17,6 @@ const inviteModel = Db.define<InviteMessageModel>('inviteModel',{
         defaultValue: DataTypes.NOW,
         allowNull: false
     },
-    setTime:{
-        type: DataTypes.INTEGER,
-        allowNull: true
-    },
     status:{
         type: DataTypes.ENUM('PENDING', 'ACCEPT' , 'DECLINE' ,'EXPIRED'),
         allowNull: false,

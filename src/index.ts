@@ -10,6 +10,13 @@ import session from 'express-session'
 import passport from 'passport';
 import { Server } from 'socket.io';
 import { createServer } from 'http';
+import { io } from 'socket.io-client';
+import userModel from './model/user-schema';
+import { Iauth } from './Interface/auth-interface';
+import {ExpressAdapter} from '@bull-board/express'
+import { createBullBoard } from '@bull-board/api';
+import { BullMQAdapter } from '@bull-board/api/bullMQAdapter';
+import { Queue } from 'bullmq';
 
 const app= express()
 app.use(express.urlencoded({extended:true}))
@@ -23,7 +30,33 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-//routes
+//bullRecord
+export const inviteQueue= new Queue('inviteJob',{connection:{
+             host:'127.0.0.1' as string,
+             port: 6379 as number
+         }});
+
+(async () => {
+  try {
+    // Test low-level connection
+    const client = await inviteQueue.client;
+    console.log('✅ Redis connected:', client.status);
+
+  } catch (err) {
+    console.error('❌ Redis connection or queue error:', err);
+  }
+})();
+
+const serverAdapter = new ExpressAdapter()
+createBullBoard({
+    queues: [new BullMQAdapter(inviteQueue)],
+    serverAdapter
+})
+console.log(inviteQueue)
+serverAdapter.setBasePath('/Admindashboard/inviteQueue')
+
+//middleware
+app.use('/Admindashboard/inviteQueue',serverAdapter.getRouter())
 app.use('/api/auth',authRouter)
 app.use('/api/task',Taskrouter)
 app.use('/api',maprouter)
@@ -44,12 +77,32 @@ app.use((err:any, req:Request, res:Response, next: NextFunction)=>{
     })
 });
 
+const httpServer = createServer(app)
+ export const Io = new Server(httpServer,{
+ });
 
- const httpServer = createServer(app)
- export const io = new Server(httpServer,{
- })
+(async()=>{
+     const getAllUsers=async(): Promise<Iauth[]>=>{
+   const user ={
+    attributes:["id"]
+   }
+    return await userModel.findAll(user)
+ };
+let allId = await getAllUsers()
+for(let i =0; i<allId.length ;i++){
+    const authusers= allId[i]
+    const socket = io("http://localhost:4010",{
+   query:{
+       userId: authusers.id 
+   }
+}); 
+socket.on('notification',(data)=>{
+    console.log("new notification",data)
+});}
+})();
+
 export  let onlineUsers= new Map<string,string>()
-  try{ io.on("connection",(socket)=>{
+  try{ Io.on("connection",(socket)=>{
          const userId = socket.handshake.query.userId as string
          onlineUsers.set(userId,socket.id )
                socket.on("disconnect", (error)=>{
@@ -60,12 +113,12 @@ export  let onlineUsers= new Map<string,string>()
              utility.Logger.error((error as TypeError).message)
            };
 
-const port = 4035;
+const port = 4010;
 const server = async function(){
     try{
         await Dbinitialize();
         httpServer.listen(port,()=>{
-        console.log('SERVER RUNNING AT PORT 4035')
+        console.log('SERVER RUNNING AT PORT 4010')
         utility.Logger.info('server running successfully')
   })
     }

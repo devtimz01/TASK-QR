@@ -169,3 +169,88 @@
 2025-06-10, 19:27:35 error:SOCKET.IO SERVER DISCONNECT, ERROR!
 2025-07-10, 08:27:28 error:failed, Gps long?Lat? error
 2025-07-10, 08:28:27 error:Data too long for column 'receiverId' at row 1
+2025-09-10, 07:54:08 error:Unknown column 'expire' in 'field list'
+2025-09-10, 08:01:28 error:Unknown column 'expire' in 'field list'
+2025-09-10, 08:18:09 error:Unknown column 'expire' in 'field list'
+2025-09-10, 08:25:03 error:Unknown column 'expire' in 'field list'
+2025-09-10, 08:32:29 error:socketId not found
+2025-10-10, 09:53:10 error:socketId not found
+2025-10-10, 09:56:05 error:Unknown column 'setTime' in 'field list'
+2025-10-10, 10:10:34 error:Unknown column 'setTime' in 'field list'
+2025-10-10, 10:12:37 error:WHERE parameter "id" has invalid "undefined" value
+2025-10-10, 10:16:21 error:notNull Violation: collaboratorsModel.taskId cannot be null,
+notNull Violation: collaboratorsModel.subtaskId cannot be null,
+notNull Violation: collaboratorsModel.email cannot be null,
+notNull Violation: collaboratorsModel.fullName cannot be null
+2025-10-10, 10:18:15 error:notNull Violation: collaboratorsModel.taskId cannot be null,
+notNull Violation: collaboratorsModel.subtaskId cannot be null,
+notNull Violation: collaboratorsModel.email cannot be null,
+notNull Violation: collaboratorsModel.fullName cannot be null
+2025-10-10, 10:21:41 error:notNull Violation: collaboratorsModel.taskId cannot be null,
+notNull Violation: collaboratorsModel.subtaskId cannot be null,
+notNull Violation: collaboratorsModel.email cannot be null,
+notNull Violation: collaboratorsModel.fullName cannot be null
+2025-10-10, 10:24:49 error:notNull Violation: collaboratorsModel.taskId cannot be null,
+notNull Violation: collaboratorsModel.subtaskId cannot be null,
+notNull Violation: collaboratorsModel.email cannot be null,
+notNull Violation: collaboratorsModel.fullName cannot be null
+2025-10-10, 10:29:44 error:cannot return user making a search request latLong, make a new search
+2025-10-10, 10:51:05 error:serach returns current user, rerun search
+2025-10-10, 11:59:55 error:serach returns current user, rerun search
+2025-10-10, 12:04:50 error:search returns current user, rerun search
+2025-10-10, 12:10:15 error:search returns current user, rerun search
+2025-10-10, 12:10:37 error:search returns current user, rerun search
+2025-10-10, 12:12:13 error:search returns current user, rerun search
+2025-10-10, 12:19:23 error:search returns current user, rerun search
+2025-10-10, 12:26:40 error:search returns current user, rerun search
+2025-10-10, 12:27:27 error:search returns current user, rerun search
+2025-10-10, 12:41:02 error:search returns current user, rerun search
+2025-10-10, 12:42:38 error:search returns current user, rerun search
+2025-11-10, 07:56:34 error:search returns current user, rerun search
+2025-11-10, 08:15:32 error:search returns current user, rerun search
+2025-11-10, 08:16:08 error:search returns current user, rerun search
+2025-11-10, 08:18:46 error:search returns current user, rerun search
+2025-11-10, 08:24:00 error:search returns current user, rerun search
+2025-11-10, 08:28:40 error:search returns current user, rerun search
+2025-11-10, 08:38:32 error:search returns current user, rerun search
+2025-11-10, 08:51:45 error:notNull Violation: collaboratorsModel.taskId cannot be null,
+notNull Violation: collaboratorsModel.subtaskId cannot be null,
+notNull Violation: collaboratorsModel.email cannot be null,
+notNull Violation: collaboratorsModel.fullName cannot be null
+2025-11-10, 09:14:22 error:notNull Violation: collaboratorsModel.taskId cannot be null
+2025-11-10, 09:15:43 error:notNull Violation: collaboratorsModel.taskId cannot be null
+2025-11-10, 09:16:44 error:Field 'subtaskId' doesn't have a default value
+2025-11-10, 09:50:46 error:Field 'subtaskId' doesn't have a default value
+2025-11-10, 09:52:53 error:cannot get nearest Coordinates
+2025-11-10, 09:53:04 error:cannot get nearest Coordinates
+2025-11-10, 09:53:27 error:Field 'subtaskId' doesn't have a default value
+2025-11-10, 10:14:37 error:Field 'password' doesn't have a default value
+2025-11-10, 10:22:48 error:status is a required field
+2025-11-10, 10:25:30 error:status must be one of the following values: ACCEPT,DECLINE
+2025-11-10, 10:26:08 error:status must be one of the following values: ACCEPT,DECLINE
+2025-11-10, 10:31:57 error:status must be one of :ACCEPT or DECLINE
+2025-11-10, 10:39:06 error:status must be one of :ACCEPT or DECLINE
+2025-11-10, 18:32:45 error:invite message expired rerun search to find new collaborator
+2025-11-10, 18:34:07 error:invite message expired rerun search to find new collaborator
+2025-11-10, 18:37:14 error:invite message expired rerun search to find new collaborator
+2025-11-10, 18:38:50 error:invite message expired rerun search to find new collaborator
+2025-11-10, 18:39:59 error:invite message expired rerun search to find new collaborator
+2025-11-10, 18:40:58 error:invite message expired rerun search to find new collaborator
+2025-11-10, 18:43:06 error:Validation error
+2025-11-10, 18:45:44 error:Validation error
+2025-11-10, 18:45:49 error:token not found
+2025-11-10, 18:46:17 error:Validation error
+2025-11-10, 18:54:02 error:Validation error
+2025-12-10, 09:34:21 error:message expired
+2025-12-10, 09:55:38 error:message expired
+2025-12-10, 09:57:51 error:Validation error
+2025-12-10, 10:24:28 error:failed, Gps long?Lat? error
+2025-12-10, 10:24:34 error:Validation error
+2025-12-10, 10:37:55 error:status pending, failed to create record
+2025-12-10, 10:39:07 error:status pending, failed to create record
+2025-12-10, 10:41:20 error:status pending, failed to create record
+2025-12-10, 11:10:13 error:status pending, failed to create record
+2025-12-10, 11:49:06 error:invite message response time expired
+2025-15-10, 09:10:30 error:invite message response time expired
+2025-16-10, 09:47:58 error:invite message response time expired
+2025-16-10, 10:53:02 error:status pending, failed to create record

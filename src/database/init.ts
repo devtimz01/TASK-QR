@@ -13,7 +13,7 @@ const Dbinitialize=async()=>{
      TaskModel.sync({alter:false})
      subTaskModel.sync({alter:false})
      inviteModel.sync({alter:false})
-    // collaboratorsModel.sync({alter:false})
+     collaboratorsModel.sync({alter:false})
      await Db.authenticate()
    }
    catch(err){

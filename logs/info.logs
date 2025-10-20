@@ -1673,3 +1673,557 @@
 2025-08-10, 10:01:41 info:server running successfully
 2025-08-10, 10:03:04 info:server running successfully
 2025-08-10, 10:03:24 info:server running successfully
+2025-08-10, 10:06:28 info:server running successfully
+2025-08-10, 10:08:23 info:server running successfully
+2025-08-10, 10:09:11 info:server running successfully
+2025-08-10, 10:10:07 info:server running successfully
+2025-08-10, 10:10:34 info:server running successfully
+2025-08-10, 10:12:04 info:server running successfully
+2025-08-10, 10:18:12 info:server running successfully
+2025-08-10, 10:46:23 info:server running successfully
+2025-08-10, 10:48:09 info:server running successfully
+2025-08-10, 10:48:24 info:server running successfully
+2025-08-10, 11:06:13 info:server running successfully
+2025-08-10, 11:07:12 info:server running successfully
+2025-08-10, 11:07:41 info:server running successfully
+2025-08-10, 11:08:10 info:server running successfully
+2025-08-10, 11:09:12 info:server running successfully
+2025-08-10, 11:10:40 info:server running successfully
+2025-08-10, 11:10:56 info:server running successfully
+2025-08-10, 11:12:58 info:server running successfully
+2025-08-10, 11:16:21 info:server running successfully
+2025-08-10, 11:17:36 info:server running successfully
+2025-08-10, 11:18:39 info:server running successfully
+2025-08-10, 11:19:13 info:server running successfully
+2025-08-10, 11:20:12 info:server running successfully
+2025-08-10, 11:20:49 info:server running successfully
+2025-08-10, 11:21:08 info:server running successfully
+2025-08-10, 11:21:33 info:server running successfully
+2025-08-10, 11:21:47 info:server running successfully
+2025-08-10, 11:22:36 info:server running successfully
+2025-08-10, 11:23:53 info:server running successfully
+2025-08-10, 11:24:02 info:server running successfully
+2025-08-10, 11:25:57 info:server running successfully
+2025-09-10, 06:04:56 info:server running successfully
+2025-09-10, 06:09:32 info:server running successfully
+2025-09-10, 06:10:17 info:server running successfully
+2025-09-10, 06:10:54 info:server running successfully
+2025-09-10, 06:11:45 info:server running successfully
+2025-09-10, 06:12:10 info:server running successfully
+2025-09-10, 06:13:21 info:server running successfully
+2025-09-10, 06:13:41 info:server running successfully
+2025-09-10, 06:15:45 info:server running successfully
+2025-09-10, 06:16:25 info:server running successfully
+2025-09-10, 06:18:10 info:server running successfully
+2025-09-10, 07:32:10 info:server running successfully
+2025-09-10, 07:32:35 info:server running successfully
+2025-09-10, 07:33:55 info:server running successfully
+2025-09-10, 07:34:16 info:server running successfully
+2025-09-10, 07:34:37 info:server running successfully
+2025-09-10, 07:34:49 info:server running successfully
+2025-09-10, 07:35:42 info:server running successfully
+2025-09-10, 07:43:15 info:server running successfully
+2025-09-10, 07:54:08 error:Unknown column 'expire' in 'field list'
+2025-09-10, 07:59:05 info:server running successfully
+2025-09-10, 07:59:46 info:Task created successfully
+2025-09-10, 08:01:28 error:Unknown column 'expire' in 'field list'
+2025-09-10, 08:02:13 info:server running successfully
+2025-09-10, 08:06:16 info:server running successfully
+2025-09-10, 08:09:26 info:server running successfully
+2025-09-10, 08:10:12 info:server running successfully
+2025-09-10, 08:10:28 info:server running successfully
+2025-09-10, 08:10:41 info:server running successfully
+2025-09-10, 08:11:53 info:server running successfully
+2025-09-10, 08:14:54 info:server running successfully
+2025-09-10, 08:16:57 info:server running successfully
+2025-09-10, 08:17:32 info:server running successfully
+2025-09-10, 08:17:49 info:server running successfully
+2025-09-10, 08:18:09 error:Unknown column 'expire' in 'field list'
+2025-09-10, 08:19:41 info:server running successfully
+2025-09-10, 08:20:17 info:server running successfully
+2025-09-10, 08:22:08 info:server running successfully
+2025-09-10, 08:23:47 info:server running successfully
+2025-09-10, 08:24:35 info:server running successfully
+2025-09-10, 08:25:03 error:Unknown column 'expire' in 'field list'
+2025-09-10, 08:32:29 error:socketId not found
+2025-09-10, 08:39:59 info:server running successfully
+2025-09-10, 08:41:07 info:server running successfully
+2025-09-10, 08:52:33 info:server running successfully
+2025-09-10, 08:58:35 info:server running successfully
+2025-09-10, 09:19:21 info:server running successfully
+2025-09-10, 09:20:09 info:server running successfully
+2025-09-10, 09:21:01 info:server running successfully
+2025-09-10, 09:21:41 info:server running successfully
+2025-09-10, 09:24:25 info:server running successfully
+2025-09-10, 09:27:50 info:server running successfully
+2025-09-10, 09:31:51 info:server running successfully
+2025-09-10, 09:37:13 info:server running successfully
+2025-09-10, 09:38:05 info:server running successfully
+2025-09-10, 09:38:58 info:server running successfully
+2025-09-10, 09:42:08 info:server running successfully
+2025-09-10, 09:42:54 info:server running successfully
+2025-09-10, 09:46:49 info:server running successfully
+2025-09-10, 09:51:33 info:server running successfully
+2025-09-10, 15:55:47 info:server running successfully
+2025-09-10, 15:57:02 info:server running successfully
+2025-09-10, 15:57:22 info:server running successfully
+2025-09-10, 15:59:15 info:server running successfully
+2025-09-10, 16:00:37 info:server running successfully
+2025-09-10, 16:21:24 info:server running successfully
+2025-09-10, 18:38:20 info:server running successfully
+2025-09-10, 18:42:44 info:server running successfully
+2025-09-10, 18:43:31 info:server running successfully
+2025-09-10, 18:48:12 info:server running successfully
+2025-09-10, 18:49:09 info:server running successfully
+2025-10-10, 09:29:53 info:server running successfully
+2025-10-10, 09:38:27 info:server running successfully
+2025-10-10, 09:46:34 info:server running successfully
+2025-10-10, 09:49:14 info:server running successfully
+2025-10-10, 09:49:35 info:server running successfully
+2025-10-10, 09:50:03 info:server running successfully
+2025-10-10, 09:50:42 info:server running successfully
+2025-10-10, 09:53:10 error:socketId not found
+2025-10-10, 09:54:42 info:server running successfully
+2025-10-10, 09:55:15 info:server running successfully
+2025-10-10, 09:55:50 info:server running successfully
+2025-10-10, 09:56:05 error:Unknown column 'setTime' in 'field list'
+2025-10-10, 09:59:07 info:server running successfully
+2025-10-10, 10:01:41 info:server running successfully
+2025-10-10, 10:04:46 info:server running successfully
+2025-10-10, 10:05:25 info:server running successfully
+2025-10-10, 10:09:49 info:server running successfully
+2025-10-10, 10:10:08 info:server running successfully
+2025-10-10, 10:10:34 error:Unknown column 'setTime' in 'field list'
+2025-10-10, 10:12:27 info:server running successfully
+2025-10-10, 10:12:37 error:WHERE parameter "id" has invalid "undefined" value
+2025-10-10, 10:16:15 info:server running successfully
+2025-10-10, 10:16:21 error:notNull Violation: collaboratorsModel.taskId cannot be null,
+notNull Violation: collaboratorsModel.subtaskId cannot be null,
+notNull Violation: collaboratorsModel.email cannot be null,
+notNull Violation: collaboratorsModel.fullName cannot be null
+2025-10-10, 10:18:15 error:notNull Violation: collaboratorsModel.taskId cannot be null,
+notNull Violation: collaboratorsModel.subtaskId cannot be null,
+notNull Violation: collaboratorsModel.email cannot be null,
+notNull Violation: collaboratorsModel.fullName cannot be null
+2025-10-10, 10:21:10 info:server running successfully
+2025-10-10, 10:21:41 error:notNull Violation: collaboratorsModel.taskId cannot be null,
+notNull Violation: collaboratorsModel.subtaskId cannot be null,
+notNull Violation: collaboratorsModel.email cannot be null,
+notNull Violation: collaboratorsModel.fullName cannot be null
+2025-10-10, 10:24:27 info:server running successfully
+2025-10-10, 10:24:49 error:notNull Violation: collaboratorsModel.taskId cannot be null,
+notNull Violation: collaboratorsModel.subtaskId cannot be null,
+notNull Violation: collaboratorsModel.email cannot be null,
+notNull Violation: collaboratorsModel.fullName cannot be null
+2025-10-10, 10:29:26 info:server running successfully
+2025-10-10, 10:29:44 error:cannot return user making a search request latLong, make a new search
+2025-10-10, 10:31:55 info:server running successfully
+2025-10-10, 10:32:07 info:server running successfully
+2025-10-10, 10:42:00 info:server running successfully
+2025-10-10, 10:42:34 info:server running successfully
+2025-10-10, 10:46:11 info:server running successfully
+2025-10-10, 10:46:59 info:server running successfully
+2025-10-10, 10:50:51 info:server running successfully
+2025-10-10, 10:51:05 error:serach returns current user, rerun search
+2025-10-10, 10:54:18 info:server running successfully
+2025-10-10, 11:46:20 info:server running successfully
+2025-10-10, 11:54:28 info:server running successfully
+2025-10-10, 11:59:55 error:serach returns current user, rerun search
+2025-10-10, 12:00:17 info:server running successfully
+2025-10-10, 12:04:34 info:server running successfully
+2025-10-10, 12:04:50 error:search returns current user, rerun search
+2025-10-10, 12:06:47 info:server running successfully
+2025-10-10, 12:07:06 info:server running successfully
+2025-10-10, 12:07:34 info:server running successfully
+2025-10-10, 12:09:24 info:login successful
+2025-10-10, 12:10:15 error:search returns current user, rerun search
+2025-10-10, 12:10:37 error:search returns current user, rerun search
+2025-10-10, 12:12:07 info:server running successfully
+2025-10-10, 12:12:13 error:search returns current user, rerun search
+2025-10-10, 12:12:30 info:server running successfully
+2025-10-10, 12:17:38 info:server running successfully
+2025-10-10, 12:19:10 info:server running successfully
+2025-10-10, 12:19:23 error:search returns current user, rerun search
+2025-10-10, 12:20:08 info:server running successfully
+2025-10-10, 12:20:14 info:proximity search successful
+2025-10-10, 12:20:37 info:server running successfully
+2025-10-10, 12:26:35 info:server running successfully
+2025-10-10, 12:26:40 error:search returns current user, rerun search
+2025-10-10, 12:27:00 info:server running successfully
+2025-10-10, 12:27:21 info:server running successfully
+2025-10-10, 12:27:27 error:search returns current user, rerun search
+2025-10-10, 12:40:49 info:server running successfully
+2025-10-10, 12:41:02 error:search returns current user, rerun search
+2025-10-10, 12:42:33 info:server running successfully
+2025-10-10, 12:42:38 error:search returns current user, rerun search
+2025-10-10, 12:42:56 info:server running successfully
+2025-10-10, 12:45:39 info:server running successfully
+2025-10-10, 12:46:12 info:server running successfully
+2025-11-10, 07:51:23 info:server running successfully
+2025-11-10, 07:51:45 info:server running successfully
+2025-11-10, 07:55:32 info:server running successfully
+2025-11-10, 07:56:34 error:search returns current user, rerun search
+2025-11-10, 07:59:03 info:server running successfully
+2025-11-10, 08:13:46 info:server running successfully
+2025-11-10, 08:15:06 info:server running successfully
+2025-11-10, 08:15:32 error:search returns current user, rerun search
+2025-11-10, 08:16:08 error:search returns current user, rerun search
+2025-11-10, 08:16:27 info:server running successfully
+2025-11-10, 08:16:34 info:proximity search successful
+2025-11-10, 08:17:01 info:server running successfully
+2025-11-10, 08:18:26 info:server running successfully
+2025-11-10, 08:18:40 info:server running successfully
+2025-11-10, 08:18:46 error:search returns current user, rerun search
+2025-11-10, 08:19:08 info:server running successfully
+2025-11-10, 08:19:44 info:server running successfully
+2025-11-10, 08:20:54 info:server running successfully
+2025-11-10, 08:21:11 info:server running successfully
+2025-11-10, 08:21:26 info:server running successfully
+2025-11-10, 08:23:36 info:server running successfully
+2025-11-10, 08:24:00 error:search returns current user, rerun search
+2025-11-10, 08:28:04 info:server running successfully
+2025-11-10, 08:28:40 error:search returns current user, rerun search
+2025-11-10, 08:33:21 info:server running successfully
+2025-11-10, 08:38:21 info:server running successfully
+2025-11-10, 08:38:32 error:search returns current user, rerun search
+2025-11-10, 08:43:15 info:server running successfully
+2025-11-10, 08:45:57 info:server running successfully
+2025-11-10, 08:46:22 info:proximity search successful
+2025-11-10, 08:51:02 info:server running successfully
+2025-11-10, 08:51:16 info:server running successfully
+2025-11-10, 08:51:32 info:server running successfully
+2025-11-10, 08:51:45 error:notNull Violation: collaboratorsModel.taskId cannot be null,
+notNull Violation: collaboratorsModel.subtaskId cannot be null,
+notNull Violation: collaboratorsModel.email cannot be null,
+notNull Violation: collaboratorsModel.fullName cannot be null
+2025-11-10, 08:56:02 info:server running successfully
+2025-11-10, 08:56:19 info:server running successfully
+2025-11-10, 09:06:47 info:server running successfully
+2025-11-10, 09:08:03 info:server running successfully
+2025-11-10, 09:13:30 info:server running successfully
+2025-11-10, 09:13:47 info:server running successfully
+2025-11-10, 09:14:22 error:notNull Violation: collaboratorsModel.taskId cannot be null
+2025-11-10, 09:15:38 info:server running successfully
+2025-11-10, 09:15:43 error:notNull Violation: collaboratorsModel.taskId cannot be null
+2025-11-10, 09:16:38 info:server running successfully
+2025-11-10, 09:16:44 error:Field 'subtaskId' doesn't have a default value
+2025-11-10, 09:22:17 info:server running successfully
+2025-11-10, 09:30:52 info:server running successfully
+2025-11-10, 09:45:08 info:server running successfully
+2025-11-10, 09:46:49 info:server running successfully
+2025-11-10, 09:48:20 info:server running successfully
+2025-11-10, 09:49:11 info:server running successfully
+2025-11-10, 09:50:24 info:server running successfully
+2025-11-10, 09:50:40 info:server running successfully
+2025-11-10, 09:50:46 error:Field 'subtaskId' doesn't have a default value
+2025-11-10, 09:51:44 info:server running successfully
+2025-11-10, 09:52:33 info:server running successfully
+2025-11-10, 09:52:53 error:cannot get nearest Coordinates
+2025-11-10, 09:53:04 error:cannot get nearest Coordinates
+2025-11-10, 09:53:21 info:server running successfully
+2025-11-10, 09:53:27 error:Field 'subtaskId' doesn't have a default value
+2025-11-10, 10:14:31 info:server running successfully
+2025-11-10, 10:14:37 error:Field 'password' doesn't have a default value
+2025-11-10, 10:19:23 info:server running successfully
+2025-11-10, 10:19:34 info:proximity search successful
+2025-11-10, 10:20:37 info:login successful
+2025-11-10, 10:22:48 error:status is a required field
+2025-11-10, 10:25:14 info:server running successfully
+2025-11-10, 10:25:30 error:status must be one of the following values: ACCEPT,DECLINE
+2025-11-10, 10:26:08 error:status must be one of the following values: ACCEPT,DECLINE
+2025-11-10, 10:31:51 info:server running successfully
+2025-11-10, 10:31:57 error:status must be one of :ACCEPT or DECLINE
+2025-11-10, 10:34:45 info:server running successfully
+2025-11-10, 10:34:57 info:server running successfully
+2025-11-10, 10:36:49 info:server running successfully
+2025-11-10, 10:39:06 error:status must be one of :ACCEPT or DECLINE
+2025-11-10, 10:41:36 info:server running successfully
+2025-11-10, 10:45:14 info:server running successfully
+2025-11-10, 10:45:54 info:users latlong created successfully
+2025-11-10, 10:47:08 info:server running successfully
+2025-11-10, 10:47:45 info:server running successfully
+2025-11-10, 10:51:49 info:updateInviteResponse sent
+2025-11-10, 11:27:52 info:server running successfully
+2025-11-10, 11:38:54 info:server running successfully
+2025-11-10, 11:39:06 info:server running successfully
+2025-11-10, 11:40:51 info:server running successfully
+2025-11-10, 11:41:23 info:server running successfully
+2025-11-10, 11:42:41 info:server running successfully
+2025-11-10, 11:44:37 info:server running successfully
+2025-11-10, 11:45:57 info:server running successfully
+2025-11-10, 11:46:27 info:server running successfully
+2025-11-10, 11:46:49 info:server running successfully
+2025-11-10, 11:48:36 info:server running successfully
+2025-11-10, 11:50:20 info:server running successfully
+2025-11-10, 11:54:25 info:server running successfully
+2025-11-10, 11:55:02 info:server running successfully
+2025-11-10, 11:55:28 info:server running successfully
+2025-11-10, 12:00:16 info:server running successfully
+2025-11-10, 12:01:07 info:server running successfully
+2025-11-10, 18:30:40 info:server running successfully
+2025-11-10, 18:32:45 error:invite message expired rerun search to find new collaborator
+2025-11-10, 18:34:07 error:invite message expired rerun search to find new collaborator
+2025-11-10, 18:37:14 error:invite message expired rerun search to find new collaborator
+2025-11-10, 18:38:04 info:server running successfully
+2025-11-10, 18:38:44 info:server running successfully
+2025-11-10, 18:38:50 error:invite message expired rerun search to find new collaborator
+2025-11-10, 18:39:59 error:invite message expired rerun search to find new collaborator
+2025-11-10, 18:40:22 info:server running successfully
+2025-11-10, 18:40:40 info:server running successfully
+2025-11-10, 18:40:58 error:invite message expired rerun search to find new collaborator
+2025-11-10, 18:41:36 info:server running successfully
+2025-11-10, 18:42:53 info:server running successfully
+2025-11-10, 18:43:06 error:Validation error
+2025-11-10, 18:45:44 error:Validation error
+2025-11-10, 18:45:49 error:token not found
+2025-11-10, 18:46:17 error:Validation error
+2025-11-10, 18:50:51 info:server running successfully
+2025-11-10, 18:53:12 info:Task created successfully
+2025-11-10, 18:54:02 error:Validation error
+2025-12-10, 09:32:10 info:server running successfully
+2025-12-10, 09:34:11 info:server running successfully
+2025-12-10, 09:34:21 error:message expired
+2025-12-10, 09:39:40 info:server running successfully
+2025-12-10, 09:45:00 info:server running successfully
+2025-12-10, 09:55:38 error:message expired
+2025-12-10, 09:57:41 info:server running successfully
+2025-12-10, 09:57:51 error:Validation error
+2025-12-10, 09:58:42 info:server running successfully
+2025-12-10, 10:00:03 info:server running successfully
+2025-12-10, 10:24:28 error:failed, Gps long?Lat? error
+2025-12-10, 10:24:34 error:Validation error
+2025-12-10, 10:28:28 info:server running successfully
+2025-12-10, 10:28:38 info:proximity search successful
+2025-12-10, 10:29:45 info:server running successfully
+2025-12-10, 10:33:39 info:server running successfully
+2025-12-10, 10:34:34 info:server running successfully
+2025-12-10, 10:34:50 info:server running successfully
+2025-12-10, 10:37:35 info:server running successfully
+2025-12-10, 10:37:55 error:status pending, failed to create record
+2025-12-10, 10:38:56 info:server running successfully
+2025-12-10, 10:39:07 error:status pending, failed to create record
+2025-12-10, 10:39:44 info:server running successfully
+2025-12-10, 10:40:07 info:server running successfully
+2025-12-10, 10:40:28 info:server running successfully
+2025-12-10, 10:41:04 info:server running successfully
+2025-12-10, 10:41:20 error:status pending, failed to create record
+2025-12-10, 10:58:49 info:server running successfully
+2025-12-10, 10:59:12 info:server running successfully
+2025-12-10, 10:59:36 info:server running successfully
+2025-12-10, 11:10:13 error:status pending, failed to create record
+2025-12-10, 11:35:08 info:server running successfully
+2025-12-10, 11:36:36 info:collaborators record created
+2025-12-10, 11:42:10 info:updateInviteResponse sent
+2025-12-10, 11:47:35 info:server running successfully
+2025-12-10, 11:48:18 info:updateInviteResponse sent
+2025-12-10, 11:48:59 info:server running successfully
+2025-12-10, 11:49:06 error:invite message response time expired
+2025-12-10, 12:02:08 info:server running successfully
+2025-12-10, 12:10:29 info:server running successfully
+2025-12-10, 12:10:54 info:server running successfully
+2025-12-10, 17:53:28 info:server running successfully
+2025-12-10, 17:55:43 info:server running successfully
+2025-12-10, 18:00:38 info:server running successfully
+2025-12-10, 18:15:03 info:server running successfully
+2025-12-10, 18:31:40 info:server running successfully
+2025-12-10, 18:32:45 info:server running successfully
+2025-12-10, 18:33:27 info:server running successfully
+2025-12-10, 18:34:37 info:server running successfully
+2025-14-10, 07:59:12 info:server running successfully
+2025-14-10, 08:01:33 info:server running successfully
+2025-14-10, 08:12:51 info:server running successfully
+2025-14-10, 08:13:15 info:server running successfully
+2025-14-10, 08:13:57 info:server running successfully
+2025-14-10, 08:15:07 info:server running successfully
+2025-14-10, 08:15:37 info:server running successfully
+2025-14-10, 08:16:32 info:server running successfully
+2025-14-10, 08:16:51 info:server running successfully
+2025-14-10, 08:17:47 info:server running successfully
+2025-14-10, 08:19:43 info:server running successfully
+2025-14-10, 08:20:28 info:server running successfully
+2025-14-10, 08:21:26 info:server running successfully
+2025-14-10, 08:22:31 info:server running successfully
+2025-14-10, 08:23:14 info:server running successfully
+2025-14-10, 08:24:36 info:server running successfully
+2025-14-10, 08:24:59 info:server running successfully
+2025-14-10, 08:25:56 info:server running successfully
+2025-14-10, 08:26:10 info:server running successfully
+2025-14-10, 08:27:48 info:server running successfully
+2025-14-10, 08:28:33 info:server running successfully
+2025-14-10, 08:29:26 info:server running successfully
+2025-14-10, 08:30:47 info:server running successfully
+2025-14-10, 08:32:44 info:server running successfully
+2025-14-10, 08:36:51 info:server running successfully
+2025-14-10, 08:39:20 info:server running successfully
+2025-14-10, 08:41:56 info:server running successfully
+2025-14-10, 08:49:21 info:server running successfully
+2025-14-10, 08:49:45 info:server running successfully
+2025-14-10, 08:55:40 info:server running successfully
+2025-14-10, 08:58:18 info:server running successfully
+2025-14-10, 09:03:31 info:server running successfully
+2025-14-10, 09:05:16 info:server running successfully
+2025-14-10, 09:06:46 info:server running successfully
+2025-14-10, 09:11:11 info:server running successfully
+2025-14-10, 09:11:34 info:server running successfully
+2025-14-10, 09:11:46 info:server running successfully
+2025-14-10, 09:12:20 info:server running successfully
+2025-14-10, 09:13:54 info:server running successfully
+2025-14-10, 09:16:01 info:server running successfully
+2025-14-10, 09:17:38 info:server running successfully
+2025-14-10, 09:29:21 info:server running successfully
+2025-14-10, 09:30:00 info:server running successfully
+2025-14-10, 09:33:53 info:server running successfully
+2025-14-10, 09:38:57 info:server running successfully
+2025-14-10, 09:44:10 info:server running successfully
+2025-14-10, 09:44:38 info:server running successfully
+2025-14-10, 09:46:19 info:server running successfully
+2025-14-10, 09:47:48 info:server running successfully
+2025-14-10, 09:48:20 info:server running successfully
+2025-14-10, 09:49:01 info:server running successfully
+2025-14-10, 09:58:11 info:server running successfully
+2025-14-10, 10:00:00 info:server running successfully
+2025-14-10, 10:00:28 info:server running successfully
+2025-14-10, 10:01:04 info:server running successfully
+2025-14-10, 10:01:25 info:server running successfully
+2025-14-10, 10:01:38 info:server running successfully
+2025-14-10, 10:02:05 info:server running successfully
+2025-14-10, 10:04:21 info:server running successfully
+2025-14-10, 10:04:53 info:server running successfully
+2025-14-10, 10:05:06 info:server running successfully
+2025-14-10, 10:05:54 info:server running successfully
+2025-14-10, 10:11:51 info:server running successfully
+2025-14-10, 10:12:34 info:server running successfully
+2025-14-10, 10:21:30 info:server running successfully
+2025-14-10, 10:22:27 info:server running successfully
+2025-14-10, 10:23:27 info:server running successfully
+2025-14-10, 10:24:04 info:server running successfully
+2025-14-10, 10:24:29 info:server running successfully
+2025-14-10, 10:29:52 info:server running successfully
+2025-14-10, 11:05:02 info:server running successfully
+2025-14-10, 11:12:11 info:server running successfully
+2025-14-10, 11:12:57 info:server running successfully
+2025-14-10, 11:43:59 info:server running successfully
+2025-14-10, 11:45:39 info:server running successfully
+2025-14-10, 11:54:47 info:server running successfully
+2025-14-10, 17:20:52 info:server running successfully
+2025-14-10, 17:33:33 info:server running successfully
+2025-14-10, 17:33:54 info:server running successfully
+2025-14-10, 18:12:35 info:server running successfully
+2025-14-10, 18:12:50 info:server running successfully
+2025-14-10, 18:14:51 info:server running successfully
+2025-14-10, 18:15:07 info:server running successfully
+2025-14-10, 18:15:29 info:server running successfully
+2025-14-10, 18:19:02 info:server running successfully
+2025-14-10, 18:19:27 info:server running successfully
+2025-14-10, 18:20:15 info:server running successfully
+2025-14-10, 18:21:32 info:server running successfully
+2025-14-10, 18:22:01 info:server running successfully
+2025-14-10, 18:23:18 info:server running successfully
+2025-14-10, 18:24:18 info:server running successfully
+2025-14-10, 18:26:11 info:server running successfully
+2025-14-10, 18:26:58 info:server running successfully
+2025-14-10, 18:27:47 info:server running successfully
+2025-14-10, 18:28:23 info:server running successfully
+2025-14-10, 18:30:15 info:server running successfully
+2025-14-10, 18:30:36 info:server running successfully
+2025-14-10, 18:31:08 info:server running successfully
+2025-14-10, 18:31:34 info:server running successfully
+2025-14-10, 18:34:58 info:server running successfully
+2025-14-10, 18:35:56 info:server running successfully
+2025-14-10, 18:37:20 info:server running successfully
+2025-14-10, 18:41:13 info:server running successfully
+2025-14-10, 18:41:32 info:server running successfully
+2025-14-10, 18:49:10 info:server running successfully
+2025-14-10, 18:49:41 info:server running successfully
+2025-14-10, 19:20:20 info:server running successfully
+2025-14-10, 19:21:13 info:server running successfully
+2025-14-10, 19:22:31 info:server running successfully
+2025-14-10, 19:23:13 info:server running successfully
+2025-14-10, 19:23:59 info:server running successfully
+2025-14-10, 19:29:09 info:server running successfully
+2025-14-10, 19:29:42 info:server running successfully
+2025-14-10, 19:33:45 info:server running successfully
+2025-14-10, 19:40:50 info:server running successfully
+2025-14-10, 19:41:18 info:server running successfully
+2025-14-10, 19:45:09 info:server running successfully
+2025-14-10, 19:54:09 info:server running successfully
+2025-14-10, 19:56:54 info:server running successfully
+2025-14-10, 19:58:03 info:server running successfully
+2025-14-10, 19:59:36 info:server running successfully
+2025-14-10, 20:00:11 info:server running successfully
+2025-14-10, 20:01:22 info:server running successfully
+2025-14-10, 20:01:48 info:server running successfully
+2025-15-10, 08:28:58 info:server running successfully
+2025-15-10, 08:29:39 info:server running successfully
+2025-15-10, 08:32:19 info:server running successfully
+2025-15-10, 08:35:03 info:server running successfully
+2025-15-10, 08:35:45 info:server running successfully
+2025-15-10, 08:38:05 info:server running successfully
+2025-15-10, 08:39:02 info:server running successfully
+2025-15-10, 08:39:46 info:server running successfully
+2025-15-10, 08:40:12 info:server running successfully
+2025-15-10, 08:42:17 info:server running successfully
+2025-15-10, 08:42:59 info:server running successfully
+2025-15-10, 08:43:31 info:server running successfully
+2025-15-10, 08:44:35 info:server running successfully
+2025-15-10, 08:50:18 info:server running successfully
+2025-15-10, 08:51:05 info:server running successfully
+2025-15-10, 08:55:26 info:server running successfully
+2025-15-10, 09:07:12 info:Task created successfully
+2025-15-10, 09:08:27 info:server running successfully
+2025-15-10, 09:08:48 info:collaborators record created
+2025-15-10, 09:10:30 error:invite message response time expired
+2025-15-10, 09:13:19 info:server running successfully
+2025-15-10, 10:01:22 info:server running successfully
+2025-15-10, 10:03:22 info:server running successfully
+2025-16-10, 09:17:01 info:server running successfully
+2025-16-10, 09:21:15 info:server running successfully
+2025-16-10, 09:22:10 info:server running successfully
+2025-16-10, 09:25:45 info:server running successfully
+2025-16-10, 09:31:16 info:server running successfully
+2025-16-10, 09:39:56 info:server running successfully
+2025-16-10, 09:45:36 info:Task created successfully
+2025-16-10, 09:46:19 info:collaborators record created
+2025-16-10, 09:47:58 error:invite message response time expired
+2025-16-10, 09:53:47 info:server running successfully
+2025-16-10, 10:03:26 info:server running successfully
+2025-16-10, 10:04:37 info:server running successfully
+2025-16-10, 10:08:49 info:server running successfully
+2025-16-10, 10:10:46 info:server running successfully
+2025-16-10, 10:11:31 info:server running successfully
+2025-16-10, 10:19:11 info:server running successfully
+2025-16-10, 10:21:04 info:server running successfully
+2025-16-10, 10:21:22 info:server running successfully
+2025-16-10, 10:23:41 info:server running successfully
+2025-16-10, 10:27:03 info:Task created successfully
+2025-16-10, 10:27:26 info:collaborators record created
+2025-16-10, 10:27:26 info:[object Object]
+2025-16-10, 10:27:26 info:[object Object]
+2025-16-10, 10:33:21 info:server running successfully
+2025-16-10, 10:33:36 info:server running successfully
+2025-16-10, 10:37:20 info:server running successfully
+2025-16-10, 10:44:21 info:server running successfully
+2025-16-10, 10:45:52 info:server running successfully
+2025-16-10, 10:50:00 info:server running successfully
+2025-16-10, 10:51:30 info:server running successfully
+2025-16-10, 10:52:26 info:server running successfully
+2025-16-10, 10:53:02 error:status pending, failed to create record
+2025-16-10, 10:53:43 info:Task created successfully
+2025-16-10, 10:54:33 info:collaborators record created
+2025-17-10, 18:29:35 info:server running successfully
+2025-17-10, 18:30:11 info:server running successfully
+2025-17-10, 18:30:42 info:server running successfully
+2025-17-10, 18:41:59 info:server running successfully
+2025-17-10, 18:45:59 info:server running successfully
+2025-17-10, 18:47:03 info:server running successfully
+2025-17-10, 18:47:21 info:server running successfully
+2025-17-10, 18:47:47 info:server running successfully
+2025-17-10, 18:48:40 info:server running successfully
+2025-17-10, 18:49:19 info:server running successfully
+2025-17-10, 18:51:22 info:server running successfully
+2025-17-10, 18:55:15 info:server running successfully
+2025-17-10, 18:58:21 info:server running successfully
+2025-17-10, 18:58:35 info:server running successfully
+2025-19-10, 08:06:58 info:server running successfully
+2025-19-10, 08:43:20 info:server running successfully
+2025-20-10, 10:43:09 info:server running successfully

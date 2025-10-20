@@ -4,7 +4,7 @@ import TaskController from '../controller/task-controller'
 import multer from 'multer'
 import { validator } from '../middleware/index.validator'
 import authUser from '../middleware/auth-middleware'
-import { subTaskTemplate, TaskFolderTemplate, taskTemplate } from '../validators/task-validation-schema'
+import { inviteResponse, subTaskTemplate, TaskFolderTemplate, taskTemplate } from '../validators/task-validation-schema'
 
 const storage = multer.memoryStorage()
 const Mutter = multer({storage});
@@ -20,7 +20,13 @@ Taskrouter.post('/task',authUser(),Mutter.single("file"),validator(taskTemplate)
 Taskrouter.post('/subtask',authUser(),Mutter.single("files"), validator(subTaskTemplate), (req:Request,res:Response)=>{
     return taskController.createSubTask(req,res)
 });
-Taskrouter.post('/invitenearestcollaborator', authUser(),(req:Request,res:Response)=>{
+Taskrouter.post('/assigncollaborator', authUser(),(req:Request,res:Response)=>{
     return taskController.assignCollaborators(req,res)})
+
+Taskrouter.patch('/replyinvitemessage', authUser(),validator(inviteResponse) ,(req:Request,res:Response)=>{
+    return taskController.updateInviteRequest(req,res)})
+    
+Taskrouter.delete('/deleteinvitejob',(req:Request,res:Response)=>{
+    return taskController.deleteInviteRequest(req,res)})
 
 export default Taskrouter;

@@ -59,4 +59,8 @@ export const subTaskTemplate= yup.object({
     dependencies: yup.string().lowercase().trim()
 });
 
+export const inviteResponse = yup.object({
+    status:yup.string().trim().oneOf(["ACCEPT","DECLINE"]).required()
+});
+
 

@@ -15,14 +15,14 @@ class InviteService{
         } as InviteMessageBody
         return await this.inviteDatasource.createInvite(data)
     }
-    async updateInviteStatus(record: Partial<InviteMessage>,status: Partial<InviteMessageBody>){
+    async updateInviteStatus(record: Partial<InviteMessage>,status: Partial<InviteMessageBody>): Promise<InviteMessage>{
         const data={
             where:{
                ...record
             },
             raw: true
         } as InviteQuery
-       await this.inviteDatasource.updateInviteMessage(status, data)
+      return  await this.inviteDatasource.updateInviteMessage(status, data)
     }
     async getMessage(id:string): Promise<InviteMessage |null>{
         const data= {
@@ -31,6 +31,9 @@ class InviteService{
             }, raw: true, returning: true
         } as InviteQuery
         return await this.inviteDatasource.getInviteMessage(data)
+    }
+    async deleteMessage(id: Partial<InviteMessage>){
+        await this.inviteDatasource.deleteMessage(id)
     }
 
 };

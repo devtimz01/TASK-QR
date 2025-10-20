@@ -8,13 +8,13 @@ import uploadStream from "../services/cloudinary";
 import AuthService from "../services/auth-service";
 import MapService from "../services/Map-service";
 import InviteService from "../services/invite-service";
-import { Io, onlineUsers } from "..";
+import { inviteQueue, Io, onlineUsers } from "..";
 import moment from "moment";
-import { Worker,Queue,} from "bullmq";
+import { Worker} from "bullmq";
 
 @autoInjectable()
 class TaskController{
-   public readonly defaultTime = 1
+   public readonly defaultTime = 2
    public taskService: TasKService
    public authservice: AuthService
    public mapservice: MapService
@@ -190,30 +190,41 @@ class TaskController{
          let collaboratorRecord;
          console.log(nearestCollaborator)
 
-         const queue= new Queue('inviteJob',{connection:{
-             host:'127.0.0.1' as string,
-             port: 6379 as number
-         }})
-
-         async function producer(){ 
-             const delay = moment(inviteMessage.expire).diff(moment(),'milliseconds')
-             await queue.add('checkInvite',{payload:inviteMessage.id},{delay})};
-
-         const process = new Worker('inviteJob', async(job)=>{
-            const {inviteId} = job.data
-            const invite = await this.inviteservice.getMessage(inviteId)
-            if(!invite)return;
+         const producer=async()=>{ 
+            try{ 
+             await inviteQueue.add('checkInvite',{messageId: inviteMessage.id,collaboratorSearch: nearestCollaborator, 
+               defaultTime: this.defaultTime,
+               setTime: params.setTime,
+               user: req.user,
+               longLat:getLongLat,
+               taskId: params.taskId},
+               {   
+                  jobId: `checkinvite-${inviteMessage.id}`,
+                  delay: moment(inviteMessage.expire).diff(moment(),'milliseconds'),
+                  removeOnComplete: true,
+                  removeOnFail: true
+               } 
+            )
+            console.log('producer added job to queue')
+         } 
+            catch(error){
+               utility.Logger.error('producer error,log error',error)
+            }};
+        /* const process = new Worker('inviteJob', async(job)=>{
+            const {messageId,collaboratorSearch} = job.data
+            const invite = await this.inviteservice.getMessage(messageId)
+            if(!invite)return; 
+            console.log("job accepted",job.data)
             //check expiry
-            if(moment().diff(moment(inviteResponse.expire),'minute')>=0 && inviteResponse.status ==='PENDING')
-            await this.inviteservice.updateInviteStatus({id:inviteMessage.id},{status: 'EXPIRED'});
+            if(moment().diff(moment(inviteResponse.expire),'minute')>=0 && inviteResponse.status ==='PENDING'){
+            await this.inviteservice.updateInviteStatus({id:inviteMessage.id},{status: 'EXPIRED'})
              //urrhm, make this func a repeatable job processInviteJobFromSearch(); 
-             const processInviteJobFromSearch=async()=> {
             if(!req.user){throw new Error('403 error,')}
           let nearestCollaborator = await this.mapservice.findNearestCoordinates({latitude: getLongLat.lat as number, longitude: getLongLat.long as number}, req.user.id)
           if(!nearestCollaborator){
             return utility.handleError(res, 'nearest search error', ResponseCode.NOT_FOUND)
           }
-           let inviteMessage = await this.inviteservice.createInvite({
+            inviteMessage = await this.inviteservice.createInvite({
             message:`this user ${req.user.username} sent an invite to collaborate on a task`,
             status:'PENDING',
             senderId: req.user.id as string,
@@ -228,7 +239,7 @@ class TaskController{
           Io.to(socketId).emit("notification",{
                   message: inviteMessage,
                   from: inviteMessage.senderId
-                 });}
+                 })};
             //check validity
          if(moment(inviteResponse.expire).diff(moment(),'minute')>=0)
              if(inviteResponse.status==='DELETE'){
@@ -254,7 +265,13 @@ class TaskController{
              host:'127.0.0.1' as string,
              port: 6379 as number
          }});
-      
+         process.on('completed',(job)=>{
+            console.log('job completed', job.id)
+         })
+         process.on('error',(err)=>{
+            console.log('worker process job failed', err.message)
+         }) */
+
          //create pending record - update invite from queue response (invite message- ACCEPT OR DELETE)
          try{if(inviteResponse?.status==='PENDING'){
             collaboratorRecord = await this.taskService.createCollaborators({
@@ -275,8 +292,8 @@ class TaskController{
       catch (error) {
           return utility.handleError(res, (error as TypeError).message, ResponseCode.SERVER_ERROR);}
     };
-
-    async updateInviteRequest(req:Request,res:Response){
+   
+   async updateInviteRequest(req:Request,res:Response){
        try{
          const params={...req.body}
          if(!req.user){
@@ -312,6 +329,23 @@ class TaskController{
          if(!getInviteMessage){
             throw new Error(' cannot get inviteMessage')
          }
+         return utility.handleSuccess(res,'users latlong created successfully',{getInviteMessage}, ResponseCode.OK)
+       } 
+      catch (error) {
+         return utility.handleError(res, (error as TypeError).message, ResponseCode.SERVER_ERROR);}
+    }
+   async deleteInviteRequest(req:Request,res:Response){
+       //find the nearest collaborator to you, invite collaborators , RBAC , cron. low-level-design
+       try{
+         const params = {...req.body}
+         if(!req.user){
+            throw new Error('403')
+         }
+         const getInviteMessage = await this.inviteservice.getMessage(params.messageId)
+         if(!getInviteMessage){
+            throw new Error(' cannot get inviteMessage')
+         }
+         await this.inviteservice.deleteMessage(getInviteMessage);
          return utility.handleSuccess(res,'users latlong created successfully',{getInviteMessage}, ResponseCode.OK)
        } 
       catch (error) {

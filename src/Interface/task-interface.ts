@@ -91,8 +91,9 @@ export interface InviteMessageBody extends Optional<InviteMessage,"id"|"createdA
 export interface InviteMessageModel extends Model<InviteMessage,InviteMessageBody>,InviteMessage{}
 export interface InviteDatasourceMethod{
     createInvite(record: InviteMessageBody): Promise<InviteMessage>
-    updateInviteMessage(data: Partial<InviteMessageBody>, record:InviteQuery): Promise<void>
+    updateInviteMessage(data: Partial<InviteMessageBody>, record:InviteQuery): Promise<InviteMessage>
     getInviteMessage(id:InviteQuery):Promise<InviteMessage | null>
+    deleteMessage(message: Partial<InviteMessage>):Promise<void>
 }
 export interface IcollaboratorsCreationBody extends Optional<Icollaborators,"id"|"createdAt"|"updatedAt">{}
 export interface IcollaboratorsModel extends Model<Icollaborators,IcollaboratorsCreationBody>,Icollaborators{}
