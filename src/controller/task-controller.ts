@@ -10,7 +10,6 @@ import MapService from "../services/Map-service";
 import InviteService from "../services/invite-service";
 import { inviteQueue, Io, onlineUsers } from "..";
 import moment from "moment";
-import { Worker} from "bullmq";
 
 @autoInjectable()
 class TaskController{
@@ -170,7 +169,7 @@ class TaskController{
             status:'PENDING',
             senderId: req.user.id as string,
             receiverId: nearestCollaborator.id as string,
-            expire: moment().add(params.setTime?params.setTime:this.defaultTime, 'minute').toDate()
+            expire: moment().add(params.setTime?params.setTime:this.defaultTime, 'minutes').toDate()
           }) as InviteMessageBody
           if(!inviteMessage){
             throw new Error("inviteMessage, 404")
@@ -201,8 +200,10 @@ class TaskController{
                {   
                   jobId: `checkinvite-${inviteMessage.id}`,
                   delay: moment(inviteMessage.expire).diff(moment(),'milliseconds'),
-                  removeOnComplete: true,
-                  removeOnFail: true
+                  attempts: 2,
+                  backoff:{type:'exponential', delay: 3000},
+                  removeOnComplete: false,
+                  removeOnFail: false
                } 
             )
             console.log('producer added job to queue')
@@ -210,67 +211,7 @@ class TaskController{
             catch(error){
                utility.Logger.error('producer error,log error',error)
             }};
-        /* const process = new Worker('inviteJob', async(job)=>{
-            const {messageId,collaboratorSearch} = job.data
-            const invite = await this.inviteservice.getMessage(messageId)
-            if(!invite)return; 
-            console.log("job accepted",job.data)
-            //check expiry
-            if(moment().diff(moment(inviteResponse.expire),'minute')>=0 && inviteResponse.status ==='PENDING'){
-            await this.inviteservice.updateInviteStatus({id:inviteMessage.id},{status: 'EXPIRED'})
-             //urrhm, make this func a repeatable job processInviteJobFromSearch(); 
-            if(!req.user){throw new Error('403 error,')}
-          let nearestCollaborator = await this.mapservice.findNearestCoordinates({latitude: getLongLat.lat as number, longitude: getLongLat.long as number}, req.user.id)
-          if(!nearestCollaborator){
-            return utility.handleError(res, 'nearest search error', ResponseCode.NOT_FOUND)
-          }
-            inviteMessage = await this.inviteservice.createInvite({
-            message:`this user ${req.user.username} sent an invite to collaborate on a task`,
-            status:'PENDING',
-            senderId: req.user.id as string,
-            receiverId: nearestCollaborator.id as string,
-            expire: moment().add(params.setTime?params.setTime:this.defaultTime).toDate() 
-          }) as InviteMessageBody
-          if(!inviteMessage){
-            throw new Error("inviteMessage, 404")
-          }
-          const socketId = onlineUsers.get(nearestCollaborator.id)  as string
-          if(!socketId){throw new Error('socketId not found')}
-          Io.to(socketId).emit("notification",{
-                  message: inviteMessage,
-                  from: inviteMessage.senderId
-                 })};
-            //check validity
-         if(moment(inviteResponse.expire).diff(moment(),'minute')>=0)
-             if(inviteResponse.status==='DELETE'){
-             await this.inviteservice.deleteMessage({id: inviteResponse.id})
-             res.send('user declined invite')
-             return;
-         }
-            try{if(inviteResponse?.status==='ACCEPT'){
-            collaboratorRecord = await this.taskService.createCollaborators({
-            taskId:params.taskId,
-            fullName: nearestCollaborator.fullName,
-            companyName: nearestCollaborator.companyName,
-            email: nearestCollaborator.email,
-            username: nearestCollaborator.username,
-            role :"ASSIGNEE",
-          }) as IcollaboratorsCreationBody}
-           await this.inviteservice.deleteMessage({id: inviteResponse.id})
-           return;}
-          catch(error){
-            console.log(error)
-            return utility.handleError(res,"status ACCEPT, failed to create record", ResponseCode.BAD_REQUEST)}
-          },{connection:{
-             host:'127.0.0.1' as string,
-             port: 6379 as number
-         }});
-         process.on('completed',(job)=>{
-            console.log('job completed', job.id)
-         })
-         process.on('error',(err)=>{
-            console.log('worker process job failed', err.message)
-         }) */
+           await producer()
 
          //create pending record - update invite from queue response (invite message- ACCEPT OR DELETE)
          try{if(inviteResponse?.status==='PENDING'){
@@ -301,7 +242,7 @@ class TaskController{
          }
          const getInviteMessage = await this.inviteservice.getMessage(params.messageId)
          if(!getInviteMessage){throw new Error('getInviteMessage, 404')}
-          if(moment().diff(moment(getInviteMessage.expire),'minute')>=0 ){
+          if(moment().diff(moment(getInviteMessage.expire),'minutes')>=0 ){
             return utility.handleError(res,"invite message response time expired", ResponseCode.FORBIDDEN)
          };
 
@@ -309,7 +250,7 @@ class TaskController{
          
          const socketId = onlineUsers.get(getInviteMessage.senderId) as string
          Io.to(socketId).emit('notification',{
-            message: `this user ${req.user.username} ${updateInviteRequest.status} your request`,
+            message: `this user ${req.user.username} ${updateInviteRequest.status}ED your request`,
             from: getInviteMessage.receiverId
          });
          return utility.handleSuccess(res,'updateInviteResponse sent',{updateInviteRequest} ,ResponseCode.OK)

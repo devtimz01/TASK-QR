@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+//import './services/workers'
 import express from 'express'
 import { Request,Response, NextFunction} from 'express';
 import Dbinitialize from './database/init'
@@ -18,6 +19,7 @@ import { createBullBoard } from '@bull-board/api';
 import { BullMQAdapter } from '@bull-board/api/bullMQAdapter';
 import { Queue } from 'bullmq';
 
+
 const app= express()
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
@@ -31,7 +33,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 //bullRecord
-export const inviteQueue= new Queue('inviteJob',{connection:{
+export const inviteQueue= new Queue('checkInvite',{connection:{
              host:'127.0.0.1' as string,
              port: 6379 as number
          }});
@@ -52,7 +54,7 @@ createBullBoard({
     queues: [new BullMQAdapter(inviteQueue)],
     serverAdapter
 })
-console.log(inviteQueue)
+
 serverAdapter.setBasePath('/Admindashboard/inviteQueue')
 
 //middleware

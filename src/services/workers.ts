@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import { Worker } from "bullmq";
 import { container } from "tsyringe";
 import InviteService from "./invite-service";
@@ -12,10 +13,11 @@ import { IcollaboratorsCreationBody } from "../Interface/task-interface";
 const inviteSerivce = container.resolve(InviteService)
 const mapservice = container.resolve(MapService)
 const taskservice = container.resolve(TasKSerivce)
- const process = new Worker('inviteJob', async(job)=>{
+function runWorker(){
+const process = new Worker('checkInvite', async(job)=>{
             let inviteMessage; let nearestCollaborator;
-            const {messageId,collaboratorSearch,user,longLat,defaultTime,setTime,taskId} = job.data
-            const invite = await inviteSerivce.getMessage(messageId)
+            let {messageId,collaboratorSearch,user,longLat,defaultTime,setTime,taskId} = job.data
+            const invite = await inviteSerivce.getMessage(messageId) 
             if(!invite)return; 
             console.log("job accepted",job.data)
 
@@ -38,20 +40,43 @@ const taskservice = container.resolve(TasKSerivce)
           if(!inviteMessage){
             throw new Error("inviteMessage, 404")
           }
-
           const socketId = onlineUsers.get(nearestCollaborator.id)  as string
           if(!socketId){throw new Error('socketId not found')}
           Io.to(socketId).emit("notification",{
                   message: inviteMessage,
                   from: inviteMessage.senderId
-                 })};
-                 
-        inviteQueue.add('inviteJob', {messageId: inviteMessage?.id  ,collaboratorSearch :nearestCollaborator ,user,longLat,defaultTime,setTime,taskId},{
-            jobId: `checknewinvite-${messageId}`,
-           repeat: {every:moment(invite.expire).diff(moment(),'milliseconds')},
-                             removeOnComplete: true,
-                             removeOnFail: true
+                 })
+          inviteQueue.add('checkInvite', {messageId: inviteMessage.id  ,collaboratorSearch :nearestCollaborator ,user,longLat,defaultTime,setTime,taskId},{
+            jobId: `checknewinvite-${inviteMessage.id}`, 
+            repeat: {every:moment(inviteMessage.expire).diff(moment(),'milliseconds')},
+                             attempts: 2,
+                             backoff:{type:'exponential', delay: 3000},
+                             removeOnComplete: false,
+                             removeOnFail: false
         })
+           //now process collabrecord from newInvite.response, new collabSearch
+               try{ if(inviteMessage.status==='DELETE'){
+                await inviteSerivce.deleteMessage({id: inviteMessage.id})
+                return;
+                }}
+                catch(error){ throw new Error('error deleting new invite record after user DECLINED')}
+              
+                try{if(inviteMessage.status==='ACCEPT'){
+                   await taskservice.createCollaborators({
+                     taskId:taskId,
+                     fullName: nearestCollaborator.fullName,
+                     companyName: nearestCollaborator.companyName,
+                     email: nearestCollaborator.email,
+                     username: nearestCollaborator.username,
+                     role :"ASSIGNEE",
+                 }) as IcollaboratorsCreationBody}
+                  await inviteSerivce.deleteMessage({id: invite.id})
+                  return;
+                }
+                catch(error){
+                   throw new Error('error updating  new collab record role to assignee after user ACCEPT')
+                }
+      };    
             //invite message still valid? proceed 
              if(invite.status==='DELETE'){
              await inviteSerivce.deleteMessage({id: invite.id})
@@ -67,7 +92,7 @@ const taskservice = container.resolve(TasKSerivce)
             role :"ASSIGNEE",
           }) as IcollaboratorsCreationBody}
            await inviteSerivce.deleteMessage({id: invite.id})
-           return;}
+            return;}
           catch(error){
             throw new Error('error creating collaborators record after ACCEPT')}
           },{connection:{
@@ -78,6 +103,8 @@ const taskservice = container.resolve(TasKSerivce)
          process.on('completed',(job)=>{
             console.log('job completed', job.id)
          })
-         process.on('error',(err)=>{
+         process.on('failed',(job,err)=>{
             console.log('worker process job failed', err.message)
          })
+        };
+       runWorker();

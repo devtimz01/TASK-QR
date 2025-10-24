@@ -1,7 +1,6 @@
 import { injectable } from "tsyringe";
 import { InviteMessage, InviteMessageBody, InviteQuery } from "../Interface/task-interface";
 import InviteDatasource from "../datasource/invite-datasource";
-import moment from "moment";
 
 @injectable()
 class InviteService{
