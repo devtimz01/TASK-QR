@@ -5,7 +5,8 @@ import InviteService from "./invite-service";
 import moment from "moment";
 import MapService from "./Map-service";
 import { InviteMessageBody } from "../Interface/task-interface";
-import { inviteQueue, Io } from "..";
+import {  Io } from "..";
+import { inviteQueue } from './queue';
 import { onlineUsers } from "..";
 import TasKSerivce from "./task-service";
 import { IcollaboratorsCreationBody } from "../Interface/task-interface";
@@ -48,7 +49,7 @@ const process = new Worker('checkInvite', async(job)=>{
                  })
           inviteQueue.add('checkInvite', {messageId: inviteMessage.id  ,collaboratorSearch :nearestCollaborator ,user,longLat,defaultTime,setTime,taskId},{
             jobId: `checknewinvite-${inviteMessage.id}`, 
-            repeat: {every:moment(inviteMessage.expire).diff(moment(),'milliseconds')},
+            delay: moment(inviteMessage.expire).diff(moment(),'milliseconds'),
                              attempts: 2,
                              backoff:{type:'exponential', delay: 3000},
                              removeOnComplete: false,
@@ -70,11 +71,11 @@ const process = new Worker('checkInvite', async(job)=>{
                      username: nearestCollaborator.username,
                      role :"ASSIGNEE",
                  }) as IcollaboratorsCreationBody}
-                  await inviteSerivce.deleteMessage({id: invite.id})
+                  await inviteSerivce.deleteMessage({id: inviteMessage.id})
                   return;
                 }
                 catch(error){
-                   throw new Error('error updating  new collab record role to assignee after user ACCEPT')
+                  console.log(error)
                 }
       };    
             //invite message still valid? proceed 
@@ -94,7 +95,7 @@ const process = new Worker('checkInvite', async(job)=>{
            await inviteSerivce.deleteMessage({id: invite.id})
             return;}
           catch(error){
-            throw new Error('error creating collaborators record after ACCEPT')}
+            console.log(error)}
           },{connection:{
              host:'127.0.0.1' as string,
              port: 6379 as number
@@ -107,4 +108,6 @@ const process = new Worker('checkInvite', async(job)=>{
             console.log('worker process job failed', err.message)
          })
         };
-       runWorker();
+
+      /* if (process.argv[1].includes('workers')) {
+          runWorker();}*/

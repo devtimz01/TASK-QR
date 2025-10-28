@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express'
 import { container } from 'tsyringe'
 import TaskController from '../controller/task-controller'
-import authUser from '../middleware/auth-middleware'
+import {authUser} from '../middleware/auth-middleware'
 const maprouter = express.Router()
 const controller = container.resolve(TaskController)
 

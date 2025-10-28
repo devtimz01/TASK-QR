@@ -3,7 +3,7 @@ import express, { Request, Response } from 'express'
 import TaskController from '../controller/task-controller'
 import multer from 'multer'
 import { validator } from '../middleware/index.validator'
-import authUser from '../middleware/auth-middleware'
+import {authUser} from '../middleware/auth-middleware'
 import { inviteResponse, subTaskTemplate, TaskFolderTemplate, taskTemplate } from '../validators/task-validation-schema'
 
 const storage = multer.memoryStorage()

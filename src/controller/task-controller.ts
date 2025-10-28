@@ -8,8 +8,10 @@ import uploadStream from "../services/cloudinary";
 import AuthService from "../services/auth-service";
 import MapService from "../services/Map-service";
 import InviteService from "../services/invite-service";
-import { inviteQueue, Io, onlineUsers } from "..";
+import {  Io, onlineUsers } from "..";
+import { inviteQueue } from "../services/queue";
 import moment from "moment";
+import permission from "../permission/permission";
 
 @autoInjectable()
 class TaskController{
@@ -52,6 +54,13 @@ class TaskController{
     async createTask(req:Request,res:Response){
        try{
          const params ={...req.body}
+         if(!req.user){
+            throw new Error('token not found')
+         }
+         const accessControl = permission.can(req.user.role).createAny('task')
+         if(!accessControl){
+            throw new Error('permission not granted,403')
+         }
          let uploadFile:string | null= null
          if(req.file?.buffer){
             try{

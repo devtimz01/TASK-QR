@@ -12,7 +12,7 @@ export const ResponseCode = {
 
 export const userRoles={
     ADMIN:'ADMIN',
-    USER:'USER'
+    USER:'user'
 }
 export const emailStatus={
   NOT_VERIFIED: false,

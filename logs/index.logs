@@ -258,3 +258,12 @@ notNull Violation: collaboratorsModel.fullName cannot be null
 2025-20-10, 19:11:19 error:invite message response time expired
 2025-20-10, 19:31:47 error:invite message response time expired
 2025-21-10, 18:33:57 error:status pending, failed to create record
+2025-24-10, 20:19:26 error:failed, Gps long?Lat? error
+2025-24-10, 20:20:08 error:failed, Gps long?Lat? error
+2025-24-10, 20:20:16 error:failed, Gps long?Lat? error
+2025-24-10, 20:20:53 error:failed, Gps long?Lat? error
+2025-24-10, 20:21:45 error:failed, Gps long?Lat? error
+2025-24-10, 20:23:37 error:failed, Gps long?Lat? error
+2025-24-10, 20:23:44 error:token not found
+2025-24-10, 20:23:49 error:failed, Gps long?Lat? error
+2025-28-10, 16:29:35 error:Role not found: "USER"

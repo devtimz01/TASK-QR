@@ -1,5 +1,4 @@
 import 'reflect-metadata';
-//import './services/workers'
 import express from 'express'
 import { Request,Response, NextFunction} from 'express';
 import Dbinitialize from './database/init'
@@ -17,7 +16,7 @@ import { Iauth } from './Interface/auth-interface';
 import {ExpressAdapter} from '@bull-board/express'
 import { createBullBoard } from '@bull-board/api';
 import { BullMQAdapter } from '@bull-board/api/bullMQAdapter';
-import { Queue } from 'bullmq';
+import { inviteQueue } from './services/queue';
 
 
 const app= express()
@@ -33,22 +32,6 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 //bullRecord
-export const inviteQueue= new Queue('checkInvite',{connection:{
-             host:'127.0.0.1' as string,
-             port: 6379 as number
-         }});
-
-(async () => {
-  try {
-    // Test low-level connection
-    const client = await inviteQueue.client;
-    console.log('✅ Redis connected:', client.status);
-
-  } catch (err) {
-    console.error('❌ Redis connection or queue error:', err);
-  }
-})();
-
 const serverAdapter = new ExpressAdapter()
 createBullBoard({
     queues: [new BullMQAdapter(inviteQueue)],
@@ -93,7 +76,7 @@ const httpServer = createServer(app)
 let allId = await getAllUsers()
 for(let i =0; i<allId.length ;i++){
     const authusers= allId[i]
-    const socket = io("http://localhost:4010",{
+    const socket = io("http://localhost:6020",{
    query:{
        userId: authusers.id 
    }
@@ -115,12 +98,12 @@ export  let onlineUsers= new Map<string,string>()
              utility.Logger.error((error as TypeError).message)
            };
 
-const port = 4010;
+const port = 6020;
 const server = async function(){
     try{
         await Dbinitialize();
         httpServer.listen(port,()=>{
-        console.log('SERVER RUNNING AT PORT 4010')
+        console.log('SERVER RUNNING AT PORT 6020')
         utility.Logger.info('server running successfully')
   })
     }

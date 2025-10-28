@@ -43,6 +43,33 @@ class AuthController{
             return utility.handleError(res,(error as TypeError).message,ResponseCode.SERVER_ERROR)
         }
     };
+    async signUpasAdmin(req: Request,res:Response){
+        const params={...req.body}
+        try{
+            const saltround = 10;
+            const hashedPassword = bcrypt.hashSync(params.password,saltround) 
+            const admin = 
+                {fullName: params.fullName,
+                username: params.username,
+                companyName: params.companyName,
+                email:params.email,
+                password: hashedPassword,
+                role: userRoles.ADMIN,
+               isEmailVerified: emailStatus.NOT_VERIFIED
+            } as IuserCreationBody
+
+            let userExists= await this.authService.findUser({email:params.email});
+            if(userExists){
+                return utility.handleError(res, 'user already exists', ResponseCode.CONFLICT)
+            }
+            //verify user
+            let user = await this.authService.createUser(admin)
+                return utility.handleSuccess(res,'successfully created new user',{user},ResponseCode.SUCCESS)
+        }
+        catch(error){
+            return utility.handleError(res,(error as TypeError).message,ResponseCode.SERVER_ERROR)
+        }
+    };
     async login (req:Request,res:Response){
         try{
             const params={...req.body}
@@ -57,6 +84,7 @@ class AuthController{
                         id: user.id,
                         username: user.username,
                         email: user.email,
+                        role: userRoles.USER,
                         companyName:user.companyName
                       }, process.env.JWT_SECRET as string,{expiresIn:'30d'})
                       //verifyUser()
@@ -65,6 +93,30 @@ class AuthController{
             return utility.handleError(res, (error as TypeError).message,ResponseCode.SERVER_ERROR)
         }
     }
+     async loginAsAdmin (req:Request,res:Response){
+        try{
+            const params={...req.body}
+            let admin = await this.authService.findUser({username:params.username})
+            if(!admin){
+                return utility.handleError(res,"user does not exist",ResponseCode.UNAUTHORIZED_ACCESS)
+            }
+            let isPasswordMatch = await bcrypt.compare(params.password, admin.password)
+                if(!isPasswordMatch){
+                   return utility.handleError(res,"invalid password match",ResponseCode.UNAUTHORIZED_ACCESS)}
+                      let token = jwt.sign({
+                        id: admin.id,
+                        username: admin.username,
+                        email: admin.email,
+                        role: userRoles.ADMIN,
+                        companyName:admin.companyName
+                      }, process.env.JWT_SECRET as string,{expiresIn:'30d'})
+                      //verifyUser()
+                       return utility.handleSuccess(res,"login successful",{admin,token},ResponseCode.OK)
+        }catch(error){
+            return utility.handleError(res, (error as TypeError).message,ResponseCode.SERVER_ERROR)
+        }
+    }
+
     async sendVerificationLink(req:Request,res:Response){
        try{
         const params={...req.body}
