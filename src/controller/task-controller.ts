@@ -12,6 +12,7 @@ import {  Io, onlineUsers } from "..";
 import { inviteQueue } from "../services/queue";
 import moment from "moment";
 import permission from "../permission/permission";
+import _ from 'lodash'
 
 @autoInjectable()
 class TaskController{
@@ -81,7 +82,9 @@ class TaskController{
                notifications: params.notifications,
                comments: params.comments
             }) as ItaskCreationBody
-            return utility.handleSuccess(res,'Task created successfully',{task}, ResponseCode.OK)
+            const payload= _.pick(task,['id','taskName', 'dependencies', 'dueDate',
+              'description', 'folderId','files','markAsComplete','createdAt','updatedAt'])
+            return utility.handleSuccess(res,'Task created successfully',payload, ResponseCode.OK)
        }catch(error:unknown){
          const handleError =  error instanceof Error? error.message: "failed creating task"
          console.error(error)

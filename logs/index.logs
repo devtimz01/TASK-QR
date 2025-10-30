@@ -267,3 +267,9 @@ notNull Violation: collaboratorsModel.fullName cannot be null
 2025-24-10, 20:23:44 error:token not found
 2025-24-10, 20:23:49 error:failed, Gps long?Lat? error
 2025-28-10, 16:29:35 error:Role not found: "USER"
+2025-29-10, 18:19:44 error:Request Timeout
+2025-29-10, 18:25:04 error:Request Timeout
+2025-30-10, 08:38:49 error:notNull Violation: TaskModel.taskName cannot be null,
+notNull Violation: TaskModel.folderId cannot be null
+2025-30-10, 08:39:03 error:notNull Violation: TaskModel.taskName cannot be null,
+notNull Violation: TaskModel.folderId cannot be null

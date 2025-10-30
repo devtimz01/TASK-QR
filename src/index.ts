@@ -17,11 +17,14 @@ import {ExpressAdapter} from '@bull-board/express'
 import { createBullBoard } from '@bull-board/api';
 import { BullMQAdapter } from '@bull-board/api/bullMQAdapter';
 import { inviteQueue } from './services/queue';
+import compression from 'compression'
 
 
 const app= express()
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
+//app.use(express.static('public', {maxAge:'1d'}));
+app.use(compression({threshold:1024}))
 
 app.use(session({
     secret:'secret',
@@ -76,7 +79,7 @@ const httpServer = createServer(app)
 let allId = await getAllUsers()
 for(let i =0; i<allId.length ;i++){
     const authusers= allId[i]
-    const socket = io("http://localhost:6020",{
+    const socket = io("http://localhost:6060",{
    query:{
        userId: authusers.id 
    }
@@ -98,12 +101,12 @@ export  let onlineUsers= new Map<string,string>()
              utility.Logger.error((error as TypeError).message)
            };
 
-const port = 6020;
+const port = 6060;
 const server = async function(){
     try{
         await Dbinitialize();
         httpServer.listen(port,()=>{
-        console.log('SERVER RUNNING AT PORT 6020')
+        console.log('SERVER RUNNING AT PORT 6060')
         utility.Logger.info('server running successfully')
   })
     }

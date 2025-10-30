@@ -17,7 +17,7 @@ const Logger = createLogger({
             `${info.timestamp} ${info.level}:${info.message}`))
 })
 
-const handleSuccess=(res:Response, message: string, data: {}, statusCode: number=200)=>{
+const handleSuccess=(res:Response, message: string, data={}, statusCode: number=200)=>{
     Logger.log({level:'info',message})
     return res.status(statusCode).json({status:true,message,data:{...data}})
 }
