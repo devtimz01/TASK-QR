@@ -19,7 +19,6 @@ import { BullMQAdapter } from '@bull-board/api/bullMQAdapter';
 import { inviteQueue } from './services/queue';
 import compression from 'compression'
 
-
 const app= express()
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
@@ -79,7 +78,7 @@ const httpServer = createServer(app)
 let allId = await getAllUsers()
 for(let i =0; i<allId.length ;i++){
     const authusers= allId[i]
-    const socket = io("http://localhost:6060",{
+    const socket = io("http://localhost:3030",{
    query:{
        userId: authusers.id 
    }
@@ -101,12 +100,12 @@ export  let onlineUsers= new Map<string,string>()
              utility.Logger.error((error as TypeError).message)
            };
 
-const port = 6060;
+const port = 3030;
 const server = async function(){
     try{
         await Dbinitialize();
         httpServer.listen(port,()=>{
-        console.log('SERVER RUNNING AT PORT 6060')
+        console.log('SERVER RUNNING AT PORT 3030')
         utility.Logger.info('server running successfully')
   })
     }

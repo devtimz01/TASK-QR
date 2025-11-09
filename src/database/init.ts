@@ -4,12 +4,14 @@ import tokenModel from "../model/token-schema"
 import userModel from "../model/user-schema"
 import utility from "../utils/log"
 import Db from './index'
+import partition from "./partitions/task-partition"
 
 const Dbinitialize=async()=>{
    try{
      userModel.sync({alter:false})
      tokenModel.sync({alter:false})
      TaskFolderModel.sync({alter:false})
+    //await partition()
      TaskModel.sync({alter:false})
      subTaskModel.sync({alter:false})
      inviteModel.sync({alter:false})
