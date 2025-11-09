@@ -11,8 +11,7 @@ export const TaskModel = Db.define<ItaskModel>('TaskModel',{
     },
     taskName: {
         type:DataTypes.STRING,
-        allowNull: false,
-        unique: true
+        allowNull: false
     },
     files: {
         type:DataTypes.STRING,
@@ -59,6 +58,11 @@ export const TaskModel = Db.define<ItaskModel>('TaskModel',{
 },
 {
     timestamps: true,
+    indexes:[
+        {
+            fields:['taskName'], name:'taskName'
+        }
+    ],
     createdAt: 'createdAt',
     updatedAt:'updatedAt',
     tableName:'Task'

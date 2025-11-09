@@ -78,7 +78,7 @@ const httpServer = createServer(app)
 let allId = await getAllUsers()
 for(let i =0; i<allId.length ;i++){
     const authusers= allId[i]
-    const socket = io("http://localhost:3030",{
+    const socket = io("http://localhost:3310",{
    query:{
        userId: authusers.id 
    }
@@ -100,12 +100,12 @@ export  let onlineUsers= new Map<string,string>()
              utility.Logger.error((error as TypeError).message)
            };
 
-const port = 3030;
+const port = 3310;
 const server = async function(){
     try{
         await Dbinitialize();
         httpServer.listen(port,()=>{
-        console.log('SERVER RUNNING AT PORT 3030')
+        console.log('SERVER RUNNING AT PORT 3310')
         utility.Logger.info('server running successfully')
   })
     }

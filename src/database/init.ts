@@ -11,7 +11,7 @@ const Dbinitialize=async()=>{
      userModel.sync({alter:false})
      tokenModel.sync({alter:false})
      TaskFolderModel.sync({alter:false})
-    //await partition()
+      //await partition()
      TaskModel.sync({alter:false})
      subTaskModel.sync({alter:false})
      inviteModel.sync({alter:false})
