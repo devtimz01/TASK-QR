@@ -303,3 +303,8 @@ notNull Violation: TaskModel.folderId cannot be null
 2025-09-11, 11:04:38 error:Database modelsync authentication error
 2025-09-11, 11:05:12 error:Database modelsync authentication error
 2025-09-11, 12:00:33 error:Database modelsync authentication error
+2025-10-11, 11:17:39 error:failed, Gps long?Lat? error
+2025-10-11, 11:17:46 error:failed, Gps long?Lat? error
+2025-10-11, 11:18:03 error:failed, Gps long?Lat? error
+2025-10-11, 11:18:54 error:failed, Gps long?Lat? error
+2025-10-11, 11:20:05 error:failed, Gps long?Lat? error

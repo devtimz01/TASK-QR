@@ -5,7 +5,7 @@ import {authUser} from '../middleware/auth-middleware'
 const maprouter = express.Router()
 const controller = container.resolve(TaskController)
 
-maprouter.patch('/createuserslatlong',authUser(),(req:Request, res: Response)=>{
+maprouter.patch('/updatelonglat',authUser(),(req:Request, res: Response)=>{
     return controller.getUsersLongLat(req,res)
 })
 maprouter.get('/assigncollaborators',authUser() ,(req:Request, res: Response)=>{

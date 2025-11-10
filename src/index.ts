@@ -18,6 +18,7 @@ import { createBullBoard } from '@bull-board/api';
 import { BullMQAdapter } from '@bull-board/api/bullMQAdapter';
 import { inviteQueue } from './services/queue';
 import compression from 'compression'
+import {createClient} from 'redis'
 
 const app= express()
 app.use(express.urlencoded({extended:true}))
@@ -31,7 +32,25 @@ app.use(session({
     saveUninitialized:true
 }))
 app.use(passport.initialize())
-app.use(passport.session())
+app.use(passport.session());
+
+//redis
+export let redisClient = createClient({
+    url:'redis://localhost:6379'
+   })
+   redisClient.on('error',(err)=>{
+      console.log(err)
+   })
+   redisClient.on('ready',()=>{
+    console.log('redis ready')
+    
+   });
+(async ()=>{
+ try{await redisClient.connect()
+ }
+  catch(err){
+    utility.Logger.error(err)}
+})();
 
 //bullRecord
 const serverAdapter = new ExpressAdapter()
@@ -78,7 +97,7 @@ const httpServer = createServer(app)
 let allId = await getAllUsers()
 for(let i =0; i<allId.length ;i++){
     const authusers= allId[i]
-    const socket = io("http://localhost:3310",{
+    const socket = io("http://localhost:3339",{
    query:{
        userId: authusers.id 
    }
@@ -100,12 +119,12 @@ export  let onlineUsers= new Map<string,string>()
              utility.Logger.error((error as TypeError).message)
            };
 
-const port = 3310;
+const port = 3339;
 const server = async function(){
     try{
         await Dbinitialize();
         httpServer.listen(port,()=>{
-        console.log('SERVER RUNNING AT PORT 3310')
+        console.log('SERVER RUNNING AT PORT 3339')
         utility.Logger.info('server running successfully')
   })
     }

@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import {  Request, Response } from "express";
 import utility from "../utils/log";
 import { ResponseCode } from "../enums/status-code";
 import { autoInjectable } from "tsyringe";
@@ -13,6 +13,7 @@ import { inviteQueue } from "../services/queue";
 import moment from "moment";
 import permission from "../permission/permission";
 import _ from 'lodash'
+import { redisClient } from "..";
 
 @autoInjectable()
 class TaskController{
@@ -129,19 +130,45 @@ class TaskController{
             throw new Error('403')
          }
          const findUserIp = await this.authservice.findUser({id:req.user.id})
+         const key = `user:${req.user.id}`
+         const cachedData = await redisClient.get(key)
+         let result = null
+         if(cachedData){
+            result = JSON.parse(cachedData)
+            console.log('cache hit')
+            utility.Logger.info('cache hit')
+         }
+         else{
+            result= findUserIp
+            await redisClient.set(key, JSON.stringify(result),{EX:300})
+            console.log('new cache set')
+         }
          let currentIp= await this.authservice.findUser({id:req.user.id,ipAddress:(req.headers['x-forwarded-for'] as string)?.split(",")[0] ||req.socket.remoteAddress as string});
-         if(findUserIp?.ipAddress=='NULL' || findUserIp?.ipAddress!==currentIp?.ipAddress){
+         if(findUserIp?.ipAddress==='NULL' || findUserIp?.ipAddress!==currentIp?.ipAddress){
              await this.authservice.updateRecord({id:req.user.id},{ipAddress:(req.headers['x-forwarded-for'] as string)?.split(",")[0] ||req.socket.remoteAddress as string});
          }
          if(!findUserIp?.ipAddress && !currentIp?.ipAddress){
             throw new Error('500, cannot get users ip')
          }
           const getLongLat = await MapService.getGpsLongLat(findUserIp?.ipAddress as string)
+          let longLatCache = null
+          const lKey = `longlat:${findUserIp?.ipAddress}` as string
+          const cachedLongLat = await redisClient.get(lKey)
+          if(cachedLongLat){
+            longLatCache= JSON.parse(cachedLongLat)
+            console.log('long lat cache hit')
+          }
+          else{
+            longLatCache= getLongLat
+            await redisClient.set(lKey,JSON.stringify(longLatCache),{EX:300})
+            console.log('longlat cache miss')
+          }
           if(!getLongLat){
             throw new Error('404, cannot get users longat')
           }
           const usersLongLat = await this.authservice.updateRecord({id: req.user.id},{latitude: getLongLat.lat, longitude: getLongLat.long})
           console.log(usersLongLat)
+          
           return utility.handleSuccess(res,'users latlong created successfully',{usersLongLat}, ResponseCode.OK)
        } 
       catch (error) {
