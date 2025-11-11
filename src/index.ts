@@ -64,7 +64,7 @@ serverAdapter.setBasePath('/Admindashboard/inviteQueue')
 //middleware
 app.use('/Admindashboard/inviteQueue',serverAdapter.getRouter())
 app.use('/api/auth',authRouter)
-app.use('/api/task',Taskrouter)
+app.use('/api',Taskrouter)
 app.use('/api',maprouter)
 
 app.get('/',(req,res)=>{
